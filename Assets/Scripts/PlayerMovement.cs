@@ -8,20 +8,17 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public Rigidbody2D body;
-
     private Vector2 _moveDirection = Vector2.zero;
-
-    // Update is called once per frame
+    
     void Update()
     {
-        // Gives a value between -1 and 1
-        var horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
-        var vertical = Input.GetAxisRaw("Vertical"); // -1 is down
+        var horizontal = Input.GetAxisRaw("Horizontal");
+        var vertical = Input.GetAxisRaw("Vertical");
         _moveDirection = new Vector2(horizontal, vertical).normalized;
     }
 
     private void FixedUpdate()
     {
-        body.velocity = _moveDirection * speed;
+        body.MovePosition(body.position + _moveDirection * (speed * Time.fixedDeltaTime));
     }
 }
