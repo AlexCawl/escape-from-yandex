@@ -73,3 +73,9 @@ crashlytics-build.properties
 
 # Jetbrains Rider
 .idea/
+
+# Visual Studio Code
+.vscode/
+
+# Unity Packages Lock
+Packages/packages-lock.json
