@@ -3,7 +3,6 @@ name: Desktop - Build and publish to releases
 # Auto-build and release on pushes to master
 on:
   workflow_dispatch:
-  
    push:
      branches:
        - master
