@@ -7,6 +7,10 @@ on:
      branches:
        - master
 
+# Setup GITHUB_TOKEN permissions
+permissions: 
+  contents: write
+
 # Project name
 env:
   PROJECT_NAME: escape-from-yandex-game
