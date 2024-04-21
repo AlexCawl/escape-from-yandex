@@ -48,6 +48,7 @@ jobs:
         with:
           name: ${{ env.PROJECT_NAME }}.${{ matrix.targetPlatform }}.zip
           path: ${{ env.PROJECT_NAME }}.${{ matrix.targetPlatform }}.zip
+
   create-release:
     name: Upload and create new release
     needs: build-for-desktop
@@ -64,7 +65,7 @@ jobs:
         with:
           path: artifacts
       - name: Create release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v0.1.12
         with:
           name: "Release #${{ github.run_number }} ${{ env.date }}"
           tag_name: ${{ env.tag }}
