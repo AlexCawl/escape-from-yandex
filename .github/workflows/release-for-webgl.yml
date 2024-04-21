@@ -1,5 +1,6 @@
 name: WebGL - Build and publish to GitHub Pages
 
+# Auto-build and release on pushes to master
 on:
   workflow_dispatch:
    push:

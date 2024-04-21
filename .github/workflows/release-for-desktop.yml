@@ -1,4 +1,4 @@
-name: Desktop - Build and publish to releases
+name: Desktop - Build and publish to release
 
 # Auto-build and release on pushes to master
 on:
@@ -6,10 +6,6 @@ on:
    push:
      branches:
        - master
-
-# Setup GITHUB_TOKEN permissions
-permissions: 
-  contents: write
 
 # Project name
 env:
@@ -57,6 +53,8 @@ jobs:
     name: Upload and create new release
     needs: build-for-desktop
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Create environment variables
         run: |
