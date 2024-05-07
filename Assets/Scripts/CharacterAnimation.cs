@@ -2,20 +2,47 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAnimation : MonoBehaviour
 {
     public Animator animator;
+    private GameInput _gameInput;
     private Vector2 _moveDirection = Vector2.zero;
     
-    void Update()
+    private void Awake()
     {
-        var horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
-        var vertical = Input.GetAxisRaw("Vertical"); // -1 is down
-        _moveDirection = new Vector2(horizontal, vertical).normalized;
-        
+        _gameInput = new GameInput();
+    }
+
+    private void OnEnable()
+    {
+        _gameInput.Enable();
+        _gameInput.Player.Movement.performed += OnMovementPerformed;
+        _gameInput.Player.Movement.canceled += OnMovementCancelled;
+    }
+
+    private void OnDisable()
+    {
+        _gameInput.Disable();
+        _gameInput.Player.Movement.performed -= OnMovementPerformed;
+        _gameInput.Player.Movement.canceled -= OnMovementCancelled;
+    }
+    
+    private void FixedUpdate()
+    {
         animator.SetFloat("Horizontal", _moveDirection.x);
         animator.SetFloat("Vertical", _moveDirection.y);
         animator.SetFloat("Speed", _moveDirection.sqrMagnitude);
+    }
+
+    private void OnMovementPerformed(InputAction.CallbackContext value)
+    {
+        _moveDirection = value.ReadValue<Vector2>().normalized;
+    }
+
+    private void OnMovementCancelled(InputAction.CallbackContext value)
+    {
+        _moveDirection = Vector2.zero;
     }
 }

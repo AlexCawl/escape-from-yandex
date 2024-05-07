@@ -8,8 +8,8 @@ public class CharacterMovement : MonoBehaviour
 {
     public float speed;
     public Rigidbody2D body;
+    private GameInput _gameInput;
     private Vector2 _moveDirection = Vector2.zero;
-    private GameInput _gameInput = null;
 
     private void Awake()
     {
