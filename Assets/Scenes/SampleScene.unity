@@ -136,8 +136,9 @@ GameObject:
   - component: {fileID: 140637526}
   - component: {fileID: 140637525}
   - component: {fileID: 140637529}
-  - component: {fileID: 140637530}
+  - component: {fileID: 140637532}
   - component: {fileID: 140637531}
+  - component: {fileID: 140637533}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -186,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   body: {fileID: 140637525}
+  _moveDirection: {x: 0, y: 0}
 --- !u!212 &140637527
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -274,19 +276,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &140637530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140637524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eb3ed87b18db8542a6057d171f75d23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 140637529}
 --- !u!60 &140637531
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -364,6 +353,33 @@ PolygonCollider2D:
       - {x: 0.03571623, y: 0.050730158}
       - {x: 0.035481784, y: 0.06105327}
   m_UseDelaunayMesh: 0
+--- !u!114 &140637532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140637524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e467784d554c94db4d71a6593bfe08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  body: {fileID: 140637525}
+--- !u!114 &140637533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140637524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb3ed87b18db8542a6057d171f75d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 140637529}
 --- !u!1 &582482848
 GameObject:
   m_ObjectHideFlags: 0
