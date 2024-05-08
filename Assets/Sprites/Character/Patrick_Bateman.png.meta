@@ -1,0 +1,1781 @@
+fileFormatVersion: 2
+guid: 2ee50db72c52a5a45bdbf080b433fa62
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Patrick_Bateman_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1823
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9735e7d1d51cf944299a5b41bbfbdd3b
+      internalID: -1188754887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1823
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8a1f99f1686a084695c91ff3bccacbb
+      internalID: -988393680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1823
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba3d8bc8a5b7ced47befc75d394abcde
+      internalID: -1016737379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1823
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b45e1c06db9bf6547a3bf2f0056475e5
+      internalID: -1961154087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1823
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b6057ae01cc2794986b1846e453d168
+      internalID: -1492379747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ee8d512ec7104545861ff915053e109
+      internalID: -56034025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_6
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d2f5fbbceb29a04daf96690491b3ab1
+      internalID: 1718347498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0faab962b5000ab4aa41a49840b207d5
+      internalID: 1161690373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e932f4ce0cba0d4c88398328a86622d
+      internalID: 613523822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d62dfdc4b61b6dd4e97d5012209e9db3
+      internalID: 1245134870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_10
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f381963d6412a994886f973943dd818e
+      internalID: 663601553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_11
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ddf354b31411654486e23de9f2695f0
+      internalID: 1034471060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_12
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1165cd430d30337458856af5b2afcbc5
+      internalID: 857893655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_13
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8ac043b233ec32498983f3ee6d79246
+      internalID: 693557310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_14
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b44a41b2b1319349a3bc3a84431f04e
+      internalID: 1772314398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_15
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 959b240a6549b62418f1e7b296b37390
+      internalID: -983414569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_16
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ced59352a62b7f244833ab6818ebd208
+      internalID: -1319483949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_17
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba5f187c9ca36949a52a64550fd3f71
+      internalID: 697022524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_18
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c58677ec03baf645ac5a09d9389d725
+      internalID: -487628004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_19
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33061b65dd6ea1d4c8dd1f1e9eabcdd2
+      internalID: 942795935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_20
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b9e820474bb2434386e780b6aad81c9
+      internalID: 148593298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_21
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f526231a2e2e044829e4383f71a4a0
+      internalID: -1817813119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_22
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa4950640f38d6644946b69184214891
+      internalID: -743874578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_23
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5390edc65bb96b34d8bad90e90fce601
+      internalID: -238698388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_24
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f85553cadf1e3ff498275f2ca075c3df
+      internalID: -603538583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_25
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f08089cb1560f45b9a95f3e2e38200
+      internalID: 838772623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_26
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d0693f39064f4b46b3943657750f02c
+      internalID: -739519794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_27
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d16ce7161f2922b47ab44b947b3cec9d
+      internalID: 1357436852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_28
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 1728
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee1fe97ed9455894691a1aef3bae4d2a
+      internalID: -1713683338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 580f4adef045c6547a1dfe23dc38c94a
+      internalID: -1940992176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_30
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cdccd172853d114b9a094372abbf5fa
+      internalID: 101008410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_31
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d9fa9751f5071042ba29794b16fdf39
+      internalID: 2121083799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_32
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a12236a9b8b668a4dac1de7815fc55e7
+      internalID: -1524495271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_33
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b808030dd82688245bd6e2f84530b370
+      internalID: -2071914697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_34
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab1d293884129374d85e9e467bc3058f
+      internalID: -1702733756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_35
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e44269f7a02aa05408fbeb5f32c1ff50
+      internalID: 1126801663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_36
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e143181461aa7149b38a1cf84cb6a07
+      internalID: 242000494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_37
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fea39bc4b00fee40ace698b7242d84d
+      internalID: -1792454448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_38
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d21ecda8513fc45a94b57750c83fcb
+      internalID: 1369023474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_39
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9005aa5d55f68dd478a18a4a6d4ae03d
+      internalID: -923509203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_40
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb1833354aae63d4aa1a229418c2e9d0
+      internalID: 1849854321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_41
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 036aecccaa20d9746907fd4405d5d564
+      internalID: -1625379356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_42
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfce1781180b235459f59bdc94c25b5c
+      internalID: -1936204224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_43
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d196ff0f5d1f0b446b6441393cda69dc
+      internalID: -1084568127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_44
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88b38acc2c49f0640b73e759e0bf5276
+      internalID: -1461245852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_45
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8f9efd6c348b544b54fba0af69e6d2
+      internalID: -1512117692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_46
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d839c72fdafe7a34da85d7edea1942e5
+      internalID: 68567275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_47
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a28adbba5ae4a824a9d80ab88c9c432e
+      internalID: -184086139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_48
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 935c0f0fa5efda249b4aa00c3372ab0e
+      internalID: 1318977713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_49
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ee2b2021eda91a4a99bb7bf6dc29537
+      internalID: -168238761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_50
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e886e1140f72bf940983eb01684da63f
+      internalID: 1637071744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_51
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970646e25d14d7947b2ea0597ee90e18
+      internalID: -149103300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Patrick_Bateman_52
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 1633
+        width: 48
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 626b932b9ded3af41adfa613e77c1f37
+      internalID: 1183668124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Patrick_Bateman_0: -1188754887
+      Patrick_Bateman_1: -988393680
+      Patrick_Bateman_10: 663601553
+      Patrick_Bateman_100: -401024604
+      Patrick_Bateman_101: 779899473
+      Patrick_Bateman_102: 1263796776
+      Patrick_Bateman_103: -606945618
+      Patrick_Bateman_104: -1394916181
+      Patrick_Bateman_105: 2011377117
+      Patrick_Bateman_106: 85242679
+      Patrick_Bateman_107: -154683060
+      Patrick_Bateman_108: -1776119555
+      Patrick_Bateman_109: 45723669
+      Patrick_Bateman_11: 1034471060
+      Patrick_Bateman_110: 907428847
+      Patrick_Bateman_111: 759738562
+      Patrick_Bateman_112: 456202584
+      Patrick_Bateman_113: 412688002
+      Patrick_Bateman_114: 1379433004
+      Patrick_Bateman_115: -383740534
+      Patrick_Bateman_116: 1404989632
+      Patrick_Bateman_117: 483198326
+      Patrick_Bateman_118: -457448147
+      Patrick_Bateman_119: 99322995
+      Patrick_Bateman_12: 857893655
+      Patrick_Bateman_120: 1219269775
+      Patrick_Bateman_121: 560832872
+      Patrick_Bateman_122: -964445716
+      Patrick_Bateman_123: 387199566
+      Patrick_Bateman_124: -655087336
+      Patrick_Bateman_125: -264738909
+      Patrick_Bateman_126: -928921750
+      Patrick_Bateman_127: 1521893446
+      Patrick_Bateman_128: 1414097964
+      Patrick_Bateman_129: -1494666936
+      Patrick_Bateman_13: 693557310
+      Patrick_Bateman_130: -1637873463
+      Patrick_Bateman_131: -2063460918
+      Patrick_Bateman_132: 1300135709
+      Patrick_Bateman_133: -1275076575
+      Patrick_Bateman_134: 570608458
+      Patrick_Bateman_135: -2004020685
+      Patrick_Bateman_136: 1249863001
+      Patrick_Bateman_137: 378549439
+      Patrick_Bateman_138: 1538172021
+      Patrick_Bateman_139: -1216372000
+      Patrick_Bateman_14: 1772314398
+      Patrick_Bateman_140: -1632019680
+      Patrick_Bateman_141: -1902180849
+      Patrick_Bateman_142: 1369212538
+      Patrick_Bateman_143: -1764904348
+      Patrick_Bateman_144: 1470598731
+      Patrick_Bateman_145: 42232208
+      Patrick_Bateman_146: -1208715670
+      Patrick_Bateman_147: 1343732086
+      Patrick_Bateman_148: 164642683
+      Patrick_Bateman_149: -1343809598
+      Patrick_Bateman_15: -983414569
+      Patrick_Bateman_150: 1744800537
+      Patrick_Bateman_151: 877549505
+      Patrick_Bateman_152: 1100263134
+      Patrick_Bateman_153: 1770575696
+      Patrick_Bateman_154: -1503832133
+      Patrick_Bateman_155: -68743485
+      Patrick_Bateman_156: -1551436073
+      Patrick_Bateman_157: 377628900
+      Patrick_Bateman_158: -2099609115
+      Patrick_Bateman_159: 1456851934
+      Patrick_Bateman_16: -1319483949
+      Patrick_Bateman_160: 298643554
+      Patrick_Bateman_161: -1880042305
+      Patrick_Bateman_162: 37923191
+      Patrick_Bateman_163: -1332994389
+      Patrick_Bateman_164: -600910176
+      Patrick_Bateman_165: -355805820
+      Patrick_Bateman_166: -79640776
+      Patrick_Bateman_167: -1849871593
+      Patrick_Bateman_168: 1515682989
+      Patrick_Bateman_169: -1710241721
+      Patrick_Bateman_17: 697022524
+      Patrick_Bateman_170: 442017093
+      Patrick_Bateman_171: 176612741
+      Patrick_Bateman_172: 479200299
+      Patrick_Bateman_173: 296004901
+      Patrick_Bateman_174: 805135933
+      Patrick_Bateman_175: -1494233761
+      Patrick_Bateman_176: 1928604584
+      Patrick_Bateman_177: 1622472153
+      Patrick_Bateman_178: 1734813637
+      Patrick_Bateman_179: 378949862
+      Patrick_Bateman_18: -487628004
+      Patrick_Bateman_180: 310435925
+      Patrick_Bateman_181: -1197555420
+      Patrick_Bateman_182: 1853388584
+      Patrick_Bateman_183: 1895343985
+      Patrick_Bateman_184: 203332157
+      Patrick_Bateman_185: -178311077
+      Patrick_Bateman_186: 475148815
+      Patrick_Bateman_187: -1021825646
+      Patrick_Bateman_188: 1871363145
+      Patrick_Bateman_189: 1988546766
+      Patrick_Bateman_19: 942795935
+      Patrick_Bateman_190: 1586946922
+      Patrick_Bateman_191: -1809268694
+      Patrick_Bateman_192: 613680963
+      Patrick_Bateman_193: 170330735
+      Patrick_Bateman_194: -1353578044
+      Patrick_Bateman_195: -641860965
+      Patrick_Bateman_196: 326984505
+      Patrick_Bateman_197: -296992912
+      Patrick_Bateman_198: 142408150
+      Patrick_Bateman_199: 2074810630
+      Patrick_Bateman_2: -1016737379
+      Patrick_Bateman_20: 148593298
+      Patrick_Bateman_200: -1142505975
+      Patrick_Bateman_201: 471535710
+      Patrick_Bateman_202: 1955536786
+      Patrick_Bateman_203: 2041131916
+      Patrick_Bateman_204: 888839270
+      Patrick_Bateman_205: -756961156
+      Patrick_Bateman_206: -380823483
+      Patrick_Bateman_207: -1957359165
+      Patrick_Bateman_208: -918091718
+      Patrick_Bateman_209: 1816867864
+      Patrick_Bateman_21: -1817813119
+      Patrick_Bateman_210: -1910045216
+      Patrick_Bateman_211: 790302948
+      Patrick_Bateman_212: -1333587798
+      Patrick_Bateman_213: -1879195112
+      Patrick_Bateman_214: 1145626776
+      Patrick_Bateman_215: 307386393
+      Patrick_Bateman_216: 1433333272
+      Patrick_Bateman_217: -101106612
+      Patrick_Bateman_218: -120627719
+      Patrick_Bateman_219: -250553437
+      Patrick_Bateman_22: -743874578
+      Patrick_Bateman_220: 1523822835
+      Patrick_Bateman_221: -2019376513
+      Patrick_Bateman_222: 2034737745
+      Patrick_Bateman_223: -228981113
+      Patrick_Bateman_224: -1885341985
+      Patrick_Bateman_225: -1477759309
+      Patrick_Bateman_226: 143220315
+      Patrick_Bateman_227: -379050619
+      Patrick_Bateman_228: 550235002
+      Patrick_Bateman_229: -1174141087
+      Patrick_Bateman_23: -238698388
+      Patrick_Bateman_230: 1328104557
+      Patrick_Bateman_231: 1396243776
+      Patrick_Bateman_232: 262360750
+      Patrick_Bateman_233: 1312850839
+      Patrick_Bateman_234: -322912069
+      Patrick_Bateman_235: -120891635
+      Patrick_Bateman_236: 621933754
+      Patrick_Bateman_237: 419430136
+      Patrick_Bateman_238: 561129045
+      Patrick_Bateman_239: 1177086907
+      Patrick_Bateman_24: -603538583
+      Patrick_Bateman_240: -68202239
+      Patrick_Bateman_241: -187012700
+      Patrick_Bateman_242: -1365927073
+      Patrick_Bateman_243: -922500801
+      Patrick_Bateman_244: -221351011
+      Patrick_Bateman_245: 169188568
+      Patrick_Bateman_246: 1201360791
+      Patrick_Bateman_247: 1288172697
+      Patrick_Bateman_248: -931348374
+      Patrick_Bateman_249: 1360255129
+      Patrick_Bateman_25: 838772623
+      Patrick_Bateman_250: 2007894749
+      Patrick_Bateman_251: 1435836602
+      Patrick_Bateman_252: -583313141
+      Patrick_Bateman_253: -1741855297
+      Patrick_Bateman_254: -48821192
+      Patrick_Bateman_255: 1940501070
+      Patrick_Bateman_256: -368683950
+      Patrick_Bateman_257: -1919323262
+      Patrick_Bateman_258: -1195615630
+      Patrick_Bateman_259: 2024042122
+      Patrick_Bateman_26: -739519794
+      Patrick_Bateman_260: -964465666
+      Patrick_Bateman_261: -343552554
+      Patrick_Bateman_262: -1070487595
+      Patrick_Bateman_263: -450038386
+      Patrick_Bateman_264: -206958607
+      Patrick_Bateman_265: -928042766
+      Patrick_Bateman_266: 1369127689
+      Patrick_Bateman_267: 512226761
+      Patrick_Bateman_268: -1969121808
+      Patrick_Bateman_269: 1245249480
+      Patrick_Bateman_27: 1357436852
+      Patrick_Bateman_270: -1022729226
+      Patrick_Bateman_271: -929720989
+      Patrick_Bateman_272: -834689934
+      Patrick_Bateman_273: 1286853176
+      Patrick_Bateman_274: -540422470
+      Patrick_Bateman_275: 893818827
+      Patrick_Bateman_276: -524542550
+      Patrick_Bateman_277: -1670617004
+      Patrick_Bateman_278: 1490533499
+      Patrick_Bateman_279: -958167904
+      Patrick_Bateman_28: -1713683338
+      Patrick_Bateman_280: 1221873110
+      Patrick_Bateman_281: 1184416711
+      Patrick_Bateman_282: -461442112
+      Patrick_Bateman_283: -1640525274
+      Patrick_Bateman_284: 1687130590
+      Patrick_Bateman_285: -735285423
+      Patrick_Bateman_286: 974204148
+      Patrick_Bateman_287: 1338574788
+      Patrick_Bateman_288: -346272857
+      Patrick_Bateman_289: 1280044641
+      Patrick_Bateman_29: -1940992176
+      Patrick_Bateman_290: -1324199816
+      Patrick_Bateman_291: -1648444797
+      Patrick_Bateman_292: -779611064
+      Patrick_Bateman_293: -1387418219
+      Patrick_Bateman_294: 768396369
+      Patrick_Bateman_295: -1637609344
+      Patrick_Bateman_296: 1473330059
+      Patrick_Bateman_297: 1417426453
+      Patrick_Bateman_298: 1790679559
+      Patrick_Bateman_299: -315155622
+      Patrick_Bateman_3: -1961154087
+      Patrick_Bateman_30: 101008410
+      Patrick_Bateman_300: 1244962037
+      Patrick_Bateman_301: -1886577600
+      Patrick_Bateman_302: -296033600
+      Patrick_Bateman_303: -243491456
+      Patrick_Bateman_304: 883505114
+      Patrick_Bateman_305: 640252415
+      Patrick_Bateman_306: 258507970
+      Patrick_Bateman_307: -1547358577
+      Patrick_Bateman_308: -132905184
+      Patrick_Bateman_309: 741593726
+      Patrick_Bateman_31: 2121083799
+      Patrick_Bateman_310: -779668576
+      Patrick_Bateman_311: 1025681232
+      Patrick_Bateman_312: -552897799
+      Patrick_Bateman_313: -604591266
+      Patrick_Bateman_314: 1688389484
+      Patrick_Bateman_315: -304621014
+      Patrick_Bateman_316: 433602125
+      Patrick_Bateman_317: 586381971
+      Patrick_Bateman_318: 1930683120
+      Patrick_Bateman_319: 1912951416
+      Patrick_Bateman_32: -1524495271
+      Patrick_Bateman_320: 1779255561
+      Patrick_Bateman_321: -1974258462
+      Patrick_Bateman_322: -843873851
+      Patrick_Bateman_323: 1469069969
+      Patrick_Bateman_324: 70817123
+      Patrick_Bateman_325: 1865263279
+      Patrick_Bateman_326: -2111467790
+      Patrick_Bateman_327: 897004871
+      Patrick_Bateman_328: 799105556
+      Patrick_Bateman_329: 2037450265
+      Patrick_Bateman_33: -2071914697
+      Patrick_Bateman_330: -840998622
+      Patrick_Bateman_331: 1769784693
+      Patrick_Bateman_332: 1067149467
+      Patrick_Bateman_333: 1211521070
+      Patrick_Bateman_334: 355678899
+      Patrick_Bateman_335: -1354676447
+      Patrick_Bateman_336: 511668403
+      Patrick_Bateman_337: 1448285642
+      Patrick_Bateman_338: -310420557
+      Patrick_Bateman_339: 1264164233
+      Patrick_Bateman_34: -1702733756
+      Patrick_Bateman_340: 1031091966
+      Patrick_Bateman_341: -1219497967
+      Patrick_Bateman_342: 107242970
+      Patrick_Bateman_343: -8438385
+      Patrick_Bateman_344: -101302509
+      Patrick_Bateman_345: -844144635
+      Patrick_Bateman_346: -1717738659
+      Patrick_Bateman_347: 213943426
+      Patrick_Bateman_348: 107442425
+      Patrick_Bateman_349: 2088945651
+      Patrick_Bateman_35: 1126801663
+      Patrick_Bateman_350: 1222346424
+      Patrick_Bateman_351: 1012561122
+      Patrick_Bateman_352: 2033355379
+      Patrick_Bateman_353: 593079860
+      Patrick_Bateman_354: -1397526373
+      Patrick_Bateman_355: 1990797250
+      Patrick_Bateman_356: -1392578812
+      Patrick_Bateman_357: -1913905878
+      Patrick_Bateman_358: 1785446497
+      Patrick_Bateman_359: 292491486
+      Patrick_Bateman_36: 242000494
+      Patrick_Bateman_360: -1142908731
+      Patrick_Bateman_361: 1407662797
+      Patrick_Bateman_362: 773407458
+      Patrick_Bateman_363: 1915842441
+      Patrick_Bateman_364: -1437854086
+      Patrick_Bateman_365: -1886343620
+      Patrick_Bateman_366: -932142298
+      Patrick_Bateman_367: 78703561
+      Patrick_Bateman_368: 1701455629
+      Patrick_Bateman_369: -1108794275
+      Patrick_Bateman_37: -1792454448
+      Patrick_Bateman_370: 890619103
+      Patrick_Bateman_371: -543280951
+      Patrick_Bateman_372: -39425017
+      Patrick_Bateman_373: 528332345
+      Patrick_Bateman_374: -127835559
+      Patrick_Bateman_375: -970471642
+      Patrick_Bateman_376: 1497498121
+      Patrick_Bateman_377: 1377623449
+      Patrick_Bateman_378: 1596405844
+      Patrick_Bateman_379: 1845745735
+      Patrick_Bateman_38: 1369023474
+      Patrick_Bateman_380: 1753637937
+      Patrick_Bateman_381: -1464813548
+      Patrick_Bateman_382: -1775984845
+      Patrick_Bateman_383: 1810344983
+      Patrick_Bateman_384: 1193103924
+      Patrick_Bateman_385: 1771000876
+      Patrick_Bateman_386: 521404625
+      Patrick_Bateman_387: -70518276
+      Patrick_Bateman_388: 1086704569
+      Patrick_Bateman_389: 528383086
+      Patrick_Bateman_39: -923509203
+      Patrick_Bateman_390: 1454447222
+      Patrick_Bateman_391: -879929725
+      Patrick_Bateman_392: 1083193634
+      Patrick_Bateman_393: -1179244508
+      Patrick_Bateman_394: -1974327686
+      Patrick_Bateman_395: 642483917
+      Patrick_Bateman_396: 406953706
+      Patrick_Bateman_397: 6787022
+      Patrick_Bateman_398: -188794287
+      Patrick_Bateman_399: -1779482456
+      Patrick_Bateman_4: -1492379747
+      Patrick_Bateman_40: 1849854321
+      Patrick_Bateman_400: 1580491585
+      Patrick_Bateman_401: -334671656
+      Patrick_Bateman_402: -668689228
+      Patrick_Bateman_403: -333655588
+      Patrick_Bateman_404: -1979391683
+      Patrick_Bateman_405: -1960386368
+      Patrick_Bateman_406: -1743752130
+      Patrick_Bateman_407: 2028742822
+      Patrick_Bateman_408: 1911825472
+      Patrick_Bateman_409: 1753801384
+      Patrick_Bateman_41: -1625379356
+      Patrick_Bateman_410: -1769623150
+      Patrick_Bateman_411: 1002697215
+      Patrick_Bateman_412: 877125536
+      Patrick_Bateman_413: -1542036036
+      Patrick_Bateman_414: -1011536817
+      Patrick_Bateman_415: -431092319
+      Patrick_Bateman_416: 1786983828
+      Patrick_Bateman_417: -1574511885
+      Patrick_Bateman_418: -2099451012
+      Patrick_Bateman_419: 476992072
+      Patrick_Bateman_42: -1936204224
+      Patrick_Bateman_420: -414728686
+      Patrick_Bateman_421: -286163525
+      Patrick_Bateman_422: -1339511177
+      Patrick_Bateman_423: -1552679413
+      Patrick_Bateman_424: -1338394482
+      Patrick_Bateman_425: -1710460687
+      Patrick_Bateman_426: 1264567165
+      Patrick_Bateman_427: -1635575452
+      Patrick_Bateman_428: -861137421
+      Patrick_Bateman_429: 463549413
+      Patrick_Bateman_43: -1084568127
+      Patrick_Bateman_430: -637700051
+      Patrick_Bateman_431: -578593472
+      Patrick_Bateman_432: 1771844299
+      Patrick_Bateman_433: 804195468
+      Patrick_Bateman_434: 1823734636
+      Patrick_Bateman_435: -1727023681
+      Patrick_Bateman_436: 1053924774
+      Patrick_Bateman_437: -1618360592
+      Patrick_Bateman_438: -1160393267
+      Patrick_Bateman_439: 1834066592
+      Patrick_Bateman_44: -1461245852
+      Patrick_Bateman_440: -1307919511
+      Patrick_Bateman_441: 99527355
+      Patrick_Bateman_442: 1919906722
+      Patrick_Bateman_443: -1763582180
+      Patrick_Bateman_444: -1470815599
+      Patrick_Bateman_445: -205379997
+      Patrick_Bateman_446: 120620098
+      Patrick_Bateman_447: -1722834560
+      Patrick_Bateman_448: 860112964
+      Patrick_Bateman_449: -1010170834
+      Patrick_Bateman_45: -1512117692
+      Patrick_Bateman_450: -1899830227
+      Patrick_Bateman_451: 1110562519
+      Patrick_Bateman_452: -1038812523
+      Patrick_Bateman_453: -575090345
+      Patrick_Bateman_454: 1505861998
+      Patrick_Bateman_455: 1300446969
+      Patrick_Bateman_456: -1092580414
+      Patrick_Bateman_457: -1798997195
+      Patrick_Bateman_458: 49821692
+      Patrick_Bateman_459: -1175844027
+      Patrick_Bateman_46: 68567275
+      Patrick_Bateman_460: 325749646
+      Patrick_Bateman_461: 1878496140
+      Patrick_Bateman_462: 537695353
+      Patrick_Bateman_463: 229049502
+      Patrick_Bateman_464: 846997087
+      Patrick_Bateman_465: -545216995
+      Patrick_Bateman_466: -563837514
+      Patrick_Bateman_467: -1306660079
+      Patrick_Bateman_468: -321301629
+      Patrick_Bateman_469: 1729447309
+      Patrick_Bateman_47: -184086139
+      Patrick_Bateman_470: 745566048
+      Patrick_Bateman_471: -1682137921
+      Patrick_Bateman_472: 654586539
+      Patrick_Bateman_473: 1064520498
+      Patrick_Bateman_474: -244493100
+      Patrick_Bateman_475: 39098239
+      Patrick_Bateman_476: 209865658
+      Patrick_Bateman_477: -870922717
+      Patrick_Bateman_478: -181554881
+      Patrick_Bateman_479: -316836724
+      Patrick_Bateman_48: 1318977713
+      Patrick_Bateman_480: 87536125
+      Patrick_Bateman_481: -296624653
+      Patrick_Bateman_482: -139806589
+      Patrick_Bateman_483: -1212028681
+      Patrick_Bateman_484: 1537863659
+      Patrick_Bateman_485: -1628596745
+      Patrick_Bateman_486: 560047496
+      Patrick_Bateman_487: 2146414311
+      Patrick_Bateman_488: 1888126023
+      Patrick_Bateman_489: 1028561446
+      Patrick_Bateman_49: -168238761
+      Patrick_Bateman_490: 161301967
+      Patrick_Bateman_491: -1485983316
+      Patrick_Bateman_492: -1302362990
+      Patrick_Bateman_493: 663589012
+      Patrick_Bateman_494: 2067297955
+      Patrick_Bateman_495: 1865684083
+      Patrick_Bateman_496: -1854793318
+      Patrick_Bateman_497: -2073129771
+      Patrick_Bateman_498: 584373109
+      Patrick_Bateman_499: -1875919276
+      Patrick_Bateman_5: -56034025
+      Patrick_Bateman_50: 1637071744
+      Patrick_Bateman_500: -908603841
+      Patrick_Bateman_501: -1011023347
+      Patrick_Bateman_502: 141383625
+      Patrick_Bateman_503: 1763763903
+      Patrick_Bateman_504: 1125165622
+      Patrick_Bateman_505: -1966226189
+      Patrick_Bateman_506: 1342946603
+      Patrick_Bateman_507: 571777322
+      Patrick_Bateman_508: -45408899
+      Patrick_Bateman_509: 1207705327
+      Patrick_Bateman_51: -149103300
+      Patrick_Bateman_510: 486972780
+      Patrick_Bateman_511: 1627710728
+      Patrick_Bateman_512: -945739500
+      Patrick_Bateman_513: 1657752339
+      Patrick_Bateman_514: 1539348714
+      Patrick_Bateman_515: 31886699
+      Patrick_Bateman_516: -1908581428
+      Patrick_Bateman_517: 1820468609
+      Patrick_Bateman_518: -56245907
+      Patrick_Bateman_519: 1301366996
+      Patrick_Bateman_52: 1183668124
+      Patrick_Bateman_520: -571127488
+      Patrick_Bateman_521: 1377305837
+      Patrick_Bateman_522: -932570334
+      Patrick_Bateman_523: -168938570
+      Patrick_Bateman_524: -347152385
+      Patrick_Bateman_525: 98126680
+      Patrick_Bateman_526: 1203584251
+      Patrick_Bateman_527: 1416076985
+      Patrick_Bateman_528: 177395157
+      Patrick_Bateman_529: 1002943130
+      Patrick_Bateman_53: -1622495400
+      Patrick_Bateman_530: -1862964657
+      Patrick_Bateman_531: 1048853070
+      Patrick_Bateman_532: 388963377
+      Patrick_Bateman_533: 1499355362
+      Patrick_Bateman_534: -89857465
+      Patrick_Bateman_535: 737003415
+      Patrick_Bateman_536: 208513418
+      Patrick_Bateman_537: 698455457
+      Patrick_Bateman_538: -702167436
+      Patrick_Bateman_539: 1582203381
+      Patrick_Bateman_54: 1062726857
+      Patrick_Bateman_540: -1485995827
+      Patrick_Bateman_55: 868192961
+      Patrick_Bateman_56: -1450905988
+      Patrick_Bateman_57: 787559505
+      Patrick_Bateman_58: -829860432
+      Patrick_Bateman_59: -1889012848
+      Patrick_Bateman_6: 1718347498
+      Patrick_Bateman_60: 1206914022
+      Patrick_Bateman_61: 793042993
+      Patrick_Bateman_62: 1919652980
+      Patrick_Bateman_63: -1867609013
+      Patrick_Bateman_64: -753808197
+      Patrick_Bateman_65: 1093101226
+      Patrick_Bateman_66: 598047260
+      Patrick_Bateman_67: -248673954
+      Patrick_Bateman_68: -1031117448
+      Patrick_Bateman_69: -1932869050
+      Patrick_Bateman_7: 1161690373
+      Patrick_Bateman_70: -1990834497
+      Patrick_Bateman_71: -956671935
+      Patrick_Bateman_72: -1770366785
+      Patrick_Bateman_73: -1101178874
+      Patrick_Bateman_74: 306409125
+      Patrick_Bateman_75: -1446075555
+      Patrick_Bateman_76: -1759809908
+      Patrick_Bateman_77: 933535605
+      Patrick_Bateman_78: 272196503
+      Patrick_Bateman_79: 1242444024
+      Patrick_Bateman_8: 613523822
+      Patrick_Bateman_80: 1728104997
+      Patrick_Bateman_81: 408663260
+      Patrick_Bateman_82: 454116315
+      Patrick_Bateman_83: 1506461964
+      Patrick_Bateman_84: 102904177
+      Patrick_Bateman_85: -579425242
+      Patrick_Bateman_86: -1881228422
+      Patrick_Bateman_87: -1518823286
+      Patrick_Bateman_88: -1610178464
+      Patrick_Bateman_89: 364664099
+      Patrick_Bateman_9: 1245134870
+      Patrick_Bateman_90: -515961615
+      Patrick_Bateman_91: -1622133661
+      Patrick_Bateman_92: 99225142
+      Patrick_Bateman_93: -343137358
+      Patrick_Bateman_94: -344187773
+      Patrick_Bateman_95: 664068849
+      Patrick_Bateman_96: 1662895465
+      Patrick_Bateman_97: -450877682
+      Patrick_Bateman_98: 57203737
+      Patrick_Bateman_99: -93549812
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -9,6 +9,12 @@ public class PlayerAnimation : MonoBehaviour
     public Animator animator;
     private GameInput _gameInput;
     private Vector2 _moveDirection = Vector2.zero;
+
+    private const string _horizontal = "Horizontal";
+    private const string _vertical = "Vertical";
+    private const string _speed = "Speed";
+    private const string _lastHorizontal = "LastHorizontal";
+    private const string _lastVertical = "LastVertical";
     
     private void Awake()
     {
@@ -31,9 +37,15 @@ public class PlayerAnimation : MonoBehaviour
     
     private void FixedUpdate()
     {
-        animator.SetFloat("Horizontal", _moveDirection.x);
-        animator.SetFloat("Vertical", _moveDirection.y);
-        animator.SetFloat("Speed", _moveDirection.sqrMagnitude);
+        animator.SetFloat(_horizontal, _moveDirection.x);
+        animator.SetFloat(_vertical, _moveDirection.y);
+        animator.SetFloat(_speed, _moveDirection.sqrMagnitude);
+
+        if (_moveDirection != Vector2.zero)
+        {
+            animator.SetFloat(_lastHorizontal, _moveDirection.x);
+            animator.SetFloat(_lastVertical, _moveDirection.y);
+        }
     }
 
     private void OnMovementPerformed(InputAction.CallbackContext value)
