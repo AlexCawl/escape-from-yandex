@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CharacterFieldOfView : MonoBehaviour
 {
     public float viewRadius;
     [Range(0, 360)] public float viewAngle;
+    public float resolution;
+    private Mesh viewMesh;
 
     private Camera _camera;
     private Vector3 _direction;
@@ -18,9 +21,9 @@ public class CharacterFieldOfView : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = transform.position.z;
-        _direction = (mousePos - transform.position).normalized * viewRadius;
+        var mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = transform.position.z;
+        _direction = (mousePosition - transform.position).normalized * viewRadius;
     }
 
 
@@ -28,8 +31,8 @@ public class CharacterFieldOfView : MonoBehaviour
     {
         var sightVector = _direction.normalized;
         var angle = CalculateSightAngle(sightVector);
-        var left = CalculateVectorFromAngle(angle + viewAngle / 2);
-        var right = CalculateVectorFromAngle(angle - viewAngle / 2);
+        var left = CalculateVectorFromAngle(transform.position, angle + viewAngle / 2);
+        var right = CalculateVectorFromAngle(transform.position, angle - viewAngle / 2);
         return new Tuple<Vector3, Vector3, Vector3>(left * viewRadius, sightVector * viewRadius, right * viewRadius);
     }
 
@@ -50,12 +53,12 @@ public class CharacterFieldOfView : MonoBehaviour
         };
     }
 
-    private Vector3 CalculateVectorFromAngle(float angle)
+    private static Vector3 CalculateVectorFromAngle(Vector3 position, float angle)
     {
         return new Vector3(
             Mathf.Cos(angle * Mathf.Deg2Rad),
             Mathf.Sin(angle * Mathf.Deg2Rad),
-            transform.position.z
+            position.z
         ).normalized;
     }
 }

@@ -14,8 +14,10 @@ public class CharacterFieldOfViewEditor : Editor
         Handles.DrawWireArc(fow.transform.position, Vector3.forward, Vector3.up, 360, fow.viewRadius);
         Handles.DrawLine(fow.transform.position, fow.transform.position + vectors.Item2);
         
-        Handles.color = Color.red;
+        Handles.color = Color.blue;
         Handles.DrawLine(fow.transform.position, fow.transform.position + vectors.Item1);
+        
+        Handles.color = Color.green;
         Handles.DrawLine(fow.transform.position, fow.transform.position + vectors.Item3);
     }
 }
