@@ -8,10 +8,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - obstacle
+  - Obstacle
   - Water
   - UI
-  - enemy
+  - Enemy
   - 
   - 
   - 
@@ -44,12 +44,12 @@ TagManager:
   - name: Ground
     uniqueID: 3020651321
     locked: 0
-  - name: walls
+  - name: Ground objects
     uniqueID: 3435067207
     locked: 0
-  - name: decor
-    uniqueID: 2951267003
+  - name: Ground Decor
+    uniqueID: 1575394079
     locked: 0
-  - name: table decor
-    uniqueID: 3596330073
+  - name: Player
+    uniqueID: 4105835903
     locked: 0
