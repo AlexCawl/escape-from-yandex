@@ -11,12 +11,13 @@ public class CharacterFieldOfView : MonoBehaviour
     public float meshResolution;
     public int edgeResolveIterations;
     public float edgeDstThreshold;
+    public LayerMask obstacleMask;
 
     private Mesh viewMesh;
     public MeshFilter viewMeshFilter;
 
     private Camera _camera;
-    private Vector3 _direction;
+    private float _angle;
 
     private void Awake()
     {
@@ -30,32 +31,49 @@ public class CharacterFieldOfView : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = transform.position.z;
-        _direction = (mousePosition - transform.position).normalized * viewRadius;
+        var mouse = FowUtils.ReduceDimension(_camera.ScreenToWorldPoint(Input.mousePosition));
+        var character = FowUtils.ReduceDimension(transform.position);
+        _angle = FowUtils.GetAngleBetweenVectors(character, mouse);
     }
 
     private void DrawFieldOfView()
     {
+        var characterPosition = FowUtils.ReduceDimension(transform.position);
         var stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
         var stepAngleSize = viewAngle / stepCount;
-        var startAngle = VectorUtil.CalculateSightAngle(_direction.normalized);
-
+    
         for (var i = 0; i < stepCount; i++)
         {
-            var angle = startAngle + viewAngle / 2 - stepAngleSize * i;
-            var point = VectorUtil.CalculateVectorFromAngle(transform.position, angle) * viewRadius;
-            Debug.DrawLine(transform.position, transform.position + point);
+            var angle = _angle + viewAngle / 2 - stepAngleSize * i;
+            var ray = FowUtils.ConstructRay(characterPosition, angle, viewRadius);
+            Debug.DrawLine(transform.position, FowUtils.IncreaseDimension(ray, transform.position.z));
         }
     }
 
-
-    public Tuple<Vector3, Vector3, Vector3> CalculateSightVectors()
+    private RayCast LightWithRay(Vector2 center, float angle)
     {
-        var sightVector = _direction.normalized;
-        var angle = VectorUtil.CalculateSightAngle(sightVector);
-        var left = VectorUtil.CalculateVectorFromAngle(transform.position, angle + viewAngle / 2);
-        var right = VectorUtil.CalculateVectorFromAngle(transform.position, angle - viewAngle / 2);
-        return new Tuple<Vector3, Vector3, Vector3>(left * viewRadius, sightVector * viewRadius, right * viewRadius);
+        var dir = FowUtils.GetVectorFromAngle(angle);
+        var hit = Physics2D.Raycast(center, dir, viewRadius, obstacleMask.value);
+        return new RayCast(hit.point, hit.distance);
+    }
+
+
+    public Tuple<Vector3, Vector3, Vector3> DebugSightVectors()
+    {
+        var height = transform.position.z;
+        var sight = FowUtils.IncreaseDimension(FowUtils.GetVectorFromAngle(_angle) * viewRadius, height);
+        var left = FowUtils.IncreaseDimension(FowUtils.GetVectorFromAngle(_angle + viewAngle / 2) * viewRadius, height);
+        var right = FowUtils.IncreaseDimension(FowUtils.GetVectorFromAngle(_angle - viewAngle / 2) * viewRadius, height);
+        return new Tuple<Vector3, Vector3, Vector3>(left, sight, right);
+    }
+}
+
+internal struct RayCast {
+    public Vector2 point;
+    public float distance;
+
+    public RayCast(Vector2 _point, float _distance) {
+        point = _point;
+        distance = _distance;
     }
 }
