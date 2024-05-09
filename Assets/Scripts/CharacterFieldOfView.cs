@@ -1,19 +1,15 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CharacterFieldOfView : MonoBehaviour
 {
     public float viewRadius;
     [Range(0, 360)] public float viewAngle;
     public float meshResolution;
-    public int edgeResolveIterations;
-    public float edgeDstThreshold;
     public LayerMask obstacleMask;
 
-    private Mesh viewMesh;
+    private Mesh _viewMesh;
     public MeshFilter viewMeshFilter;
 
     private Camera _camera;
@@ -21,6 +17,11 @@ public class CharacterFieldOfView : MonoBehaviour
 
     private void Awake()
     {
+        _viewMesh = new Mesh
+        {
+            name = "View Mesh"
+        };
+        viewMeshFilter.mesh = _viewMesh;
         _camera = Camera.main;
     }
 
@@ -38,23 +39,61 @@ public class CharacterFieldOfView : MonoBehaviour
 
     private void DrawFieldOfView()
     {
-        var characterPosition = FowUtils.ReduceDimension(transform.position);
-        var stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
-        var stepAngleSize = viewAngle / stepCount;
-    
-        for (var i = 0; i < stepCount; i++)
+        var points = GetFieldOfViewPoints();
+        points.ForEach(vector3 => Debug.DrawLine(transform.position, vector3, Color.magenta));
+        var vertexCount = points.Count + 1;
+        var vertices = new Vector3[vertexCount];
+        var triangles = new int[(vertexCount - 2) * 3];
+
+        vertices[0] = Vector3.zero;
+        for (var i = 0; i < vertexCount - 1; i++)
         {
-            var angle = _angle + viewAngle / 2 - stepAngleSize * i;
-            var ray = FowUtils.ConstructRay(characterPosition, angle, viewRadius);
-            Debug.DrawLine(transform.position, FowUtils.IncreaseDimension(ray, transform.position.z));
+            vertices[i + 1] = transform.InverseTransformPoint(points[i]);
+            if (i < vertexCount - 2)
+            {
+                triangles[i * 3] = 0;
+                triangles[i * 3 + 1] = i + 1;
+                triangles[i * 3 + 2] = i + 2;
+            }
         }
+
+        _viewMesh.Clear();
+        _viewMesh.vertices = vertices;
+        _viewMesh.triangles = triangles;
+        _viewMesh.RecalculateNormals();
     }
 
-    private RayCast LightWithRay(Vector2 center, float angle)
+    private List<Vector3> GetFieldOfViewPoints()
+    {
+        var characterPosition = FowUtils.ReduceDimension(transform.position);
+        var steps = Mathf.RoundToInt(viewAngle * meshResolution);
+        var stepSize = viewAngle / steps;
+
+        var points = new List<Vector3>();
+        for (var i = 0; i <= steps; i++)
+        {
+            var stepAngle = _angle + viewAngle / 2 - stepSize * i;
+            var hitRay = MakeRayCast(characterPosition, stepAngle);
+            var maxRay = FowUtils.ConstructRay(characterPosition, stepAngle, viewRadius);
+            switch (hitRay.Hit)
+            {
+                case true:
+                    points.Add(FowUtils.IncreaseDimension(hitRay.Point, transform.position.z));
+                    break;
+                case false:
+                    points.Add(FowUtils.IncreaseDimension(maxRay, transform.position.z));
+                    break;
+            }
+        }
+
+        return points;
+    }
+
+    private RayCast MakeRayCast(Vector2 center, float angle)
     {
         var dir = FowUtils.GetVectorFromAngle(angle);
         var hit = Physics2D.Raycast(center, dir, viewRadius, obstacleMask.value);
-        return new RayCast(hit.point, hit.distance);
+        return new RayCast(hit.point, hit.collider is not null);
     }
 
 
@@ -68,12 +107,14 @@ public class CharacterFieldOfView : MonoBehaviour
     }
 }
 
-internal struct RayCast {
-    public Vector2 point;
-    public float distance;
+internal struct RayCast
+{
+    public readonly bool Hit;
+    public Vector2 Point;
 
-    public RayCast(Vector2 _point, float _distance) {
-        point = _point;
-        distance = _distance;
+    public RayCast(Vector2 point, bool hit)
+    {
+        Point = point;
+        Hit = hit;
     }
 }
