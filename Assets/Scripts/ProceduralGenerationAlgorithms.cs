@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class ProceduralGenerationAlgorithms
 {
-    public static HashSet<Vector2Int> simpleRandomWalk(Vector2Int startPosition, int walkLength)
+    public static HashSet<Vector2Int> SimpleRandomWalk(Vector2Int startPosition, int walkLength)
     {
         HashSet<Vector2Int> path = new HashSet<Vector2Int>();
 
@@ -12,7 +12,7 @@ public static class ProceduralGenerationAlgorithms
 
         for (int i = 0; i < walkLength; i++)
         {
-            var newPosition = previousPosition + Direction2D.getRandomCardinalDirection();
+            var newPosition = previousPosition + Direction2D.GetRandomCardinalDirection();
             path.Add(newPosition);
             previousPosition = newPosition;
         }
@@ -23,7 +23,7 @@ public static class ProceduralGenerationAlgorithms
 
 public static class Direction2D
 {
-    public static List<Vector2Int> cardinalDirectionsList = new List<Vector2Int>
+    public static readonly List<Vector2Int> CardinalDirectionsList = new List<Vector2Int>
     {
         new Vector2Int(0, 1), //UP
         new Vector2Int(1, 0), //RIGHT
@@ -31,8 +31,8 @@ public static class Direction2D
         new Vector2Int(-1, 0) //LEFT
     };
 
-    public static Vector2Int getRandomCardinalDirection()
+    public static Vector2Int GetRandomCardinalDirection()
     {
-        return cardinalDirectionsList[Random.Range(0, cardinalDirectionsList.Count)];
+        return CardinalDirectionsList[Random.Range(0, CardinalDirectionsList.Count)];
     }
 }
