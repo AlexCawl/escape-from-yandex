@@ -51,32 +51,20 @@ public static class ProceduralGenerationAlgorithms
                 if (Random.value < 0.5f)
                 {
                     if (room.size.y >= minHeight * 2)
-                    {
                         SplitHorizontally(minHeight, roomsQueue, room);
-                    }
                     else if (room.size.x >= minWidth * 2)
-                    {
                         SplitVertically(minWidth, roomsQueue, room);
-                    }
                     else
-                    {
                         roomsList.Add(room);
-                    }
                 }
                 else
                 {
                     if (room.size.x >= minWidth * 2)
-                    {
                         SplitVertically(minWidth, roomsQueue, room);
-                    }
                     else if (room.size.y >= minHeight * 2)
-                    {
                         SplitHorizontally(minHeight, roomsQueue, room);
-                    }
                     else
-                    {
                         roomsList.Add(room);
-                    }
                 }
             }
         }
@@ -108,10 +96,10 @@ public static class Direction2D
 {
     public static readonly List<Vector2Int> CardinalDirectionsList = new List<Vector2Int>
     {
-        new Vector2Int(0, 1), //UP
-        new Vector2Int(1, 0), //RIGHT
-        new Vector2Int(0, -1), //DOWN
-        new Vector2Int(-1, 0) //LEFT
+        new(0, 1), //UP
+        new(1, 0), //RIGHT
+        new(0, -1), //DOWN
+        new(-1, 0) //LEFT
     };
 
     public static Vector2Int GetRandomCardinalDirection()
