@@ -8,7 +8,7 @@ namespace Editor
     {
         private AbstractMapGenerator _generator;
 
-        private void Awake()
+        private void OnEnable()
         {
             _generator = (AbstractMapGenerator)target;
         }

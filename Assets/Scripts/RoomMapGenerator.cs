@@ -1,14 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
+using Data;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class RoomMapGenerator : SimpleRandomWalkMapGenerator
+public class RoomMapGenerator : AbstractMapGenerator
 {
     [SerializeField] private int minRoomWidth = 4, minRoomHeight = 4;
     [SerializeField] private int mapWidth = 20, mapHeight = 20;
-    [SerializeField][Range(0, 10)] private int offset = 1;
-    [SerializeField] private bool randomWalkRooms = false;
+    [SerializeField] [Range(0, 10)] private int offset = 1;
+    [SerializeField] private SimpleRandomWalkData randomWalkParameters;
 
     protected override void RunProceduralGeneration()
     {
@@ -19,10 +18,8 @@ public class RoomMapGenerator : SimpleRandomWalkMapGenerator
     {
         var roomsList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPosition,
             new Vector3Int(mapWidth, mapHeight, 0)), minRoomWidth, minRoomHeight);
-        
-        HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
-        
-        floor = CreateSimpleRooms(roomsList);
+
+        HashSet<Vector2Int> floor = CreateSimpleRooms(roomsList);
 
         List<Vector2Int> roomCenters = new List<Vector2Int>();
         foreach (var room in roomsList)
@@ -32,7 +29,7 @@ public class RoomMapGenerator : SimpleRandomWalkMapGenerator
 
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
         floor.UnionWith(corridors);
-        
+
         tilemapVisualizer.PaintFloorTiles(floor);
         WallGenerator.CreateWalls(floor, tilemapVisualizer);
     }
@@ -62,7 +59,7 @@ public class RoomMapGenerator : SimpleRandomWalkMapGenerator
         corridor.Add(position);
         while (position.y != destination.y)
         {
-            if (destination.y > position.y) 
+            if (destination.y > position.y)
                 position += Vector2Int.up;
             else if (destination.y < position.y)
                 position += Vector2Int.down;
@@ -84,13 +81,13 @@ public class RoomMapGenerator : SimpleRandomWalkMapGenerator
     private Vector2Int FindClosestPointTo(Vector2Int currentRoomCenter, List<Vector2Int> roomCenters)
     {
         Vector2Int closest = Vector2Int.zero;
-        float distance = float.MaxValue;
+        float minDistance = float.MaxValue;
         foreach (var position in roomCenters)
         {
             float currentDistance = Vector2.Distance(position, currentRoomCenter);
-            if (currentDistance < distance)
+            if (currentDistance < minDistance)
             {
-                distance = currentDistance;
+                minDistance = currentDistance;
                 closest = position;
             }
         }

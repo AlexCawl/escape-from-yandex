@@ -1,14 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public static class ProceduralGenerationAlgorithms
 {
     public static HashSet<Vector2Int> SimpleRandomWalk(Vector2Int startPosition, int walkLength)
     {
-        HashSet<Vector2Int> path = new HashSet<Vector2Int>();
-
-        path.Add(startPosition);
+        HashSet<Vector2Int> path = new HashSet<Vector2Int> { startPosition };
         var previousPosition = startPosition;
 
         for (int i = 0; i < walkLength; i++)
@@ -48,23 +45,18 @@ public static class ProceduralGenerationAlgorithms
             var room = roomsQueue.Dequeue();
             if (room.size.y >= minHeight && room.size.x >= minWidth)
             {
-                if (Random.value < 0.5f)
+                bool splitHorizontally = Random.value < 0.5f;
+                if (splitHorizontally && room.size.y >= minHeight * 2)
                 {
-                    if (room.size.y >= minHeight * 2)
-                        SplitHorizontally(minHeight, roomsQueue, room);
-                    else if (room.size.x >= minWidth * 2)
-                        SplitVertically(minWidth, roomsQueue, room);
-                    else
-                        roomsList.Add(room);
+                    SplitHorizontally(minHeight, roomsQueue, room);
+                }
+                else if (!splitHorizontally && room.size.x >= minWidth * 2)
+                {
+                    SplitVertically(minWidth, roomsQueue, room);
                 }
                 else
                 {
-                    if (room.size.x >= minWidth * 2)
-                        SplitVertically(minWidth, roomsQueue, room);
-                    else if (room.size.y >= minHeight * 2)
-                        SplitHorizontally(minHeight, roomsQueue, room);
-                    else
-                        roomsList.Add(room);
+                    roomsList.Add(room);
                 }
             }
         }
@@ -96,10 +88,10 @@ public static class Direction2D
 {
     public static readonly List<Vector2Int> CardinalDirectionsList = new List<Vector2Int>
     {
-        new(0, 1), //UP
-        new(1, 0), //RIGHT
-        new(0, -1), //DOWN
-        new(-1, 0) //LEFT
+        new Vector2Int(0, 1), // UP
+        new Vector2Int(1, 0), // RIGHT
+        new Vector2Int(0, -1), // DOWN
+        new Vector2Int(-1, 0) // LEFT
     };
 
     public static Vector2Int GetRandomCardinalDirection()
