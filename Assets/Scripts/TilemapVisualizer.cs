@@ -1,13 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TilemapVisualizer : MonoBehaviour
 {
     [SerializeField] private Tilemap floorTilemap, wallTileMap;
-    [SerializeField] private TileBase floorTile, wallTopTile, wallSideRight, wallSideLeft, wallBottom, 
+    [SerializeField] private TileBase floorTile, wallTopTile, wallTopSecondTile , wallSideRight, wallSideLeft, wallBottom, 
         wallFull, wallInnerCornerDownLeft, wallInnerCornerDownRight, wallDiagonalCornerDownRight,
         wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
 
@@ -56,7 +55,7 @@ public class TilemapVisualizer : MonoBehaviour
         tilemap.SetTile(tilePosition, tile);
     }
 
-    public void paintSingleCornerWall(Vector2Int position, string binaryType)
+    public void PaintSingleCornerWall(Vector2Int position, string binaryType)
     {
         int typeAsInt = Convert.ToInt32(binaryType, 2);
         TileBase tile = null;
@@ -81,4 +80,40 @@ public class TilemapVisualizer : MonoBehaviour
         if (tile != null)
             PaintSingleTile(wallTileMap, tile, position);
     }
+
+    public void PaintTopWallSecondLevel(Vector2Int position)
+    {
+        TileBase tile = wallTopSecondTile;
+        PaintSingleTile(wallTileMap, tile, position);
+    }
+    
+    public void PaintSingleSideWallsSecondLevel(Vector2Int position, string binaryType)
+    {
+        int typeAsInt = Convert.ToInt32(binaryType, 2);
+        TileBase tile = null;
+
+        if (WallTypesHelper.LeftWallsSecondLevel.Contains(typeAsInt))
+            tile = wallSideLeft;
+        else if (WallTypesHelper.RightWallsSecondLevel.Contains(typeAsInt))
+            tile = wallSideRight;
+        
+        if (tile != null)
+            PaintSingleTile(wallTileMap, tile, position);
+    }
+    
+    public void PaintSingleSideCornerWallsSecondLevel(Vector2Int position, string binaryType)
+    {
+        int typeAsInt = Convert.ToInt32(binaryType, 2);
+        TileBase tile = null;
+
+        if (WallTypesHelper.LeftWallsSecondLevel.Contains(typeAsInt))
+            tile = wallDiagonalCornerUpLeft;
+        else if (WallTypesHelper.RightWallsSecondLevel.Contains(typeAsInt))
+            tile = wallDiagonalCornerUpRight;
+        
+        if (tile != null)
+            PaintSingleTile(wallTileMap, tile, position);
+    }
+    
+    
 }
