@@ -65,7 +65,7 @@ internal class DarknessEffectMesh : IMeshProducer
                 }
                 else
                 {
-                    points[0] = FowUtils.ConstructRay(position, data.Angle, _minimumRadius);
+                    points[0] = Utils.CalculateTouchPoint(position, data.Angle, _minimumRadius, _obstacleMask);
                 }
 
                 points[1] = FowUtils.ConstructRay(position, data.Angle, _darknessRadius);
