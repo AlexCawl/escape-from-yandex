@@ -5,7 +5,7 @@ public class CharacterFieldOfView : MonoBehaviour
 {
     [Range(0.5f, 1.5f)] public float passiveViewRadius;
     [Range(1, 8)] public float activeViewRadius;
-    [Range(10, 15)] public float darknessRadius;
+    [Range(10, 30)] public float darknessRadius;
     [Range(0, 360)] public float viewAngle;
     public float meshResolution;
     public LayerMask obstacleMask;
