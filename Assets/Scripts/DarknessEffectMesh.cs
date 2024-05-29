@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -40,16 +41,16 @@ internal class DarknessEffectMesh : IMeshProducer
         var steps = Mathf.RoundToInt(Circle * _density);
         var stepSize = Circle / steps;
         return FloatRange(0f, 360f, stepSize)
-            .Select(stepAngle => IsAngleInFov(directionOfViewAngle, viewAngle, stepAngle)
-                ? new AngleData(stepAngle, true)
-                : new AngleData(stepAngle, false))
+            .Select(stepAngle => new AngleData(stepAngle, IsAngleInFov(directionOfViewAngle, viewAngle, stepAngle)))
             .ToList();
     }
 
     private static bool IsAngleInFov(float directionOfViewAngle, float viewAngle, float angle)
     {
-        return 360 + directionOfViewAngle - viewAngle / 2 < 360 + angle &&
-               360 + angle < 360 + directionOfViewAngle + viewAngle / 2;
+        return Math.Min(
+            360 - Math.Abs(directionOfViewAngle - angle),
+            Math.Abs(directionOfViewAngle - angle)
+        ) <= viewAngle / 2;
     }
 
     private List<Vector2> CalculateMeshPoints(float directionOfViewAngle, float viewAngle, Vector2 position)
@@ -78,9 +79,18 @@ internal class DarknessEffectMesh : IMeshProducer
         for (var i = 0; i < vertexCount; i++)
         {
             vertices[i] = _transformer(points[i]);
-            triangles[i * 3] = i % vertexCount;
-            triangles[i * 3 + 1] = (i + 1) % vertexCount;
-            triangles[i * 3 + 2] = (i + 2) % vertexCount;
+            if (i % 2 == 0)
+            {
+                triangles[i * 3] = i % vertexCount;
+                triangles[i * 3 + 1] = (i + 2) % vertexCount;
+                triangles[i * 3 + 2] = (i + 1) % vertexCount;
+            }
+            else
+            {
+                triangles[i * 3] = i % vertexCount;
+                triangles[i * 3 + 1] = (i + 1) % vertexCount;
+                triangles[i * 3 + 2] = (i + 2) % vertexCount;
+            }
         }
     }
 
