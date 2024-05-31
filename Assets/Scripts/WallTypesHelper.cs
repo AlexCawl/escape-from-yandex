@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public static class WallTypesHelper
 {
-    public static HashSet<int> WallTop = new HashSet<int>
+    public static readonly HashSet<int> WallTop = new HashSet<int>
     {
         0b1111,
         0b0110,
@@ -18,22 +16,22 @@ public static class WallTypesHelper
         0b0000
     };
 
-    public static HashSet<int> WallSideLeft = new HashSet<int>
+    public static readonly HashSet<int> WallSideLeft = new HashSet<int>
     {
         0b0100
     };
 
-    public static HashSet<int> WallSideRight = new HashSet<int>
+    public static readonly HashSet<int> WallSideRight = new HashSet<int>
     {
         0b0001
     };
 
-    public static HashSet<int> WallBottom = new HashSet<int>
+    public static readonly HashSet<int> WallBottom = new HashSet<int>
     {
         0b1000
     };
 
-    public static HashSet<int> WallInnerCornerDownLeft = new HashSet<int>
+    public static readonly HashSet<int> WallInnerCornerDownLeft = new HashSet<int>
     {
         0b11110001,
         0b11100000,
@@ -55,7 +53,7 @@ public static class WallTypesHelper
         0b10010001
     };
 
-    public static HashSet<int> WallInnerCornerDownRight = new HashSet<int>
+    public static readonly HashSet<int> WallInnerCornerDownRight = new HashSet<int>
     {
         0b11000111,
         0b11000011,
@@ -78,29 +76,29 @@ public static class WallTypesHelper
 
     };
 
-    public static HashSet<int> WallDiagonalCornerDownLeft = new HashSet<int>
+    public static readonly HashSet<int> WallDiagonalCornerDownLeft = new HashSet<int>
     {
         0b01000000
     };
 
-    public static HashSet<int> WallDiagonalCornerDownRight = new HashSet<int>
+    public static readonly HashSet<int> WallDiagonalCornerDownRight = new HashSet<int>
     {
         0b00000001
     };
 
-    public static HashSet<int> WallDiagonalCornerUpLeft = new HashSet<int>
+    public static readonly HashSet<int> WallDiagonalCornerUpLeft = new HashSet<int>
     {
         0b00010000,
         0b01010000,
     };
 
-    public static HashSet<int> WallDiagonalCornerUpRight = new HashSet<int>
+    public static readonly HashSet<int> WallDiagonalCornerUpRight = new HashSet<int>
     {
         0b00000100,
         0b00000101
     };
 
-    public static HashSet<int> WallFull = new HashSet<int>
+    public static readonly HashSet<int> WallFull = new HashSet<int>
     {
         0b1101,
         0b0101,
@@ -109,7 +107,7 @@ public static class WallTypesHelper
 
     };
 
-    public static HashSet<int> WallFullEightDirections = new HashSet<int>
+    public static readonly HashSet<int> WallFullEightDirections = new HashSet<int>
     {
         0b00010100,
         0b11100100,
@@ -148,9 +146,19 @@ public static class WallTypesHelper
 
     };
 
-    public static HashSet<int> WallBottomEightDirections = new HashSet<int>
+    public static readonly HashSet<int> WallBottomEightDirections = new HashSet<int>
     {
         0b01000001
+    };
+
+    public static readonly HashSet<int> RightWallsSecondLevel = new HashSet<int>
+    {
+        0b01
+    };
+    
+    public static readonly HashSet<int> LeftWallsSecondLevel = new HashSet<int>
+    {
+        0b10
     };
 
 }
