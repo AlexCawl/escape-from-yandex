@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class RoomMapGenerator : AbstractMapGenerator
 {
-    [SerializeField] private int minRoomWidth = 4, minRoomHeight = 4;
+    [SerializeField] private int minRoomSize = 4;
+    [SerializeField] private int maxRoomSize = 4;
     [SerializeField] private int mapWidth = 20, mapHeight = 20;
     [SerializeField] [Range(0, 10)] private int offset = 1;
+    [SerializeField] [Range(0, 20)] private int roomOffset = 2;
 
     protected override void RunProceduralGeneration()
     {
@@ -15,8 +18,13 @@ public class RoomMapGenerator : AbstractMapGenerator
 
     private void CreateRooms()
     {
-        var roomsList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPosition,
-            new Vector3Int(mapWidth, mapHeight, 0)), minRoomWidth, minRoomHeight);
+        // var roomsList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPosition,
+        //     new Vector3Int(mapWidth, mapHeight, 0)), minRoomWidth, minRoomHeight);
+        
+        var roomsList = ProceduralGenerationAlgorithms.CreateVariableSizeRooms
+        (new BoundsInt((Vector3Int)startPosition, 
+            new Vector3Int(mapWidth, mapHeight, 0)), 
+            minRoomSize, maxRoomSize, roomOffset);
 
         HashSet<Vector2Int> floor = CreateSimpleRooms(roomsList);
 
@@ -55,27 +63,22 @@ public class RoomMapGenerator : AbstractMapGenerator
         return corridors;
     }
 
-    private HashSet<Vector2Int> CreateCorridor(Vector2Int currentRoomCenter, Vector2Int destination)
+    private HashSet<Vector2Int> CreateCorridor(Vector2Int start, Vector2Int end)
     {
         HashSet<Vector2Int> corridor = new HashSet<Vector2Int>();
-        var position = currentRoomCenter;
-        corridor.Add(position);
-        while (position.y != destination.y)
-        {
-            if (destination.y > position.y)
-                position += Vector2Int.up;
-            else if (destination.y < position.y)
-                position += Vector2Int.down;
-            corridor.Add(position);
-        }
+        Vector2Int currentPosition = start;
 
-        while (position.x != destination.x)
+        while (currentPosition != end)
         {
-            if (destination.x > position.x)
-                position += Vector2Int.right;
-            else if (destination.x < position.x)
-                position += Vector2Int.left;
-            corridor.Add(position);
+            if (currentPosition.x != end.x)
+            {
+                currentPosition.x += (end.x > currentPosition.x) ? 1 : -1;
+            }
+            else if (currentPosition.y != end.y)
+            {
+                currentPosition.y += (end.y > currentPosition.y) ? 1 : -1;
+            }
+            corridor.Add(currentPosition);
         }
 
         return corridor;
