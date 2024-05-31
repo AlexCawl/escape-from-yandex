@@ -34,7 +34,7 @@ public class CorridorFirstMapGenerator : AbstractMapGenerator
         }
 
         tilemapVisualizer.PaintFloorTiles(floorPositions);
-        WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
+        //WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
     }
 
     private void CreateRoomsAtDeadEnd(List<Vector2Int> deadEnds, HashSet<Vector2Int> roomFloors)

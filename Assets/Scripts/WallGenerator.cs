@@ -5,18 +5,21 @@ using UnityEngine.UIElements;
 
 public static class WallGenerator
 {
-    public static void CreateWalls(HashSet<Vector2Int> floorPositions, TilemapVisualizer tilemapVisualizer)
+    public static void CreateWalls(HashSet<Vector2Int> floorPositions, HashSet<Vector2Int> specialWallPositions,
+        TilemapVisualizer tilemapVisualizer)
     {
         var basicWallPositions = 
             FindWallsInDirections(floorPositions, Direction2D.CardinalDirectionsList);
         var cornerWallPositions = 
             FindWallsInDirections(floorPositions, Direction2D.DiagonalDirectionsList);
         CreateBasicWalls(tilemapVisualizer, basicWallPositions, floorPositions);
+        CreateSpecialWalls(tilemapVisualizer, specialWallPositions);
         CreateCornerWalls(tilemapVisualizer, cornerWallPositions, floorPositions);
+        
     }
 
-    private static void CreateCornerWalls(TilemapVisualizer tilemapVisualizer, HashSet<Vector2Int> cornerWallPositions,
-        HashSet<Vector2Int> floorPositions)
+    private static void CreateCornerWalls(TilemapVisualizer tilemapVisualizer, 
+        HashSet<Vector2Int> cornerWallPositions, HashSet<Vector2Int> floorPositions)
     {
         foreach (var position in cornerWallPositions)
         {
@@ -30,7 +33,7 @@ public static class WallGenerator
                     neighboursBinaryType += "0";
             }
 
-            tilemapVisualizer.paintSingleCornerWall(position, neighboursBinaryType);
+            tilemapVisualizer.PaintSingleCornerWall(position, neighboursBinaryType);
         }
         
     }
@@ -53,6 +56,14 @@ public static class WallGenerator
         }
     }
 
+    private static void CreateSpecialWalls(TilemapVisualizer tilemapVisualizer ,HashSet<Vector2Int> specialWallPositions)
+    {
+        foreach (var position in specialWallPositions)
+        {
+            tilemapVisualizer.PaintSpecialWalls(position);
+        }
+    }
+
     private static HashSet<Vector2Int> FindWallsInDirections
         (HashSet<Vector2Int> floorPositions, List<Vector2Int> directionList)
     {
@@ -63,11 +74,7 @@ public static class WallGenerator
             {
                 var neighbourPosition = position + direction;
                 if (!floorPositions.Contains(neighbourPosition))
-                {
                     wallPositions.Add(neighbourPosition);
-                    if (direction == Direction2D.CardinalDirectionsList[0])
-                        wallPositions.Add(neighbourPosition + direction);
-                }
             }
         }
 

@@ -29,8 +29,12 @@ public class RoomMapGenerator : AbstractMapGenerator
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
         floor.UnionWith(corridors);
 
+        var expandedFloor = ExpandFloor(floor);
+        var specialWallPositions = new HashSet<Vector2Int>(expandedFloor);
+        specialWallPositions.ExceptWith(floor);
+
         tilemapVisualizer.PaintFloorTiles(floor);
-        WallGenerator.CreateWalls(floor, tilemapVisualizer);
+        WallGenerator.CreateWalls(expandedFloor, specialWallPositions, tilemapVisualizer);
     }
 
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
@@ -110,5 +114,19 @@ public class RoomMapGenerator : AbstractMapGenerator
         }
 
         return floor;
+    }
+    
+    private HashSet<Vector2Int> ExpandFloor(HashSet<Vector2Int> floorPositions)
+    {
+        HashSet<Vector2Int> wallPositions = new HashSet<Vector2Int>(floorPositions);
+        foreach (var position in floorPositions)
+        {
+            var upPosition = Direction2D.CardinalDirectionsList[0];
+            var neighbourPosition = position + upPosition;
+            if (!floorPositions.Contains(neighbourPosition))
+                wallPositions.Add(neighbourPosition);
+        }
+
+        return wallPositions;
     }
 }
