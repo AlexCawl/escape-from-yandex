@@ -34,8 +34,9 @@ public static class ProceduralGenerationAlgorithms
 
         return corridor;
     }
-    
-    public static List<BoundsInt> CreateVariableSizeRooms(BoundsInt spaceToSplit, int minRoomSize, int maxRoomSize, int roomSpacing)
+
+    public static List<BoundsInt> CreateVariableSizeRooms(BoundsInt spaceToSplit, int minRoomSize, int maxRoomSize,
+        int roomSpacing)
     {
         List<BoundsInt> roomsList = new List<BoundsInt>();
 
@@ -55,6 +56,7 @@ public static class ProceduralGenerationAlgorithms
 
                 y += roomHeight + roomSpacing; // Добавляем зазор между комнатами по вертикали
             }
+
             int maxRoomWidthInRow = roomsList
                 .Where(room => room.min.x == x)
                 .Max(room => room.size.x);
@@ -63,8 +65,8 @@ public static class ProceduralGenerationAlgorithms
 
         return roomsList;
     }
-    
-    
+
+
     public static List<BoundsInt> BinarySpacePartitioning(BoundsInt spaceToSplit, int minWidth, int minHeight)
     {
         Queue<BoundsInt> roomsQueue = new Queue<BoundsInt>();
@@ -76,9 +78,7 @@ public static class ProceduralGenerationAlgorithms
             var room = roomsQueue.Dequeue();
             if (room.size.y >= minHeight && room.size.x >= minWidth)
             {
-                bool splitHorizontally = ShouldSplitHorizontally(room, minWidth, minHeight);
-
-                if (splitHorizontally)
+                if (Random.value < 0.5f)
                 {
                     if (room.size.y >= minHeight * 2)
                         SplitHorizontally(minHeight, roomsQueue, room);
@@ -97,23 +97,9 @@ public static class ProceduralGenerationAlgorithms
                         roomsList.Add(room);
                 }
             }
-            else
-            {
-                roomsList.Add(room);
-            }
         }
 
         return roomsList;
-    }
-
-    private static bool ShouldSplitHorizontally(BoundsInt room, int minWidth, int minHeight)
-    {
-        if (room.size.x >= minWidth * 2 && room.size.y >= minHeight * 2)
-        {
-            return room.size.x > room.size.y;
-        }
-
-        return room.size.y >= minHeight * 2;
     }
 
     private static void SplitVertically(int minWidth, Queue<BoundsInt> roomsQueue, BoundsInt room)
@@ -134,42 +120,5 @@ public static class ProceduralGenerationAlgorithms
             new Vector3Int(room.size.x, room.size.y - ySplit, room.size.z));
         roomsQueue.Enqueue(room1);
         roomsQueue.Enqueue(room2);
-    }
-}
-
-
-public static class Direction2D
-{
-    public static readonly List<Vector2Int> CardinalDirectionsList = new List<Vector2Int>
-    {
-        new Vector2Int(0, 1), // UP
-        new Vector2Int(1, 0), // RIGHT
-        new Vector2Int(0, -1), // DOWN
-        new Vector2Int(-1, 0) // LEFT
-    };
-
-    public static readonly List<Vector2Int> DiagonalDirectionsList = new List<Vector2Int>
-    {
-        new Vector2Int(1, 1), // UP-RIGHT
-        new Vector2Int(1, -1), // RIGHT-DOWN
-        new Vector2Int(-1, -1), // DOWN-LEFT
-        new Vector2Int(-1, 1) // LEFT-UP
-    };
-
-    public static List<Vector2Int> EightDirectionsList = new List<Vector2Int>
-    {
-        new Vector2Int(0, 1), // UP
-        new Vector2Int(1, 1), // UP-RIGHT
-        new Vector2Int(1, 0), // RIGHT
-        new Vector2Int(1, -1), // RIGHT-DOWN
-        new Vector2Int(0, -1), // DOWN
-        new Vector2Int(-1, -1), // DOWN-LEFT
-        new Vector2Int(-1, 0), // LEFT
-        new Vector2Int(-1, 1) // LEFT-UP
-    };
-
-    public static Vector2Int GetRandomCardinalDirection()
-    {
-        return CardinalDirectionsList[Random.Range(0, CardinalDirectionsList.Count)];
     }
 }
