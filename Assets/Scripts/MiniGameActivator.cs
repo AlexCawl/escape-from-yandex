@@ -13,6 +13,12 @@ public class MiniGameActivator : MonoBehaviour
         _isOverlayed = false;
     }
 
+    private void Start()
+    {
+        SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
+
+    }
+
     private void Update()
     {
         var pressed = Input.GetKeyDown("g");

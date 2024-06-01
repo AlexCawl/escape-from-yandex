@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NumbersChallenge.unity
     guid: a61c6ca1830eca136a6ecababcd2c463
+  - enabled: 1
+    path: Assets/Scenes/Ui.unity
+    guid: ba954913d33e976f8877db3396f8d419
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d03ffbb35d40b5df59aeb109feb3506d, type: 2}
