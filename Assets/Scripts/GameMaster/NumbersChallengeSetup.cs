@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace MiniGame
+namespace GameMaster
 {
     public class NumbersChallengeManager : MonoBehaviour
     {
@@ -60,6 +60,7 @@ namespace MiniGame
                     button.interactable = false;
                 });
             }
+
             yield return new WaitForSeconds(2);
             Restart();
         }
