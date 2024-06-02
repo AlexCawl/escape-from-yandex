@@ -13,6 +13,7 @@ namespace GameMaster
         {
             StartCoroutine(OpenPauseMenu());
             StartCoroutine(ClosePauseMenu());
+            SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
         }
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
