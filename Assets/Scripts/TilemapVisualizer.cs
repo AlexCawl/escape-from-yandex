@@ -7,9 +7,21 @@ using UnityEngine.Tilemaps;
 public class TilemapVisualizer : MonoBehaviour
 {
     [SerializeField] private Tilemap floorTilemap, wallTileMap, topWallTilemap;
-    [SerializeField] private TileBase floorTile, wallTopOriginal , wallTopTileFirst, wallTopTileSecond , wallSideRight, wallSideLeft, wallBottom, 
-        wallFull, wallInnerCornerDownLeft, wallInnerCornerDownRight, wallDiagonalCornerDownRight,
-        wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft;
+
+    [SerializeField] private TileBase floorTile,
+        wallTopOriginal,
+        wallTopTileFirst,
+        wallTopTileSecond,
+        wallSideRight,
+        wallSideLeft,
+        wallBottom,
+        wallFull,
+        wallInnerCornerDownLeft,
+        wallInnerCornerDownRight,
+        wallDiagonalCornerDownRight,
+        wallDiagonalCornerDownLeft,
+        wallDiagonalCornerUpRight,
+        wallDiagonalCornerUpLeft;
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
     {
@@ -30,6 +42,7 @@ public class TilemapVisualizer : MonoBehaviour
             PaintSingleTile(topWallTilemap, tile, position);
             return;
         }
+
         if (WallTypesHelper.WallSideRight.Contains(typeAsInt))
             tile = wallSideRight;
         else if (WallTypesHelper.WallSideLeft.Contains(typeAsInt))
@@ -84,7 +97,7 @@ public class TilemapVisualizer : MonoBehaviour
             tile = wallFull;
         else if (WallTypesHelper.WallBottomEightDirections.Contains(typeAsInt))
             tile = wallBottom;
-        
+
         if (tile != null)
             PaintSingleTile(wallTileMap, tile, position);
     }
@@ -94,4 +107,11 @@ public class TilemapVisualizer : MonoBehaviour
         TileBase tile = wallTopTileFirst;
         PaintSingleTile(topWallTilemap, tile, position);
     }
+
+    public void AddWallColliders()
+    {
+        wallTileMap.gameObject.AddComponent<TilemapCollider2D>();
+    }
+
+
 }

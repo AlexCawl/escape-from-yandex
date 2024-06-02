@@ -15,6 +15,7 @@ public class RoomMapGenerator : AbstractMapGenerator
         CreateRooms();
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private void CreateRooms()
     {
         var roomsList = ProceduralGenerationAlgorithms.CreateVariableSizeRooms(
@@ -38,6 +39,7 @@ public class RoomMapGenerator : AbstractMapGenerator
 
         tilemapVisualizer.PaintFloorTiles(floor);
         WallGenerator.CreateWalls(expandedFloor, specialWallPositions, tilemapVisualizer);
+        tilemapVisualizer.AddWallColliders();
     }
 
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
