@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuSetup : MonoBehaviour
 {
@@ -12,8 +13,14 @@ public class PauseMenuSetup : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void UnPause()
+    public void Resume()
     {
         PauseManager.Toggle();
+    }
+
+    public void BackToMainMenu()
+    {
+        Resume();
+        SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
     }
 }
