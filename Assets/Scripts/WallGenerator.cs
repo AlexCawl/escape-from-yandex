@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public static class WallGenerator
 {
+    // ReSharper disable Unity.PerformanceAnalysis
     public static void CreateWalls(HashSet<Vector2Int> floorPositions, HashSet<Vector2Int> specialWallPositions,
         TilemapVisualizer tilemapVisualizer)
     {
@@ -12,9 +13,12 @@ public static class WallGenerator
             FindWallsInDirections(floorPositions, Direction2D.CardinalDirectionsList);
         var cornerWallPositions = 
             FindWallsInDirections(floorPositions, Direction2D.DiagonalDirectionsList);
+        
+       
         CreateBasicWalls(tilemapVisualizer, basicWallPositions, floorPositions);
         CreateSpecialWalls(tilemapVisualizer, specialWallPositions);
         CreateCornerWalls(tilemapVisualizer, cornerWallPositions, floorPositions);
+        
         
     }
 
@@ -80,4 +84,5 @@ public static class WallGenerator
 
         return wallPositions;
     }
+    
 }
