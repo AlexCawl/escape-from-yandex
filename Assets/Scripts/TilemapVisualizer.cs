@@ -70,7 +70,7 @@ public class TilemapVisualizer : MonoBehaviour
         }
     }
 
-    private void PaintSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position)
+    public void PaintSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position)
     {
         var tilePosition = tilemap.WorldToCell((Vector3Int)position);
         tilemap.SetTile(tilePosition, tile);
@@ -112,6 +112,5 @@ public class TilemapVisualizer : MonoBehaviour
     {
         wallTileMap.gameObject.AddComponent<TilemapCollider2D>();
     }
-
-
+    
 }

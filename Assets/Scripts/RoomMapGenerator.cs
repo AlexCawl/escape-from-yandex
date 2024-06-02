@@ -2,10 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class RoomMapGenerator : AbstractMapGenerator
 {
     private DungeonData _dungeonData;
+    [SerializeField] private RoomDataExtractor roomDataExtractor;
+    [SerializeField] private PropPlacementManager propPlacementManager;
     [SerializeField] private int minRoomWidth = 4, minRoomHeight = 4;
     [SerializeField] private int mapWidth = 20, mapHeight = 20;
     [SerializeField] [Range(0, 10)] private int offset = 1;
@@ -20,6 +23,7 @@ public class RoomMapGenerator : AbstractMapGenerator
     private void CreateRooms()
     {
         _dungeonData = new DungeonData();
+        
         var roomsList = ProceduralGenerationAlgorithms.CreateVariableSizeRooms(
             new BoundsInt((Vector3Int)startPosition, new Vector3Int(mapWidth, mapHeight, 0)), 
             minRoomWidth, minRoomHeight, roomSpacing); // Передаем зазор в метод
@@ -43,6 +47,10 @@ public class RoomMapGenerator : AbstractMapGenerator
         tilemapVisualizer.PaintFloorTiles(floor);
         WallGenerator.CreateWalls(expandedFloor, specialWallPositions, tilemapVisualizer);
         tilemapVisualizer.AddWallColliders();
+        
+        roomDataExtractor.ProcessRooms(_dungeonData, tilemapVisualizer);
+        propPlacementManager.ProcessRooms(_dungeonData);
+        
     }
 
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
