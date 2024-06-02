@@ -15,7 +15,7 @@ public class PauseMenuSetup : MonoBehaviour
 
     public void Resume()
     {
-        PauseManager.Toggle();
+        PauseManager.Controller.Toggle();
     }
 
     public void BackToMainMenu()

@@ -18,8 +18,8 @@ public class LevelSetup : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitUntil(PauseManager.ShouldBeOpened);
-            PauseManager.Open();
+            yield return new WaitUntil(PauseManager.Controller.ShouldBeOpened);
+            PauseManager.Controller.Open();
             SceneManager.LoadSceneAsync("Scenes/PauseMenu", LoadSceneMode.Additive);
         }
     }
@@ -29,8 +29,8 @@ public class LevelSetup : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitUntil(PauseManager.ShouldBeClosed);
-            PauseManager.Close();
+            yield return new WaitUntil(PauseManager.Controller.ShouldBeClosed);
+            PauseManager.Controller.Close();
             SceneManager.UnloadSceneAsync("Scenes/PauseMenu");
         }
     }
@@ -39,31 +39,6 @@ public class LevelSetup : MonoBehaviour
     {
         var pressed = Input.GetKeyDown("p");
         if (!pressed) return;
-        PauseManager.Toggle();
+        PauseManager.Controller.Toggle();
     }
-}
-
-public static class PauseManager
-{
-    private static bool _pauseState;
-    private static bool _pauseNextState;
-
-    internal static void Toggle()
-    {
-        _pauseNextState = !_pauseNextState;
-    }
-
-    public static void Open()
-    {
-        _pauseState = true;
-    }
-
-    public static void Close()
-    {
-        _pauseState = false;
-    }
-
-    public static bool ShouldBeOpened() => _pauseState == false && _pauseNextState;
-
-    public static bool ShouldBeClosed() => _pauseState && _pauseNextState == false;
 }
