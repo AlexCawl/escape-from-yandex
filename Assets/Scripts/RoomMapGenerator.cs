@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RoomMapGenerator : AbstractMapGenerator
 {
+    private DungeonData _dungeonData;
     [SerializeField] private int minRoomWidth = 4, minRoomHeight = 4;
     [SerializeField] private int mapWidth = 20, mapHeight = 20;
     [SerializeField] [Range(0, 10)] private int offset = 1;
@@ -31,6 +32,7 @@ public class RoomMapGenerator : AbstractMapGenerator
         }
 
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
+        _dungeonData.Path.UnionWith(corridors);
         floor.UnionWith(corridors);
 
         var expandedFloor = ExpandFloor(floor);
@@ -170,14 +172,17 @@ public class RoomMapGenerator : AbstractMapGenerator
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         foreach (var room in roomsList)
         {
+            HashSet<Vector2Int> roomFloor = new HashSet<Vector2Int>();
             for (int col = offset; col < room.size.x - offset; col++)
             {
                 for (int row = offset; row < room.size.y - offset; row++)
                 {
                     Vector2Int position = (Vector2Int)room.min + new Vector2Int(col, row);
-                    floor.Add(position);
+                    roomFloor.Add(position);
                 }
             }
+            floor.UnionWith(roomFloor);
+            _dungeonData.Rooms.Add(new Room((Vector2Int)Vector3Int.RoundToInt(room.center), roomFloor));
         }
 
         return floor;
