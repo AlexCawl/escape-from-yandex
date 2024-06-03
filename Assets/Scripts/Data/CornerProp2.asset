@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418c845e709341a980b68fd67e0cdde2, type: 3}
+  m_Name: CornerProp2
+  m_EditorClassIdentifier: 
+  PropSprite: {fileID: 1947924241, guid: 1b77ccbdbc5ef584aae567e9b0c8e15b, type: 3}
+  PropSize: {x: 1, y: 3}
+  Corner: 1
+  NearWallUP: 0
+  NearWallDown: 0
+  NearWallRight: 0
+  NearWallLeft: 0
+  Inner: 0
+  PlacementQuantityMin: 0
+  PlacementQuantityMax: 1

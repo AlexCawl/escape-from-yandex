@@ -1,0 +1,270 @@
+fileFormatVersion: 2
+guid: 5ca25c36c5d5a424fabbc07fc27216d8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Chairs_37
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 144
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5a7a9630aacb4c4bbdf525726c8f291
+      internalID: -1859274466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chairs_40
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 144
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c76382db743794f81333189e9e2028
+      internalID: -1081119592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chairs_53
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 144
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 601b728e3a1decb499902d41d279a109
+      internalID: 2005096701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Chairs_0: 1303371888
+      Chairs_1: -2020176128
+      Chairs_10: 1715080345
+      Chairs_11: -1351470094
+      Chairs_12: -841602719
+      Chairs_13: -572474174
+      Chairs_14: 185574961
+      Chairs_15: 2011661625
+      Chairs_16: 338324917
+      Chairs_17: 1174663747
+      Chairs_18: 1230549625
+      Chairs_19: 1764999394
+      Chairs_2: 1263403511
+      Chairs_20: -247989861
+      Chairs_21: 1411341851
+      Chairs_22: -1190912198
+      Chairs_23: -1766969225
+      Chairs_24: 395336804
+      Chairs_25: 435286269
+      Chairs_26: 897512245
+      Chairs_27: -1316371260
+      Chairs_28: -1422728621
+      Chairs_29: -1321627058
+      Chairs_3: -2139314021
+      Chairs_30: 2023351780
+      Chairs_31: 806754111
+      Chairs_32: 1292941285
+      Chairs_33: -891363838
+      Chairs_34: -114648630
+      Chairs_35: 521370160
+      Chairs_36: 282133958
+      Chairs_37: -1859274466
+      Chairs_38: 205235694
+      Chairs_39: 1499683477
+      Chairs_4: -1015141200
+      Chairs_40: -1081119592
+      Chairs_41: 141751470
+      Chairs_42: -1965688514
+      Chairs_43: -1733361414
+      Chairs_44: -1148384751
+      Chairs_45: 780304268
+      Chairs_46: -1253379469
+      Chairs_47: 347079576
+      Chairs_48: -547133155
+      Chairs_49: -1944378069
+      Chairs_5: -613487689
+      Chairs_50: 742095001
+      Chairs_51: -948513627
+      Chairs_52: -518346575
+      Chairs_53: 2005096701
+      Chairs_54: -749459850
+      Chairs_55: 1094327983
+      Chairs_56: -1745601930
+      Chairs_57: -1021431549
+      Chairs_58: -1361435424
+      Chairs_59: 1977172508
+      Chairs_6: -2112101301
+      Chairs_60: -466569193
+      Chairs_61: -1422416360
+      Chairs_62: -289861657
+      Chairs_63: 1816899574
+      Chairs_64: 41075715
+      Chairs_65: 274279827
+      Chairs_66: 1907153930
+      Chairs_67: -2079489663
+      Chairs_68: 586210346
+      Chairs_69: -1934974261
+      Chairs_7: -484048155
+      Chairs_70: 40641977
+      Chairs_71: -2085666803
+      Chairs_72: -370432741
+      Chairs_73: -2117652328
+      Chairs_74: 884208518
+      Chairs_75: -472563485
+      Chairs_76: 1155749227
+      Chairs_77: 1224233757
+      Chairs_78: -297712998
+      Chairs_79: -1397546287
+      Chairs_8: 1149498767
+      Chairs_9: 611323128
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
