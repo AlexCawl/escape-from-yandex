@@ -1,30 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Stores all the data about our dungeon.
-/// Useful when creating a save / load system
-/// </summary>
-public class DungeonData
+
+public class MapData
 {
     public List<Room> Rooms { get; set; } = new List<Room>();
     public HashSet<Vector2Int> Path { get; set; } = new HashSet<Vector2Int>();
 
     public GameObject PlayerReference { get; set; }
     
-    public IEnumerator TutorialCoroutine(Action code)
-    {
-        yield return new WaitForSeconds(1);
-        code();
-    }
 }
 
 
-/// <summary>
-/// Holds all the data about the room
-/// </summary>
 public class Room
 {
     public Vector2 RoomCenterPos { get; set; }

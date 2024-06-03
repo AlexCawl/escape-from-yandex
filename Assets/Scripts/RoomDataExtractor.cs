@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class RoomDataExtractor : MonoBehaviour
 {
-    private DungeonData _dungeonData;
+    private MapData _mapData;
     private TilemapVisualizer _tilemapVisualizer;
 
     [SerializeField] private Tilemap gizmoMap;
@@ -19,27 +15,16 @@ public class RoomDataExtractor : MonoBehaviour
         leftTile,
         cornerTile;
     
-    // CHANGED
-    // [SerializeField]
-    private bool showGizmo = true;
-
-    //CHANGED
-    //public UnityEvent OnFinishedRoomProcessing;
-
-    // CHANGED
-    // private void Awake()
-    // {
-    //     dungeonData = FindObjectOfType<DungeonData>();
-    // }
-    public void ProcessRooms(DungeonData dungeonData, TilemapVisualizer tilemapVisualizer)
+    
+    public void ProcessRooms(MapData mapData, TilemapVisualizer tilemapVisualizer)
     {
-        _dungeonData = dungeonData;
+        _mapData = mapData;
         _tilemapVisualizer = tilemapVisualizer;
         gizmoMap.ClearAllTiles();
-        if (_dungeonData == null)
+        if (_mapData == null)
             return;
 
-        foreach (Room room in _dungeonData.Rooms)
+        foreach (Room room in _mapData.Rooms)
         {
             //find corener, near wall and inner tiles
             foreach (Vector2Int tilePosition in room.FloorTiles)
@@ -82,78 +67,55 @@ public class RoomDataExtractor : MonoBehaviour
         }
         
         PaintGizmo();
-
-        //OnFinishedRoomProcessing?.Invoke();
-        
-        // CHANGED
-        // Invoke("RunEvent", 1);
     }
-
-    //CHANGED
-    // public void RunEvent()
-    // {
-    //     OnFinishedRoomProcessing?.Invoke();
-    // }
-
+    
+    
     private void PaintGizmo()
     {
-        if (_dungeonData == null || showGizmo == false)
+        if (_mapData == null)
             return;
-        foreach (Room room in _dungeonData.Rooms)
+        foreach (Room room in _mapData.Rooms)
         {
-            //Draw inner tiles
-            //Gizmos.color = Color.yellow;
             foreach (Vector2Int floorPosition in room.InnerTiles)
             {
-                if (_dungeonData.Path.Contains(floorPosition))
+                if (_mapData.Path.Contains(floorPosition))
                     continue;
                 _tilemapVisualizer.PaintSingleTile(gizmoMap, innerTile, floorPosition);
-                //Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
             }
-            //Draw near wall tiles UP
-            //Gizmos.color = Color.blue;
+            
             foreach (Vector2Int floorPosition in room.NearWallTilesUp)
             {
-                if (_dungeonData.Path.Contains(floorPosition))
+                if (_mapData.Path.Contains(floorPosition))
                     continue;
                 _tilemapVisualizer.PaintSingleTile(gizmoMap, upTile, floorPosition);
-                //Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
             }
-            //Draw near wall tiles DOWN
-            //Gizmos.color = Color.green;
+            
             foreach (Vector2Int floorPosition in room.NearWallTilesDown)
             {
-                if (_dungeonData.Path.Contains(floorPosition))
+                if (_mapData.Path.Contains(floorPosition))
                     continue;
                 _tilemapVisualizer.PaintSingleTile(gizmoMap, downTile, floorPosition);
-                //Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
             }
-            //Draw near wall tiles RIGHT
-            //Gizmos.color = Color.white;
+            
             foreach (Vector2Int floorPosition in room.NearWallTilesRight)
             {
-                if (_dungeonData.Path.Contains(floorPosition))
+                if (_mapData.Path.Contains(floorPosition))
                     continue;
                 _tilemapVisualizer.PaintSingleTile(gizmoMap, rightTile, floorPosition);
-                //Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
             }
-            //Draw near wall tiles LEFT
-            //Gizmos.color = Color.cyan;
+            
             foreach (Vector2Int floorPosition in room.NearWallTilesLeft)
             {
-                if (_dungeonData.Path.Contains(floorPosition))
+                if (_mapData.Path.Contains(floorPosition))
                     continue;
                 _tilemapVisualizer.PaintSingleTile(gizmoMap, leftTile, floorPosition);
-                //Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
             }
-            //Draw near wall tiles CORNERS
-            //Gizmos.color = Color.magenta;
+            
             foreach (Vector2Int floorPosition in room.CornerTiles)
             {
-                if (_dungeonData.Path.Contains(floorPosition))
+                if (_mapData.Path.Contains(floorPosition))
                     continue;
                 _tilemapVisualizer.PaintSingleTile(gizmoMap, cornerTile, floorPosition);
-                //Gizmos.DrawCube(floorPosition + Vector2.one * 0.5f, Vector2.one);
             }
         }
     }

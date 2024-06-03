@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PropPlacementManager : MonoBehaviour
 {
-    private DungeonData _dungeonData;
+    private MapData _mapData;
 
     [SerializeField] private GameObject propContainer;
 
@@ -16,15 +16,15 @@ public class PropPlacementManager : MonoBehaviour
 
     [SerializeField] private GameObject propPrefab;
     
-    public void ProcessRooms(DungeonData dungeonData)
+    public void ProcessRooms(MapData mapData)
     {
-        _dungeonData = dungeonData;
-        if (_dungeonData == null)
+        _mapData = mapData;
+        if (_mapData == null)
             return;
-        foreach (Room room in _dungeonData.Rooms)
+        foreach (Room room in _mapData.Rooms)
         {
             // добавление направления пути, чтобы на нем не стояло мебели
-            room.PropPositions.UnionWith(_dungeonData.Path);
+            room.PropPositions.UnionWith(_mapData.Path);
             
             // Размещение в углах
             List<Prop> cornerProps = propsToPlace.Where(x => x.Corner).ToList();
@@ -78,7 +78,7 @@ public class PropPlacementManager : MonoBehaviour
     {
         // Удаляем путь из возможных позиций чтобы путь был чистым 
         HashSet<Vector2Int> tempPositons = new HashSet<Vector2Int>(availableTiles);
-        tempPositons.ExceptWith(_dungeonData.Path);
+        tempPositons.ExceptWith(_mapData.Path);
 
         // Перебираем все элементы  
         foreach (Prop propToPlace in wallProps)
@@ -161,7 +161,7 @@ public class PropPlacementManager : MonoBehaviour
     {
         float tempChance = cornerPropPlacementChance;
         HashSet<Vector2Int> tempPositions = new HashSet<Vector2Int>(cornerTiles);
-        tempPositions.ExceptWith(_dungeonData.Path);
+        tempPositions.ExceptWith(_mapData.Path);
         
 
         foreach (Vector2Int cornerTile in tempPositions)
@@ -183,25 +183,28 @@ public class PropPlacementManager : MonoBehaviour
    
     private GameObject PlacePropGameObjectAt(Room room, Vector2Int placementPosition, Prop propToPlace)
     {
-        Debug.Log($"Potential Placement position: {placementPosition}");
+        // НАПОМИНАНИЕ: ПОНАСТАВИЛ ТУТ ЛОГОВ ЧЕРТ НОГУ СЛОМИТ
+        //Debug.Log($"Potential Placement position: {placementPosition}");
         
         // Создаем объект-мебель
         GameObject prop = Instantiate(propPrefab);
         prop.transform.SetParent(propContainer.transform);
 
-        if (prop == null)
-        {
-            Debug.LogError("Failed to instantiate propPrefab.");
-            return null;
-        }
+        // НАПОМИНАНИЕ: СОТРИ ТЫ УЖЕ ЭТИ ЛОГИ ВСЕ У ТЕБЯ НОРМАЛЬНО РАБОТАЕТ ХОРОШ ССАТЬ
+        // if (prop == null)
+        // {
+        //     Debug.LogError("Failed to instantiate propPrefab.");
+        //     return null;
+        // }
 
+        // Настраиваем рендер спрайтов для отрисовки
         SpriteRenderer propSpriteRenderer = prop.GetComponentInChildren<SpriteRenderer>();
 
-        if (propSpriteRenderer == null)
-        {
-            Debug.LogError("SpriteRenderer component not found in propPrefab.");
-            return null;
-        }
+        // if (propSpriteRenderer == null)
+        // {
+        //     Debug.LogError("SpriteRenderer component not found in propPrefab.");
+        //     return null;
+        // }
 
         // Устанавливаем спрайт
         propSpriteRenderer.sprite = propToPlace.PropSprite;
@@ -212,9 +215,13 @@ public class PropPlacementManager : MonoBehaviour
 
         // Устанавливаем позицию объекта в глобальных координатах
         prop.transform.position = (Vector2)placementPosition + new Vector2(0.5f, 1);
-        Debug.Log($"Prop global coordinates after setting position: {prop.transform.position}");
+        
+        // НАПОМИНАНИЕ: СТЕРЕТЬ ЛОГИ
+        //Debug.Log($"Prop global coordinates after setting position: {prop.transform.position}");
         propSpriteRenderer.transform.localPosition = (Vector2)placementPosition + new Vector2(0.5f, 1);
-        Debug.Log($"Prop sprite local coordinates after adjustment: {propSpriteRenderer.transform.localPosition}");
+        
+        // НАПОМИНАНИЕ: СТЕРЕТЬ ЛОГИ
+        //Debug.Log($"Prop sprite local coordinates after adjustment: {propSpriteRenderer.transform.localPosition}");
         
         // Проверка слоев и порядка отрисовки
         propSpriteRenderer.sortingLayerName = "Ground"; // Убедитесь, что слой существует

@@ -29,7 +29,7 @@ public class SimpleDungeonGenerator : MonoBehaviour
         Vector2Int.left
     };
 
-    private DungeonData dungeonData;
+    private MapData _mapData;
 // CHANGED
     // private void Awake()
     // {
@@ -45,16 +45,16 @@ public class SimpleDungeonGenerator : MonoBehaviour
         //CHANGED
         //dungeonData.Reset();
 
-        dungeonData.Rooms.Add(
+        _mapData.Rooms.Add(
             GenerateRectangularRoomAt(Vector2.zero, roomSize));
-        dungeonData.Rooms.Add(
+        _mapData.Rooms.Add(
             GenerateRectangularRoomAt(Vector2Int.zero + Vector2Int.right * 15, roomSize));
-        dungeonData.Rooms.Add(
+        _mapData.Rooms.Add(
             GenerateRectangularRoomAt(Vector2Int.zero + Vector2Int.down * 15, roomSize));
 
-        dungeonData.Path.UnionWith(
+        _mapData.Path.UnionWith(
             CreateStraightCorridor(Vector2Int.zero, Vector2Int.zero + Vector2Int.right * 15));
-        dungeonData.Path.UnionWith(
+        _mapData.Path.UnionWith(
             CreateStraightCorridor(Vector2Int.zero, Vector2Int.zero + Vector2Int.down * 15));
 
         GenerateDungeonCollider();
@@ -66,11 +66,11 @@ public class SimpleDungeonGenerator : MonoBehaviour
     {
         //create a hahset that contains all the tiles that represent the dungeon
         HashSet<Vector2Int> dungeonTiles = new HashSet<Vector2Int>();
-        foreach (Room room in dungeonData.Rooms)
+        foreach (Room room in _mapData.Rooms)
         {
             dungeonTiles.UnionWith(room.FloorTiles);
         }
-        dungeonTiles.UnionWith(dungeonData.Path);
+        dungeonTiles.UnionWith(_mapData.Path);
 
         //Find the outline of the dungeon that will be our walls / collider aound the dungeon
         HashSet<Vector2Int> colliderTiles = new HashSet<Vector2Int>();

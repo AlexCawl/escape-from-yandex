@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 public class RoomMapGenerator : AbstractMapGenerator
 {
-    private DungeonData _dungeonData;
+    private MapData _mapData;
     [SerializeField] private RoomDataExtractor roomDataExtractor;
     [SerializeField] private PropPlacementManager propPlacementManager;
     [SerializeField] private int minRoomWidth = 4, minRoomHeight = 4;
@@ -23,7 +23,7 @@ public class RoomMapGenerator : AbstractMapGenerator
     private void CreateRooms()
     {
         
-        _dungeonData = new DungeonData();
+        _mapData = new MapData();
         
         var roomsList = ProceduralGenerationAlgorithms.CreateVariableSizeRooms(
             new BoundsInt((Vector3Int)startPosition, new Vector3Int(mapWidth, mapHeight, 0)), 
@@ -38,7 +38,7 @@ public class RoomMapGenerator : AbstractMapGenerator
         }
 
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
-        _dungeonData.Path.UnionWith(corridors);
+        _mapData.Path.UnionWith(corridors);
         floor.UnionWith(corridors);
 
         var expandedFloor = ExpandFloor(floor);
@@ -49,8 +49,8 @@ public class RoomMapGenerator : AbstractMapGenerator
         WallGenerator.CreateWalls(expandedFloor, specialWallPositions, tilemapVisualizer);
         tilemapVisualizer.AddWallColliders();
         
-        roomDataExtractor.ProcessRooms(_dungeonData, tilemapVisualizer);
-        propPlacementManager.ProcessRooms(_dungeonData);
+        roomDataExtractor.ProcessRooms(_mapData, tilemapVisualizer);
+        propPlacementManager.ProcessRooms(_mapData);
         
         
         
@@ -196,7 +196,7 @@ public class RoomMapGenerator : AbstractMapGenerator
                 }
             }
             floor.UnionWith(roomFloor);
-            _dungeonData.Rooms.Add(new Room((Vector2Int)Vector3Int.RoundToInt(room.center), roomFloor));
+            _mapData.Rooms.Add(new Room((Vector2Int)Vector3Int.RoundToInt(room.center), roomFloor));
         }
 
         return floor;
