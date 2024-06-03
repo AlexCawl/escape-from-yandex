@@ -1,18 +1,20 @@
 using System.Collections.Generic;
-using System.Linq;
-using Data;
 using UnityEngine;
 using UnityEngine.Serialization;
+
+// ReSharper disable All
 
 public class RoomMapGenerator : AbstractMapGenerator
 {
     private MapData _mapData;
     [SerializeField] private RoomDataExtractor roomDataExtractor;
     [SerializeField] private PropPlacementManager propPlacementManager;
-    [SerializeField] private int minRoomWidth = 4, minRoomHeight = 4;
+    [SerializeField] private int minRoomSize = 4;
+    [SerializeField] private int maxRoomSize = 4;
     [SerializeField] private int mapWidth = 20, mapHeight = 20;
     [SerializeField] [Range(0, 10)] private int offset = 1;
     [SerializeField] private int roomSpacing = 1;
+    [SerializeField] private bool useBSPAlgorithm = false;
 
     protected override void RunProceduralGeneration()
     {
@@ -24,10 +26,22 @@ public class RoomMapGenerator : AbstractMapGenerator
     {
         
         _mapData = new MapData();
+        List<BoundsInt> roomsList = new List<BoundsInt>();
+
+        if (useBSPAlgorithm)
+        {
+            roomsList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(
+                new BoundsInt((Vector3Int)startPosition, new Vector3Int(mapWidth, mapHeight, 0)),
+                minRoomSize, maxRoomSize);
+        }
+        else
+        {
+            roomsList = ProceduralGenerationAlgorithms.CreateVariableSizeRooms(
+                new BoundsInt((Vector3Int)startPosition, new Vector3Int(mapWidth, mapHeight, 0)), 
+                minRoomSize, maxRoomSize, roomSpacing); // Передаем зазор в метод
+        }
         
-        var roomsList = ProceduralGenerationAlgorithms.CreateVariableSizeRooms(
-            new BoundsInt((Vector3Int)startPosition, new Vector3Int(mapWidth, mapHeight, 0)), 
-            minRoomWidth, minRoomHeight, roomSpacing); // Передаем зазор в метод
+        
 
         HashSet<Vector2Int> floor = CreateSimpleRooms(roomsList);
 
@@ -52,10 +66,6 @@ public class RoomMapGenerator : AbstractMapGenerator
         roomDataExtractor.ProcessRooms(_mapData, tilemapVisualizer);
         propPlacementManager.ProcessRooms(_mapData);
         
-        
-        
-        
-            
     }
 
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
@@ -158,29 +168,7 @@ public class RoomMapGenerator : AbstractMapGenerator
 
         return corridor;
     }
-
-    private float Distance(Vector2Int a, Vector2Int b)
-    {
-        return Vector2Int.Distance(a, b);
-    }
-
-    private Vector2Int FindClosestPointTo(Vector2Int currentRoomCenter, List<Vector2Int> roomCenters)
-    {
-        Vector2Int closest = Vector2Int.zero;
-        float minDistance = float.MaxValue;
-        foreach (var position in roomCenters)
-        {
-            float currentDistance = Vector2.Distance(position, currentRoomCenter);
-            if (currentDistance < minDistance)
-            {
-                minDistance = currentDistance;
-                closest = position;
-            }
-        }
-
-        return closest;
-    }
-
+    
     private HashSet<Vector2Int> CreateSimpleRooms(List<BoundsInt> roomsList)
     {
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();

@@ -26,7 +26,6 @@ public class RoomDataExtractor : MonoBehaviour
 
         foreach (Room room in _mapData.Rooms)
         {
-            //find corener, near wall and inner tiles
             foreach (Vector2Int tilePosition in room.FloorTiles)
             {
                 int neighboursCount = 4;
@@ -51,8 +50,7 @@ public class RoomDataExtractor : MonoBehaviour
                     room.NearWallTilesLeft.Add(tilePosition);
                     neighboursCount--;
                 }
-
-                //find corners
+                
                 if (neighboursCount <= 2)
                     room.CornerTiles.Add(tilePosition);
 
