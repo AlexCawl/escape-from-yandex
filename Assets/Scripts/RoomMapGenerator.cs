@@ -22,6 +22,7 @@ public class RoomMapGenerator : AbstractMapGenerator
     // ReSharper disable Unity.PerformanceAnalysis
     private void CreateRooms()
     {
+        
         _dungeonData = new DungeonData();
         
         var roomsList = ProceduralGenerationAlgorithms.CreateVariableSizeRooms(
@@ -51,6 +52,10 @@ public class RoomMapGenerator : AbstractMapGenerator
         roomDataExtractor.ProcessRooms(_dungeonData, tilemapVisualizer);
         propPlacementManager.ProcessRooms(_dungeonData);
         
+        
+        
+        
+            
     }
 
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
