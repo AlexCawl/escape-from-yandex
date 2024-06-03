@@ -34,6 +34,7 @@ public class PropPlacementManager : MonoBehaviour
             return;
         foreach (Room room in _dungeonData.Rooms)
         {
+            room.PropPositions.UnionWith(_dungeonData.Path);
             //Place props place props in the corners
             List<Prop> cornerProps = propsToPlace.Where(x => x.Corner).ToList();
             PlaceCornerProps(room, room.CornerTiles, cornerProps);
@@ -147,20 +148,22 @@ public class PropPlacementManager : MonoBehaviour
                 continue;
 
             //check if there is enough space around to fit the prop
-            List<Vector2Int> freePositionsAround
-                = TryToFitProp(propToPlace, availablePositions, position, placement);
+            bool freePositionsAround
+                = TryToFitProp(room, propToPlace, availablePositions, position, placement);
 
             //If we have enough spaces place the prop
-            if (freePositionsAround.Count == propToPlace.PropSize.x * propToPlace.PropSize.y)
+            if (freePositionsAround)
             {
                 //Place the gameobject
                 PlacePropGameObjectAt(room, position, propToPlace);
                 //Lock all the positions recquired by the prop (based on its size)
-                foreach (Vector2Int pos in freePositionsAround)
-                {
-                    //Hashest will ignore duplicate positions
-                    room.PropPositions.Add(pos);
-                }
+                
+                
+                // foreach (Vector2Int pos in freePositionsAround)
+                // {
+                //     //Hashest will ignore duplicate positions
+                //     room.PropPositions.Add(pos);
+                // }
 
                 //Deal with groups
                 if (propToPlace.PlaceAsGroup)
@@ -183,7 +186,8 @@ public class PropPlacementManager : MonoBehaviour
     /// <param name="originPosition"></param>
     /// <param name="placement"></param>
     /// <returns></returns>
-    private List<Vector2Int> TryToFitProp(
+    private bool TryToFitProp(
+        Room room,
         Prop prop,
         List<Vector2Int> availablePositions,
         Vector2Int originPosition,
@@ -200,8 +204,8 @@ public class PropPlacementManager : MonoBehaviour
             for (int y = downBorderValue; y <= upBorderValue; y++)
             {
                 Vector2Int position = new Vector2Int(x, y);
-                if (availablePositions.Contains(position))
-                    freePositions.Add(position);
+                if (room.PropPositions.Contains(position))
+                    return false;
             }
         }
 
@@ -255,7 +259,7 @@ public class PropPlacementManager : MonoBehaviour
         //     }
         // }
 
-        return freePositions;
+        return true;
     }
 
     /// <summary>
