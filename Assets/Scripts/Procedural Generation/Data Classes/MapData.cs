@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class MapData
 {
+    public Room startRooom;
+
+    public Room endRoom;
+    
+    public Room techRoom;
     public List<Room> Rooms { get; set; } = new List<Room>();
     public HashSet<Vector2Int> Path { get; set; } = new HashSet<Vector2Int>();
 

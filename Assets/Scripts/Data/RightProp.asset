@@ -20,5 +20,6 @@ MonoBehaviour:
   NearWallRight: 1
   NearWallLeft: 0
   Inner: 0
+  TechnoRoom: 0
   PlacementQuantityMin: 0
   PlacementQuantityMax: 1

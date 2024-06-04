@@ -21,6 +21,8 @@ public class PropPlacementManager : MonoBehaviour
         _mapData = mapData;
         if (_mapData == null)
             return;
+        
+        
         foreach (Room room in _mapData.Rooms)
         {
             // добавление направления пути, чтобы на нем не стояло мебели
@@ -29,7 +31,7 @@ public class PropPlacementManager : MonoBehaviour
             // Размещение в углах
             List<Prop> cornerProps = propsToPlace.Where(x => x.Corner).ToList();
             PlaceCornerProps(room, room.CornerTiles, cornerProps);
-
+        
             // Размещение у левой стены
             List<Prop> leftWallProps = propsToPlace
             .Where(x => x.NearWallLeft)
@@ -69,7 +71,13 @@ public class PropPlacementManager : MonoBehaviour
                 .ToList();
             PlaceProps(room, innerProps, room.InnerTiles);
         }
-        
+
+        List<Prop> techoProp = propsToPlace.Where(x => x.TechnoRoom).ToList();
+        PlaceProps(_mapData.techRoom, techoProp, _mapData.techRoom.NearWallTilesUp);
+
+        List<Prop> endRoomProps = propsToPlace.Where(x => x.EndRoom).ToList();
+        Prop doorProp = endRoomProps[0];
+        PlaceDoor(_mapData.endRoom, doorProp);
     }
     
     // Функция размещения мебели
@@ -95,7 +103,10 @@ public class PropPlacementManager : MonoBehaviour
                 List<Vector2Int> availablePositions = tempPositons.OrderBy(x => Guid.NewGuid()).ToList();
                 // Пытаемся разместить элемент на карте
                 if (TryPlacingPropBruteForce(room, propToPlace, availablePositions) == false)
+                {
                     break;
+                }
+                    
             }
         }
     }
@@ -111,7 +122,7 @@ public class PropPlacementManager : MonoBehaviour
             Vector2Int position = availablePositions[i];
             if (room.PropPositions.Contains(position))
                 continue;
-
+            
             // Проверяем близлежащие тайлы
             bool freePositionsAround
                 = TryToFitProp(room, propToPlace, availablePositions, position);
@@ -181,7 +192,7 @@ public class PropPlacementManager : MonoBehaviour
     }
     
    
-    private GameObject PlacePropGameObjectAt(Room room, Vector2Int placementPosition, Prop propToPlace)
+    private void PlacePropGameObjectAt(Room room, Vector2Int placementPosition, Prop propToPlace)
     {
         // НАПОМИНАНИЕ: ПОНАСТАВИЛ ТУТ ЛОГОВ ЧЕРТ НОГУ СЛОМИТ
         //Debug.Log($"Potential Placement position: {placementPosition}");
@@ -243,6 +254,39 @@ public class PropPlacementManager : MonoBehaviour
             }
         }
         room.PropObjectReferences.Add(prop);
-        return prop;
+    }
+
+    private void PlaceDoor(Room room, Prop propToPlace)
+    {
+        // Создаем объект-мебель
+        GameObject prop = Instantiate(propPrefab);
+        prop.transform.SetParent(propContainer.transform);
+        
+        // Настраиваем рендер спрайтов для отрисовки
+        SpriteRenderer propSpriteRenderer = prop.GetComponentInChildren<SpriteRenderer>();
+        
+
+        // Устанавливаем спрайт
+        propSpriteRenderer.sprite = propToPlace.PropSprite;
+
+        
+        int xPosition = Convert.ToInt32(room.RoomCenterPos.x);
+        int yPosition = Convert.ToInt32(room.NearWallTilesUp.ToList()[0].y);
+        Vector2 position = new Vector2(xPosition, yPosition + 2);
+        
+
+        // Устанавливаем позицию объекта в глобальных координатах
+        prop.transform.position = position;
+        
+        // НАПОМИНАНИЕ: СТЕРЕТЬ ЛОГИ
+        //Debug.Log($"Prop global coordinates after setting position: {prop.transform.position}");
+        propSpriteRenderer.transform.localPosition = position;
+        
+        // НАПОМИНАНИЕ: СТЕРЕТЬ ЛОГИ
+        //Debug.Log($"Prop sprite local coordinates after adjustment: {propSpriteRenderer.transform.localPosition}");
+        
+        // Проверка слоев и порядка отрисовки
+        propSpriteRenderer.sortingLayerName = "Ground"; // Убедитесь, что слой существует
+        propSpriteRenderer.sortingOrder = 1;
     }
 }

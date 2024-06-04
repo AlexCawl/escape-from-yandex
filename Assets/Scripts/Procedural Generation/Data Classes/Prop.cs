@@ -19,6 +19,8 @@ public class Prop : ScriptableObject
     public bool NearWallRight = true;
     public bool NearWallLeft = true;
     public bool Inner = true;
+    public bool TechnoRoom = false;
+    public bool EndRoom = false;
     [Min(0)]
     public int PlacementQuantityMin = 1;
     [Min(1)]
