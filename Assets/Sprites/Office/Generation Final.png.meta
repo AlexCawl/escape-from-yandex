@@ -1,0 +1,1244 @@
+fileFormatVersion: 2
+guid: 1b77ccbdbc5ef584aae567e9b0c8e15b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Generation Final_101
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 2064
+        width: 48
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b711cd397632f6f48bf6add1c2221754
+      internalID: -40715668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_108
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 2064
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcc3c06f22e95e74985ce2fc1d84ee4b
+      internalID: -551933563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_110
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 2064
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00cfa0114a705c147a7bade2151f8fa2
+      internalID: 207379334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_111
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 2064
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06f666c8f19519d4985e7529c08d234e
+      internalID: 926560190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_123
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 2064
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be8381dca56346949a1928ff84a3fea0
+      internalID: -890654992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_137
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1968
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc658980c68eb3d45b68949ceaa9f026
+      internalID: -227737297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_138
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1968
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1117be208f15303479297ee43daccfdb
+      internalID: 940720941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_140
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1968
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd6257e7222ec1247b1f33a668438540
+      internalID: 1060844112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_141
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1968
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3efd673e20128c4c83c84867170081e
+      internalID: -769035901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_142
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1994
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f97f41c8b13c5d4ba18eaeccd764426
+      internalID: 174181937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_201
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1824
+        width: 48
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40affb151646c824c82010f682e20893
+      internalID: 1947924241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_202
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1824
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f81c1b563c3fd4eb6eb744d8b231d2
+      internalID: 325603708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_237
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1632
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60401e19bf3ea3a47bffa883acfd6efd
+      internalID: -1974769276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_246
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1680
+        width: 48
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 443b3ca5cb54e4c4791da84b5028817d
+      internalID: 1010979894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_293
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1440
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b94b85abf0f117d4a81ea99b45689c91
+      internalID: -76491130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_324
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1296
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9f93c5d3d7496f4abb9d7262604c3cb
+      internalID: 965248151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_392
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1104
+        width: 144
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e234b1a1d0b8a9441b2515e48bca6b28
+      internalID: 1469101422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_397
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1104
+        width: 144
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73512e2a56b6bb446a5f0527247a5595
+      internalID: 698454642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_410
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1008
+        width: 144
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 874300cb5fabd0547949252f4395120a
+      internalID: -66977614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_562
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 336
+        width: 48
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfb775ae389f147408529c3d8eca3797
+      internalID: -245090430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_594
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1321
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 612a588a25c977a46ae734a607c686a8
+      internalID: 68116546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generation Final_624
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 48
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b388f06f3b8dc4abbb9a74e64c5ed3
+      internalID: 795549393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Generation Final_0: 220685177
+      Generation Final_1: -1706183286
+      Generation Final_10: 770129133
+      Generation Final_100: 1371045200
+      Generation Final_101: -40715668
+      Generation Final_102: -1900601607
+      Generation Final_103: 1234542336
+      Generation Final_104: 518129323
+      Generation Final_105: -1395677227
+      Generation Final_106: -1180115572
+      Generation Final_107: 1000759126
+      Generation Final_108: -551933563
+      Generation Final_109: 142526374
+      Generation Final_11: -473741371
+      Generation Final_110: 207379334
+      Generation Final_111: 926560190
+      Generation Final_112: -1012813407
+      Generation Final_113: 1467076597
+      Generation Final_114: -1547904058
+      Generation Final_115: -1640837610
+      Generation Final_116: 1321191073
+      Generation Final_117: 735249471
+      Generation Final_118: -1211117664
+      Generation Final_119: 26168189
+      Generation Final_12: 581836223
+      Generation Final_120: 182142724
+      Generation Final_121: 148760319
+      Generation Final_122: 203800041
+      Generation Final_123: -890654992
+      Generation Final_124: -254195604
+      Generation Final_125: 1061724759
+      Generation Final_126: -391144981
+      Generation Final_127: -38829105
+      Generation Final_128: -940159689
+      Generation Final_129: -1287021035
+      Generation Final_13: 962353501
+      Generation Final_130: -2013435319
+      Generation Final_131: 545705946
+      Generation Final_132: 1368904235
+      Generation Final_133: 14424164
+      Generation Final_134: 183453370
+      Generation Final_135: -1246288350
+      Generation Final_136: -428500184
+      Generation Final_137: -227737297
+      Generation Final_138: 940720941
+      Generation Final_139: 219015679
+      Generation Final_14: -207521302
+      Generation Final_140: 1060844112
+      Generation Final_141: -769035901
+      Generation Final_142: 174181937
+      Generation Final_143: 640283926
+      Generation Final_144: 597914685
+      Generation Final_145: -1786079650
+      Generation Final_146: -108070060
+      Generation Final_147: 1862455830
+      Generation Final_148: 424141259
+      Generation Final_149: -410053398
+      Generation Final_15: 966529698
+      Generation Final_150: 469343137
+      Generation Final_151: -1675443015
+      Generation Final_152: 2142495884
+      Generation Final_153: -1537111069
+      Generation Final_154: 1687689638
+      Generation Final_155: 1188733758
+      Generation Final_156: 1825139801
+      Generation Final_157: 1462577850
+      Generation Final_158: 1988640310
+      Generation Final_159: -555520127
+      Generation Final_16: 1827927935
+      Generation Final_160: 59791267
+      Generation Final_161: 100399757
+      Generation Final_162: 1796920365
+      Generation Final_163: 603150902
+      Generation Final_164: -1520421553
+      Generation Final_165: 325189436
+      Generation Final_166: -572559433
+      Generation Final_167: -1394561001
+      Generation Final_168: -916977737
+      Generation Final_169: 1958790194
+      Generation Final_17: -951389826
+      Generation Final_170: -1277135657
+      Generation Final_171: 489271610
+      Generation Final_172: -2020184775
+      Generation Final_173: -1716966959
+      Generation Final_174: -508376661
+      Generation Final_175: -147134830
+      Generation Final_176: 340434230
+      Generation Final_177: 2001945710
+      Generation Final_178: -30614774
+      Generation Final_179: -953062354
+      Generation Final_18: 1300491552
+      Generation Final_180: -787094202
+      Generation Final_181: 1007800602
+      Generation Final_182: 2067215396
+      Generation Final_183: 2010909587
+      Generation Final_184: 1395239628
+      Generation Final_185: -1152060767
+      Generation Final_186: 86788670
+      Generation Final_187: 1019040606
+      Generation Final_188: -591715507
+      Generation Final_189: 1728365444
+      Generation Final_19: -1022108147
+      Generation Final_190: 948761442
+      Generation Final_191: 1905622087
+      Generation Final_192: -2022225571
+      Generation Final_193: -833486673
+      Generation Final_194: -798416972
+      Generation Final_195: 1368442101
+      Generation Final_196: 1867618000
+      Generation Final_197: 561636813
+      Generation Final_198: 876070939
+      Generation Final_199: -303544233
+      Generation Final_2: -1752242932
+      Generation Final_20: 751162404
+      Generation Final_200: -442288752
+      Generation Final_201: 1947924241
+      Generation Final_202: 325603708
+      Generation Final_203: -539124774
+      Generation Final_204: 936771901
+      Generation Final_205: 428315854
+      Generation Final_206: 646558261
+      Generation Final_207: 1546037515
+      Generation Final_208: -1581584594
+      Generation Final_209: -1635767686
+      Generation Final_21: 874890512
+      Generation Final_210: 957497126
+      Generation Final_211: -877265721
+      Generation Final_212: 791521206
+      Generation Final_213: -711300172
+      Generation Final_214: -647603491
+      Generation Final_215: 733623250
+      Generation Final_216: 596392903
+      Generation Final_217: -573910063
+      Generation Final_218: -1793843783
+      Generation Final_219: 1334794143
+      Generation Final_22: 2010023043
+      Generation Final_220: 785018317
+      Generation Final_221: -200051170
+      Generation Final_222: -1751890027
+      Generation Final_223: -621222789
+      Generation Final_224: -317310765
+      Generation Final_225: -1313024267
+      Generation Final_226: 1316651986
+      Generation Final_227: 2072471587
+      Generation Final_228: 1550163990
+      Generation Final_229: 1413046734
+      Generation Final_23: -505630532
+      Generation Final_230: -1717864791
+      Generation Final_231: -2128646367
+      Generation Final_232: -1507220678
+      Generation Final_233: 1277207644
+      Generation Final_234: 2032870619
+      Generation Final_235: 2062452439
+      Generation Final_236: 1530671816
+      Generation Final_237: -1974769276
+      Generation Final_238: 1659916756
+      Generation Final_239: 1765841223
+      Generation Final_24: -49213601
+      Generation Final_240: -195575537
+      Generation Final_241: 673134180
+      Generation Final_242: -1908966527
+      Generation Final_243: 666427247
+      Generation Final_244: -986297682
+      Generation Final_245: 510362316
+      Generation Final_246: 1010979894
+      Generation Final_247: -20540420
+      Generation Final_248: 192728245
+      Generation Final_249: -2103056197
+      Generation Final_25: -1898196382
+      Generation Final_250: 47282802
+      Generation Final_251: 892819943
+      Generation Final_252: -822423002
+      Generation Final_253: 1935069621
+      Generation Final_254: 272866530
+      Generation Final_255: -787523322
+      Generation Final_256: -691952008
+      Generation Final_257: 1579118919
+      Generation Final_258: 1317239523
+      Generation Final_259: -613354739
+      Generation Final_26: -55029428
+      Generation Final_260: -1091742066
+      Generation Final_261: 1451227151
+      Generation Final_262: -1920480826
+      Generation Final_263: -699030701
+      Generation Final_264: 1143625320
+      Generation Final_265: -1492474889
+      Generation Final_266: -373694303
+      Generation Final_267: 1135755826
+      Generation Final_268: -821539446
+      Generation Final_269: 163574883
+      Generation Final_27: -379116221
+      Generation Final_270: -1877184096
+      Generation Final_271: 150896234
+      Generation Final_272: 863406376
+      Generation Final_273: 2048468420
+      Generation Final_274: 610113592
+      Generation Final_275: 2057745736
+      Generation Final_276: -1016989730
+      Generation Final_277: 669912855
+      Generation Final_278: 899597513
+      Generation Final_279: -1140227020
+      Generation Final_28: -1310473451
+      Generation Final_280: -873150337
+      Generation Final_281: -1901828847
+      Generation Final_282: -1441575428
+      Generation Final_283: -1484858622
+      Generation Final_284: -1311590053
+      Generation Final_285: -149984440
+      Generation Final_286: -2063539404
+      Generation Final_287: 642188086
+      Generation Final_288: -2039418581
+      Generation Final_289: -362942547
+      Generation Final_29: -169239304
+      Generation Final_290: -450065395
+      Generation Final_291: -1801439112
+      Generation Final_292: 1320114471
+      Generation Final_293: -76491130
+      Generation Final_294: 1166694981
+      Generation Final_295: -1238122491
+      Generation Final_296: -2143696549
+      Generation Final_297: -490568538
+      Generation Final_298: -411999765
+      Generation Final_299: -1714567058
+      Generation Final_3: -1812661546
+      Generation Final_30: 1130638577
+      Generation Final_300: -998810894
+      Generation Final_301: 1654399567
+      Generation Final_302: 1765362708
+      Generation Final_303: 1462783560
+      Generation Final_304: 264860141
+      Generation Final_305: -597251794
+      Generation Final_306: -1089283087
+      Generation Final_307: -758709360
+      Generation Final_308: -1937498790
+      Generation Final_309: -398464291
+      Generation Final_31: -908363371
+      Generation Final_310: -1714087517
+      Generation Final_311: 1447587879
+      Generation Final_312: 732557733
+      Generation Final_313: -1653406816
+      Generation Final_314: 1529933973
+      Generation Final_315: -1224768110
+      Generation Final_316: 925615080
+      Generation Final_317: -1309650786
+      Generation Final_318: -646131422
+      Generation Final_319: 1968180201
+      Generation Final_32: 1363534434
+      Generation Final_320: -1052642408
+      Generation Final_321: -534998420
+      Generation Final_322: -20011667
+      Generation Final_323: 623420872
+      Generation Final_324: 965248151
+      Generation Final_325: -531241491
+      Generation Final_326: -1078648115
+      Generation Final_327: 1921073347
+      Generation Final_328: 1305868720
+      Generation Final_329: -1760103052
+      Generation Final_33: -1227456113
+      Generation Final_330: 2030356607
+      Generation Final_331: -1636115431
+      Generation Final_332: 810730133
+      Generation Final_333: 1229650257
+      Generation Final_334: 2035812703
+      Generation Final_335: -1835757044
+      Generation Final_336: 222189402
+      Generation Final_337: 508451691
+      Generation Final_338: 433743360
+      Generation Final_339: 880965202
+      Generation Final_34: -1838808469
+      Generation Final_340: 254111259
+      Generation Final_341: -1179836657
+      Generation Final_342: -1008491185
+      Generation Final_343: -1054313518
+      Generation Final_344: 687387839
+      Generation Final_345: -2121346598
+      Generation Final_346: 239587797
+      Generation Final_347: -1211268987
+      Generation Final_348: -1139675927
+      Generation Final_349: -601354553
+      Generation Final_35: 482064201
+      Generation Final_350: 356579805
+      Generation Final_351: 1216695877
+      Generation Final_352: -2022213978
+      Generation Final_353: -1867274657
+      Generation Final_354: -906444002
+      Generation Final_355: 1237010698
+      Generation Final_356: -2049928663
+      Generation Final_357: -1071427915
+      Generation Final_358: 400043284
+      Generation Final_359: 2097427067
+      Generation Final_36: -1890499235
+      Generation Final_360: 1490716038
+      Generation Final_361: -949243463
+      Generation Final_362: -1825309404
+      Generation Final_363: 1806194055
+      Generation Final_364: -232806033
+      Generation Final_365: 1832395381
+      Generation Final_366: -748298771
+      Generation Final_367: -1205240718
+      Generation Final_368: 1767267383
+      Generation Final_369: -1919367631
+      Generation Final_37: 353331919
+      Generation Final_370: -363287767
+      Generation Final_371: -1665573450
+      Generation Final_372: -557552361
+      Generation Final_373: 1817461210
+      Generation Final_374: 627736134
+      Generation Final_375: 1506288899
+      Generation Final_376: -1499723519
+      Generation Final_377: 784945352
+      Generation Final_378: 299244129
+      Generation Final_379: -515205685
+      Generation Final_38: 79357036
+      Generation Final_380: -692670162
+      Generation Final_381: 1643409982
+      Generation Final_382: 1650956877
+      Generation Final_383: 1278155618
+      Generation Final_384: -1829639935
+      Generation Final_385: 407495517
+      Generation Final_386: 1815369162
+      Generation Final_387: -1940562305
+      Generation Final_388: 488016627
+      Generation Final_389: -1150019992
+      Generation Final_39: -1724978077
+      Generation Final_390: -1809266350
+      Generation Final_391: 1973600549
+      Generation Final_392: 1469101422
+      Generation Final_393: -960250376
+      Generation Final_394: 1395132781
+      Generation Final_395: -1530356377
+      Generation Final_396: -619261400
+      Generation Final_397: 698454642
+      Generation Final_398: -691745632
+      Generation Final_399: 409711534
+      Generation Final_4: 2084521806
+      Generation Final_40: 72926742
+      Generation Final_400: 233404379
+      Generation Final_401: -1922725662
+      Generation Final_402: 220949901
+      Generation Final_403: 2043951282
+      Generation Final_404: -1945007182
+      Generation Final_405: -1780058207
+      Generation Final_406: -1919712099
+      Generation Final_407: 320662387
+      Generation Final_408: -97320838
+      Generation Final_409: 359305141
+      Generation Final_41: -1626260725
+      Generation Final_410: -66977614
+      Generation Final_411: 46319877
+      Generation Final_412: 729072269
+      Generation Final_413: -876697431
+      Generation Final_414: -336158498
+      Generation Final_415: -1814695160
+      Generation Final_416: -2101419343
+      Generation Final_417: 2041577289
+      Generation Final_418: -264620483
+      Generation Final_419: 71008218
+      Generation Final_42: 74505473
+      Generation Final_420: 775478456
+      Generation Final_421: 1233796148
+      Generation Final_422: 17433072
+      Generation Final_423: -1881750406
+      Generation Final_424: 1802711865
+      Generation Final_425: -1867926844
+      Generation Final_426: 1683337630
+      Generation Final_427: 343959158
+      Generation Final_428: -1801373161
+      Generation Final_429: 802184810
+      Generation Final_43: 1449114994
+      Generation Final_430: -1394534543
+      Generation Final_431: 1778162086
+      Generation Final_432: -1294963147
+      Generation Final_433: -1439208338
+      Generation Final_434: -1576951592
+      Generation Final_435: -1318863453
+      Generation Final_436: -2028949387
+      Generation Final_437: 854318561
+      Generation Final_438: -751044147
+      Generation Final_439: -797323510
+      Generation Final_44: -1701404742
+      Generation Final_440: 1972362362
+      Generation Final_441: 734913207
+      Generation Final_442: 228958212
+      Generation Final_443: -567156166
+      Generation Final_444: -930335929
+      Generation Final_445: 480913465
+      Generation Final_446: -1180486395
+      Generation Final_447: -860239476
+      Generation Final_448: -1696054207
+      Generation Final_449: -1677934982
+      Generation Final_45: -737751290
+      Generation Final_450: -468032471
+      Generation Final_451: 972825304
+      Generation Final_452: -526084033
+      Generation Final_453: 610500384
+      Generation Final_454: -1599877570
+      Generation Final_455: -1811855231
+      Generation Final_456: 1259311917
+      Generation Final_457: 1086389898
+      Generation Final_458: -354685285
+      Generation Final_459: 1518524130
+      Generation Final_46: 974436667
+      Generation Final_460: -802683555
+      Generation Final_461: 1342240513
+      Generation Final_462: 1013879561
+      Generation Final_463: -902870615
+      Generation Final_464: 1005171468
+      Generation Final_465: -1556047386
+      Generation Final_466: -967534818
+      Generation Final_467: -393677487
+      Generation Final_468: -1237865944
+      Generation Final_469: -270285652
+      Generation Final_47: -790281300
+      Generation Final_470: -394469801
+      Generation Final_471: 1806173145
+      Generation Final_472: -1951663613
+      Generation Final_473: 1371715550
+      Generation Final_474: -1684339994
+      Generation Final_475: 1271156430
+      Generation Final_476: 12747736
+      Generation Final_477: -626662307
+      Generation Final_478: -1527701603
+      Generation Final_479: 1244504567
+      Generation Final_48: 325003476
+      Generation Final_480: 1764391731
+      Generation Final_481: 1938095771
+      Generation Final_482: -1894505682
+      Generation Final_483: 83116290
+      Generation Final_484: -1477979296
+      Generation Final_485: 583878699
+      Generation Final_486: 301950783
+      Generation Final_487: -512566880
+      Generation Final_488: -385826711
+      Generation Final_489: 1661414134
+      Generation Final_49: -800129187
+      Generation Final_490: 926672324
+      Generation Final_491: -1282569366
+      Generation Final_492: 87471198
+      Generation Final_493: 307984331
+      Generation Final_494: -257117423
+      Generation Final_495: -138213133
+      Generation Final_496: 1701031881
+      Generation Final_497: -1412599653
+      Generation Final_498: -1562667881
+      Generation Final_499: 1062659202
+      Generation Final_5: -227919593
+      Generation Final_50: -1451853347
+      Generation Final_500: 1474635965
+      Generation Final_501: -1951532458
+      Generation Final_502: 286216187
+      Generation Final_503: -1109209795
+      Generation Final_504: -1813856174
+      Generation Final_505: 1197764993
+      Generation Final_506: 722814884
+      Generation Final_507: -1334170453
+      Generation Final_508: -1133941626
+      Generation Final_509: -2044173019
+      Generation Final_51: 1582200199
+      Generation Final_510: -505825468
+      Generation Final_511: 366436239
+      Generation Final_512: 577983128
+      Generation Final_513: 285745045
+      Generation Final_514: 1940019236
+      Generation Final_515: -1051785363
+      Generation Final_516: -800515640
+      Generation Final_517: 1997371303
+      Generation Final_518: -1015219643
+      Generation Final_519: -163532620
+      Generation Final_52: 1847752721
+      Generation Final_520: 397687028
+      Generation Final_521: 1463396008
+      Generation Final_522: -128692854
+      Generation Final_523: -1975851845
+      Generation Final_524: 67723493
+      Generation Final_525: -2029309579
+      Generation Final_526: -813097489
+      Generation Final_527: -367958227
+      Generation Final_528: -1954261685
+      Generation Final_529: 2023142204
+      Generation Final_53: 802985222
+      Generation Final_530: -1853564917
+      Generation Final_531: 1589632540
+      Generation Final_532: 1876244762
+      Generation Final_533: 1919740003
+      Generation Final_534: 1093788499
+      Generation Final_535: -152255749
+      Generation Final_536: -1494529793
+      Generation Final_537: 1593188462
+      Generation Final_538: 797481205
+      Generation Final_539: 1541787830
+      Generation Final_54: 705566192
+      Generation Final_540: -1725726391
+      Generation Final_541: -72874805
+      Generation Final_542: -205414933
+      Generation Final_543: -1398043921
+      Generation Final_544: 725424048
+      Generation Final_545: -82377031
+      Generation Final_546: 334387530
+      Generation Final_547: 101487115
+      Generation Final_548: 1790952752
+      Generation Final_549: 1093035410
+      Generation Final_55: 565551716
+      Generation Final_550: 186308581
+      Generation Final_551: 1937179300
+      Generation Final_552: 786057858
+      Generation Final_553: -352762492
+      Generation Final_554: 1529931575
+      Generation Final_555: -1066991299
+      Generation Final_556: 482242048
+      Generation Final_557: 1249931928
+      Generation Final_558: 1385670345
+      Generation Final_559: -2114565545
+      Generation Final_56: 703935980
+      Generation Final_560: 254651025
+      Generation Final_561: -747485370
+      Generation Final_562: -245090430
+      Generation Final_563: -1194571930
+      Generation Final_564: -1286967034
+      Generation Final_565: -950386910
+      Generation Final_566: -1590449880
+      Generation Final_567: -391383059
+      Generation Final_568: -1306028271
+      Generation Final_569: -676830851
+      Generation Final_57: -391410225
+      Generation Final_570: 1969048667
+      Generation Final_571: -1359836787
+      Generation Final_572: 919228958
+      Generation Final_573: -1958888711
+      Generation Final_574: -464918775
+      Generation Final_575: 6249524
+      Generation Final_576: 935908636
+      Generation Final_577: 327619916
+      Generation Final_578: -668073007
+      Generation Final_579: 511838502
+      Generation Final_58: 2143620679
+      Generation Final_580: -832831326
+      Generation Final_581: 1593187164
+      Generation Final_582: 2016420595
+      Generation Final_583: -1393947267
+      Generation Final_584: -889425259
+      Generation Final_585: -61283826
+      Generation Final_586: -744010339
+      Generation Final_587: -326770776
+      Generation Final_588: -836845592
+      Generation Final_589: 768363268
+      Generation Final_59: 1885942383
+      Generation Final_590: -656965866
+      Generation Final_591: -1309978091
+      Generation Final_592: 1198139713
+      Generation Final_593: 1910270463
+      Generation Final_594: 68116546
+      Generation Final_595: -1779564945
+      Generation Final_596: -1507115754
+      Generation Final_597: 1053131307
+      Generation Final_598: 762182832
+      Generation Final_599: 2120492459
+      Generation Final_6: -206735124
+      Generation Final_60: -442234283
+      Generation Final_600: -1438404040
+      Generation Final_601: -1324270818
+      Generation Final_602: 964617306
+      Generation Final_603: 123888256
+      Generation Final_604: -153888253
+      Generation Final_605: 968910588
+      Generation Final_606: -1776654548
+      Generation Final_607: -397045459
+      Generation Final_608: 1517634766
+      Generation Final_609: 1288383009
+      Generation Final_61: 1497454566
+      Generation Final_610: 755801595
+      Generation Final_611: -1538660367
+      Generation Final_612: -1539645382
+      Generation Final_613: -1003646436
+      Generation Final_614: 1902399577
+      Generation Final_615: -1826015333
+      Generation Final_616: 140610200
+      Generation Final_617: -274715760
+      Generation Final_618: 2114037269
+      Generation Final_619: 1481245643
+      Generation Final_62: -835865922
+      Generation Final_620: -202425640
+      Generation Final_621: -1391754821
+      Generation Final_622: -322429978
+      Generation Final_623: 45700460
+      Generation Final_624: 795549393
+      Generation Final_625: 1150658549
+      Generation Final_626: -1938465715
+      Generation Final_627: -1697651999
+      Generation Final_628: -999715049
+      Generation Final_629: -1081052291
+      Generation Final_63: -113262161
+      Generation Final_630: -843661086
+      Generation Final_631: 1270576997
+      Generation Final_632: 2031923283
+      Generation Final_633: -1967185502
+      Generation Final_634: -1673564163
+      Generation Final_635: 572435624
+      Generation Final_636: -756494815
+      Generation Final_637: 2140313032
+      Generation Final_638: 626689840
+      Generation Final_639: 1340641173
+      Generation Final_64: -212969880
+      Generation Final_640: -690681907
+      Generation Final_641: -41826971
+      Generation Final_642: 1657153770
+      Generation Final_643: 972252554
+      Generation Final_644: -2135879631
+      Generation Final_645: 1248930670
+      Generation Final_646: -8884082
+      Generation Final_647: -1017217588
+      Generation Final_648: -901348865
+      Generation Final_649: 1425787762
+      Generation Final_65: -319908693
+      Generation Final_650: -1453902636
+      Generation Final_651: 1360268319
+      Generation Final_652: 1753504969
+      Generation Final_653: 327113409
+      Generation Final_654: -1175565082
+      Generation Final_66: -547976261
+      Generation Final_67: 1065350733
+      Generation Final_68: 59819374
+      Generation Final_69: 1166505656
+      Generation Final_7: -1820214830
+      Generation Final_70: -873992637
+      Generation Final_71: 104348193
+      Generation Final_72: 1621712985
+      Generation Final_73: 2049288134
+      Generation Final_74: -201978465
+      Generation Final_75: 737088801
+      Generation Final_76: -1359906557
+      Generation Final_77: -1284249489
+      Generation Final_78: -422016843
+      Generation Final_79: -1273031208
+      Generation Final_8: 1563846571
+      Generation Final_80: -62803215
+      Generation Final_81: 1076504648
+      Generation Final_82: 652630240
+      Generation Final_83: 338382293
+      Generation Final_84: 854565709
+      Generation Final_85: -1458496019
+      Generation Final_86: 1379876716
+      Generation Final_87: -255326542
+      Generation Final_88: -1493494638
+      Generation Final_89: -358146637
+      Generation Final_9: 1635216304
+      Generation Final_90: 851802698
+      Generation Final_91: 744433880
+      Generation Final_92: -1644534876
+      Generation Final_93: -556975759
+      Generation Final_94: 1922300537
+      Generation Final_95: 506832621
+      Generation Final_96: -525036459
+      Generation Final_97: -800986971
+      Generation Final_98: 1740353485
+      Generation Final_99: 848539126
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

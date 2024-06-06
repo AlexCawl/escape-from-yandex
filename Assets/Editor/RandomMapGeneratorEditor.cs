@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Editor
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(AbstractMapGenerator), true)]
     public class RandomMapGeneratorEditor : UnityEditor.Editor
     {
@@ -20,6 +21,11 @@ namespace Editor
             {
                 _generator.GenerateMap();
             }
+            else if (GUILayout.Button("Delete All Props"))
+            {
+                _generator.DeleteAllProps();
+            }
         }
     }
 }
+#endif
