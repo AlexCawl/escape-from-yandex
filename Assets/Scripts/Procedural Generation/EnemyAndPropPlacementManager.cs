@@ -272,7 +272,7 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
         if (Random.Range(0f, 1f) < enemySpawnChance)
         {
             GameObject enemy = Instantiate(enemyPrefab);
-            enemy.transform.SetParent(propContainer.transform);
+            enemy.transform.SetParent(enemyContainer.transform);
             enemy.transform.position = (Vector2)room.RoomCenterPos + new Vector2(0.5f, 0);
         }
         
