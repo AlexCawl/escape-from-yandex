@@ -2750,18 +2750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a4a84f339a7034cad39426cbb08678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemapVisualizer: {fileID: 2089212375}
-  startPosition: {x: 0, y: 0}
-  propsContainer: {fileID: 1476531024}
-  roomDataExtractor: {fileID: 801836734}
-  enemyAndPropPlacementManager: {fileID: 3607371}
-  minRoomSize: 20
-  maxRoomSize: 25
-  mapWidth: 100
-  mapHeight: 100
-  offset: 3
-  roomSpacing: 1
-  useBSPAlgorithm: 0
 --- !u!4 &236107806
 Transform:
   m_ObjectHideFlags: 0
@@ -3555,7 +3543,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
+  damageDistance: 1
   stoppingDistance: 1
+  damageCooldown: 1
+  damage: 5
 --- !u!50 &334570590
 Rigidbody2D:
   serializedVersion: 4
@@ -4101,7 +4092,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
+  damageDistance: 1
   stoppingDistance: 1
+  damageCooldown: 1
+  damage: 5
 --- !u!50 &359206793
 Rigidbody2D:
   serializedVersion: 4
@@ -61775,7 +61769,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
+  damageDistance: 1
   stoppingDistance: 1
+  damageCooldown: 1
+  damage: 5
 --- !u!50 &400391076
 Rigidbody2D:
   serializedVersion: 4
@@ -63179,7 +63176,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
+  damageDistance: 1
   stoppingDistance: 1
+  damageCooldown: 1
+  damage: 5
 --- !u!50 &644091722
 Rigidbody2D:
   serializedVersion: 4
@@ -63758,7 +63758,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
+  damageDistance: 1
   stoppingDistance: 1
+  damageCooldown: 1
+  damage: 5
 --- !u!50 &733577393
 Rigidbody2D:
   serializedVersion: 4
@@ -65579,7 +65582,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
+  damageDistance: 1
   stoppingDistance: 1
+  damageCooldown: 1
+  damage: 5
 --- !u!50 &1061645796
 Rigidbody2D:
   serializedVersion: 4
@@ -66112,7 +66118,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
+  damageDistance: 1
   stoppingDistance: 1
+  damageCooldown: 1
+  damage: 5
 --- !u!50 &1125104702
 Rigidbody2D:
   serializedVersion: 4
@@ -77966,7 +77975,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
+  damageDistance: 1
   stoppingDistance: 1
+  damageCooldown: 1
+  damage: 5
 --- !u!50 &1717566633
 Rigidbody2D:
   serializedVersion: 4
@@ -126716,7 +126728,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
+  damageDistance: 1
   stoppingDistance: 1
+  damageCooldown: 1
+  damage: 5
 --- !u!50 &1831811242
 Rigidbody2D:
   serializedVersion: 4
@@ -127266,7 +127281,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
+  damageDistance: 1
   stoppingDistance: 1
+  damageCooldown: 1
+  damage: 5
 --- !u!212 &1887839496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -128909,23 +128927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6fe42b40746fe4e9c0446142b12f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorTilemap: {fileID: 1769417264}
-  wallTileMap: {fileID: 394267312}
-  topWallTilemap: {fileID: 1243944277}
-  floorTile: {fileID: 11400000, guid: ea747b0a6aa2b2f4ca914b185053bfd8, type: 2}
-  wallTopOriginal: {fileID: 11400000, guid: 47508f28cb4efa24e9806778b42d14f3, type: 2}
-  wallTopTileFirst: {fileID: 11400000, guid: d82ea68c0f6fd0b4f9eacc462ef1d7dd, type: 2}
-  wallTopTileSecond: {fileID: 11400000, guid: f3fc9330897eb424facd66b138c3769f, type: 2}
-  wallSideRight: {fileID: 11400000, guid: 7c625e516c3f2464884aca838cdb8cf5, type: 2}
-  wallSideLeft: {fileID: 11400000, guid: 15d1f9e0d3d9c5d46ac11dee723fd87a, type: 2}
-  wallBottom: {fileID: 11400000, guid: 14f21fdc39d6b2f4c8b0afe654808f6b, type: 2}
-  wallFull: {fileID: 11400000, guid: e5e783ab3bb103a48a2363ace80fe347, type: 2}
-  wallInnerCornerDownLeft: {fileID: 11400000, guid: eea03c612119f6449913eb1a185e2a73, type: 2}
-  wallInnerCornerDownRight: {fileID: 11400000, guid: ae1695b3c13a0a44583c27f93dc28bfa, type: 2}
-  wallDiagonalCornerDownRight: {fileID: 11400000, guid: de5ffb149e9122a498582bcd386ef611, type: 2}
-  wallDiagonalCornerDownLeft: {fileID: 11400000, guid: 635e1c1b3aae5bb4cbe22702e6ac10a5, type: 2}
-  wallDiagonalCornerUpRight: {fileID: 11400000, guid: 4e09b3e998c37044fb2ad1af364b5f60, type: 2}
-  wallDiagonalCornerUpLeft: {fileID: 11400000, guid: fd204e88be3e2d3488cb17ef37f34d1e, type: 2}
 --- !u!4 &2089212376
 Transform:
   m_ObjectHideFlags: 0
