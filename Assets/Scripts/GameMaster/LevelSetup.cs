@@ -14,6 +14,7 @@ namespace GameMaster
 
         private void Start()
         {
+            IsChallengePassedMarker.Controller.Set(false);
             CharacterHealthHolder.GetInstance().Set(CharacterHealthHolder.GetMax);
             SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
             StartCoroutine(OpenScene(PauseManager.Controller, "Scenes/PauseMenu"));
@@ -28,6 +29,7 @@ namespace GameMaster
         {
             HandlePauseMenuClick();
             HandleChallengeMenuClick();
+            HandleExitClick();
         }
 
         private static void HandlePauseMenuClick()
@@ -43,6 +45,15 @@ namespace GameMaster
             if (!pressed) return;
             if (!ChallengeItemMarker.Controller.State) return;
             ChallengeManager.Controller.Toggle();
+        }
+        
+        private static void HandleExitClick()
+        {
+            var pressed = Input.GetKeyDown("e");
+            if (!pressed) return;
+            if (!ExitItemMarker.Controller.State) return;
+            if (!IsChallengePassedMarker.Controller.State) return;
+            SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
         }
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
@@ -93,15 +104,26 @@ namespace GameMaster
                 }
                 else if (Vector3.Distance(player.position, exitItem.position) < 5)
                 {
-                    TooltipMarker.Controller.Activate();
+                    if (IsChallengePassedMarker.Controller.State)
+                    {
+                        TooltipMarker.Controller.Activate();
+                        ExitItemMarker.Controller.Activate();
+                    }
                 }
                 else
                 {
                     TooltipMarker.Controller.Deactivate();
                     ChallengeItemMarker.Controller.Deactivate();
+                    ExitItemMarker.Controller.Deactivate();
                 }
                 yield return null;
             }
+        }
+
+        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
+        private IEnumerator CheckExitStatus()
+        {
+            yield return null;
         }
     }
 }
