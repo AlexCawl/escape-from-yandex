@@ -31,14 +31,14 @@ namespace FieldOfView
     
         private void FixedUpdate()
         {
-            var mouse = FowUtils.ReduceDimension(_camera.ScreenToWorldPoint(Input.mousePosition));
-            var character = FowUtils.ReduceDimension(transform.position);
-            _angle = FowUtils.GetAngleBetweenVectors(character, mouse);
+            var mouse = Utils.ReduceDimension(_camera.ScreenToWorldPoint(Input.mousePosition));
+            var character = Utils.ReduceDimension(transform.position);
+            _angle = Utils.GetAngleBetweenVectors(character, mouse);
         }
 
         private void AwareEnemies()
         {
-            var position = FowUtils.ReduceDimension(transform.position);
+            var position = Utils.ReduceDimension(transform.position);
             ProduceAngles(_angle, viewAngle)
                 .Select(data => Utils.CalculateEnemyTouchPoint(position, data.Angle,
                     data.IsInFieldOfView ? activeViewRadius : passiveViewRadius, obstacleMask, enemyMask))
@@ -51,7 +51,7 @@ namespace FieldOfView
         {
             var steps = Mathf.RoundToInt(Circle * Density);
             var stepSize = Circle / steps;
-            return FloatRange(0f, 360f, stepSize)
+            return Utils.FloatRange(0f, 360f, stepSize)
                 .Select(stepAngle => new AngleData(stepAngle, IsAngleInFov(directionOfViewAngle, viewAngle, stepAngle)))
                 .ToList();
         }
@@ -62,32 +62,6 @@ namespace FieldOfView
                 360 - Math.Abs(directionOfViewAngle - angle),
                 Math.Abs(directionOfViewAngle - angle)
             ) <= viewAngle / 2;
-        }
-    
-        private struct AngleData
-        {
-            public readonly float Angle;
-            public readonly bool IsInFieldOfView;
-
-            public AngleData(float angle, bool isInFieldOfView)
-            {
-                Angle = angle;
-                IsInFieldOfView = isInFieldOfView;
-            }
-        }
-    
-        private static IEnumerable<float> FloatRange(float min, float max, float step)
-        {
-            for (var i = 0; i < int.MaxValue; i++)
-            {
-                var value = min + step * i;
-                if (value >= max)
-                {
-                    break;
-                }
-
-                yield return value;
-            }
         }
     }
 }

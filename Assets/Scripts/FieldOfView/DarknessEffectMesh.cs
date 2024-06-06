@@ -42,7 +42,7 @@ namespace FieldOfView
         {
             var steps = Mathf.RoundToInt(Circle * _density);
             var stepSize = Circle / steps;
-            return FloatRange(0f, 360f, stepSize)
+            return Utils.FloatRange(0f, 360f, stepSize)
                 .Select(stepAngle => new AngleData(stepAngle, IsAngleInFov(directionOfViewAngle, viewAngle, stepAngle)))
                 .ToList();
         }
@@ -70,7 +70,7 @@ namespace FieldOfView
                         points[0] = Utils.CalculatePropTouchPoint(position, data.Angle, _minimumRadius, _obstacleMask);
                     }
 
-                    points[1] = FowUtils.ConstructRay(position, data.Angle, _darknessRadius);
+                    points[1] = Utils.ConstructRay(position, data.Angle, _darknessRadius);
                     return points;
                 }
             ).ToList();
@@ -93,32 +93,6 @@ namespace FieldOfView
                     triangles[i * 3 + 1] = (i + 1) % vertexCount;
                     triangles[i * 3 + 2] = (i + 2) % vertexCount;
                 }
-            }
-        }
-
-        private struct AngleData
-        {
-            public readonly float Angle;
-            public readonly bool IsInFieldOfView;
-
-            public AngleData(float angle, bool isInFieldOfView)
-            {
-                Angle = angle;
-                IsInFieldOfView = isInFieldOfView;
-            }
-        }
-
-        private static IEnumerable<float> FloatRange(float min, float max, float step)
-        {
-            for (var i = 0; i < int.MaxValue; i++)
-            {
-                var value = min + step * i;
-                if (value >= max)
-                {
-                    break;
-                }
-
-                yield return value;
             }
         }
     }
