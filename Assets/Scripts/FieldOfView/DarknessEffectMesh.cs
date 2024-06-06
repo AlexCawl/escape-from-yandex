@@ -63,11 +63,11 @@ namespace FieldOfView
                     var points = new Vector2[2];
                     if (data.IsInFieldOfView)
                     {
-                        points[0] = Utils.CalculateTouchPoint(position, data.Angle, _maximumRadius, _obstacleMask);
+                        points[0] = Utils.CalculatePropTouchPoint(position, data.Angle, _maximumRadius, _obstacleMask);
                     }
                     else
                     {
-                        points[0] = Utils.CalculateTouchPoint(position, data.Angle, _minimumRadius, _obstacleMask);
+                        points[0] = Utils.CalculatePropTouchPoint(position, data.Angle, _minimumRadius, _obstacleMask);
                     }
 
                     points[1] = FowUtils.ConstructRay(position, data.Angle, _darknessRadius);

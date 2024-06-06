@@ -23,7 +23,7 @@ namespace FieldOfView
 
     public static class Utils
     {
-        public static Vector2 CalculateTouchPoint(Vector2 from, float angle, float radius, LayerMask obstacleMask)
+        public static Vector2 CalculatePropTouchPoint(Vector2 from, float angle, float radius, LayerMask obstacleMask)
         {
             var dir = FowUtils.GetVectorFromAngle(angle);
             var hit = Physics2D.Raycast(from, dir, radius, obstacleMask.value);
@@ -34,6 +34,19 @@ namespace FieldOfView
 
             var boundPoint = FowUtils.ConstructRay(from, angle, radius);
             return boundPoint;
+        }
+        
+        public static GameObject CalculateEnemyTouchPoint(Vector2 from, float angle, float radius, LayerMask obstacleMask, LayerMask enemyMask)
+        {
+            var dir = FowUtils.GetVectorFromAngle(angle);
+            var propHit = Physics2D.Raycast(from, dir, radius, obstacleMask.value);
+            var enemyHit = Physics2D.Raycast(from, dir, radius, enemyMask.value);
+            if (enemyHit.collider is null) return null;
+            if (propHit.collider is not null)
+            {
+                return enemyHit.distance < propHit.distance ? enemyHit.collider.gameObject : null;
+            }
+            return enemyHit.collider.gameObject;
         }
     }
 }

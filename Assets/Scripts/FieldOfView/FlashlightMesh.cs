@@ -36,7 +36,7 @@ namespace FieldOfView
             for (var i = 0; i <= steps; i++)
             {
                 var stepAngle = directionOfViewAngle + viewAngle / 2 - stepSize * i;
-                var touchPoint = Utils.CalculateTouchPoint(position, stepAngle, _radius, _obstacleMask);
+                var touchPoint = Utils.CalculatePropTouchPoint(position, stepAngle, _radius, _obstacleMask);
                 points.Add(touchPoint);
             }
 
