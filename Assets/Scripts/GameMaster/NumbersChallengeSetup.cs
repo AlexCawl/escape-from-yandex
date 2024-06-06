@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -41,16 +42,16 @@ namespace GameMaster
                 button.image.color = Color.green;
                 if (_counter == buttons.Count)
                 {
-                    StartCoroutine(AssumeResult(true));
+                    AssumeResult(true);
                 }
             }
             else
             {
-                StartCoroutine(AssumeResult(false));
+                AssumeResult(false);
             }
         }
 
-        private IEnumerator AssumeResult(bool win)
+        private void AssumeResult(bool win)
         {
             if (!win)
             {
@@ -60,9 +61,7 @@ namespace GameMaster
                     button.interactable = false;
                 });
             }
-
-            yield return new WaitForSeconds(2);
-            Restart();
+            SceneManager.UnloadSceneAsync(gameObject.scene);
         }
     }
 }

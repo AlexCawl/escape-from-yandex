@@ -9,6 +9,7 @@ namespace GameMaster
     public class UiSetup : MonoBehaviour
     {
         public Image healthBar;
+        public GameObject tooltipBox;
         private CharacterHealthHolder _playerHealth;
 
         private void Awake()
@@ -19,6 +20,7 @@ namespace GameMaster
         private void Start()
         {
             StartCoroutine(CheckHealth());
+            StartCoroutine(CheckTooltipBox());
         }
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
@@ -37,6 +39,16 @@ namespace GameMaster
                     health = 0;
                 }
                 healthBar.fillAmount = health;
+                yield return null;
+            }
+        }
+
+        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
+        private IEnumerator CheckTooltipBox()
+        {
+            while (true)
+            {
+                tooltipBox.SetActive(TooltipMarker.Controller.State);
                 yield return null;
             }
         }

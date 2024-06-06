@@ -8,7 +8,10 @@ namespace GameMaster
 {
     public class LevelSetup : MonoBehaviour
     {
-        private bool _isPauseAlreadyActive;
+        public Transform player;
+        public Transform challengeItem;
+        public Transform exitItem;
+        private bool _isChallengeAccepted;
 
         private void Start()
         {
@@ -17,6 +20,14 @@ namespace GameMaster
             StartCoroutine(OpenPauseMenu());
             StartCoroutine(ClosePauseMenu());
             StartCoroutine(CheckHealthStatus());
+            StartCoroutine(CheckChallengeItemDistance());
+        }
+
+        private void Update()
+        {
+            var pressed = Input.GetKeyDown("p");
+            if (!pressed) return;
+            PauseManager.Controller.Toggle();
         }
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
@@ -25,7 +36,7 @@ namespace GameMaster
             while (true)
             {
                 yield return new WaitUntil(PauseManager.Controller.ShouldBeOpened);
-                PauseManager.Controller.Open();
+                PauseManager.Controller.SubmitOpen();
                 SceneManager.LoadSceneAsync("Scenes/PauseMenu", LoadSceneMode.Additive);
             }
         }
@@ -36,11 +47,11 @@ namespace GameMaster
             while (true)
             {
                 yield return new WaitUntil(PauseManager.Controller.ShouldBeClosed);
-                PauseManager.Controller.Close();
+                PauseManager.Controller.SubmitClose();
                 SceneManager.UnloadSceneAsync("Scenes/PauseMenu");
             }
         }
-        
+
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
         private static IEnumerator CheckHealthStatus()
         {
@@ -50,15 +61,30 @@ namespace GameMaster
                 {
                     SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
                 }
+
                 yield return null;
             }
         }
 
-        private void Update()
+        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
+        private IEnumerator CheckChallengeItemDistance()
         {
-            var pressed = Input.GetKeyDown("p");
-            if (!pressed) return;
-            PauseManager.Controller.Toggle();
+            while (true)
+            {
+                if (Vector3.Distance(player.position, challengeItem.position) < 5)
+                {
+                    TooltipMarker.Controller.Activate();
+                }
+                else if (Vector3.Distance(player.position, exitItem.position) < 5)
+                {
+                    TooltipMarker.Controller.Activate();
+                }
+                else
+                {
+                    TooltipMarker.Controller.Deactivate();
+                }
+                yield return null;
+            }
         }
     }
 }
