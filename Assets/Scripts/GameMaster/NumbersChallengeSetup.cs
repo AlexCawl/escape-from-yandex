@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -33,6 +32,7 @@ namespace GameMaster
 
         public void ButtonPressAction(Button button)
         {
+            Debug.Log(_counter);
             var buttonNumber = int.Parse(button.GetComponentInChildren<Text>().text);
             if (buttonNumber == _counter + 1)
             {
@@ -41,16 +41,16 @@ namespace GameMaster
                 button.image.color = Color.green;
                 if (_counter == buttons.Count)
                 {
-                    StartCoroutine(AssumeResult(true));
+                    AssumeResult(true);
                 }
             }
             else
             {
-                StartCoroutine(AssumeResult(false));
+                AssumeResult(false);
             }
         }
 
-        private IEnumerator AssumeResult(bool win)
+        private void AssumeResult(bool win)
         {
             if (!win)
             {
@@ -60,9 +60,7 @@ namespace GameMaster
                     button.interactable = false;
                 });
             }
-
-            yield return new WaitForSeconds(2);
-            Restart();
+            ChallengeManager.Controller.RequestClose();
         }
     }
 }
