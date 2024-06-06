@@ -43,17 +43,17 @@ namespace FieldOfView
 
         private void FixedUpdate()
         {
-            var mouse = FowUtils.ReduceDimension(_camera.ScreenToWorldPoint(Input.mousePosition));
-            var character = FowUtils.ReduceDimension(transform.position);
-            _angle = FowUtils.GetAngleBetweenVectors(character, mouse);
+            var mouse = Utils.ReduceDimension(_camera.ScreenToWorldPoint(Input.mousePosition));
+            var character = Utils.ReduceDimension(transform.position);
+            _angle = Utils.GetAngleBetweenVectors(character, mouse);
         }
 
         private void DrawFieldOfView()
         {
-            var position = FowUtils.ReduceDimension(transform.position);
+            var position = Utils.ReduceDimension(transform.position);
             var meshData = _meshProducer.Render(_angle, viewAngle, position);
             var vertices = meshData.Vertices
-                .Select(vector2 => FowUtils.IncreaseDimension(vector2, transform.position.z))
+                .Select(vector2 => Utils.IncreaseDimension(vector2, transform.position.z))
                 .ToArray();
             var triangles = meshData.Triangles;
             _viewMesh.Clear();
