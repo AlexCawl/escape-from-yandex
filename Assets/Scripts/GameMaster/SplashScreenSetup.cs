@@ -7,15 +7,10 @@ namespace GameMaster
     {
         public void SetupPlayButton()
         {
-            Debug.Log("TODO - PLAY");
+            SceneManager.LoadSceneAsync("Scenes/LevelScene");
         }
 
         public void SetupTutorialButton()
-        {
-            Debug.Log("TODO - TUTORIAL");
-        }
-
-        public void SetupDebugButton()
         {
             SceneManager.LoadSceneAsync("Scenes/SampleScene");
         }

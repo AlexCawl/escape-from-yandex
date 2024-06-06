@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
+using GameCharacter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,9 +12,11 @@ namespace GameMaster
 
         private void Start()
         {
+            CharacterHealthHolder.GetInstance().Set(CharacterHealthHolder.GetMax);
+            SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
             StartCoroutine(OpenPauseMenu());
             StartCoroutine(ClosePauseMenu());
-            SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
+            StartCoroutine(CheckHealthStatus());
         }
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
@@ -35,6 +38,19 @@ namespace GameMaster
                 yield return new WaitUntil(PauseManager.Controller.ShouldBeClosed);
                 PauseManager.Controller.Close();
                 SceneManager.UnloadSceneAsync("Scenes/PauseMenu");
+            }
+        }
+        
+        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
+        private static IEnumerator CheckHealthStatus()
+        {
+            while (true)
+            {
+                if (CharacterHealthHolder.GetInstance().Get <= 0)
+                {
+                    SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
+                }
+                yield return null;
             }
         }
 
