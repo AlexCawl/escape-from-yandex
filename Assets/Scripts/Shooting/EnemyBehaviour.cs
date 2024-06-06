@@ -14,6 +14,8 @@ public class EnemyBehaviour : MonoBehaviour
     private Rigidbody2D _enemyBody;
     private SpriteRenderer _enemyRenderer;
     private Transform _player;
+    private int _health = 3;
+    private int _bulletLayer;
     private bool _isInChaseMode;
     private bool _isVisible;
     private CharacterHealthHolder _playerHealth;
@@ -25,6 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void Start()
     {
+        _bulletLayer = LayerMask.NameToLayer("Bullet");
         _enemyBody = GetComponent<Rigidbody2D>();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _enemyRenderer = GetComponent<SpriteRenderer>();
@@ -87,5 +90,27 @@ public class EnemyBehaviour : MonoBehaviour
             }
             yield return new WaitForSeconds(damageCooldown);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == _bulletLayer)
+        {
+            TakeDamage(1);
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void TakeDamage(int damage)
+    {
+        _health -= damage;
+        if (_health <= 0)
+            Destroy(gameObject);
+    }
+
+    public void Die()
+    {
+        // Логика смерти врага
+        Debug.Log(gameObject.name + " died!");
     }
 }
