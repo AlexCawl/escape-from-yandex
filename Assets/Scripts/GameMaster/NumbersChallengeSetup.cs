@@ -52,6 +52,7 @@ namespace GameMaster
 
         private void AssumeResult(bool win)
         {
+            IsChallengePassedMarker.Controller.Set(win);
             if (!win)
             {
                 buttons.ForEach(button =>
@@ -60,7 +61,7 @@ namespace GameMaster
                     button.interactable = false;
                 });
             }
-            ChallengeManager.Controller.RequestClose();
+            ChallengeManager.Controller.Toggle();
         }
     }
 }

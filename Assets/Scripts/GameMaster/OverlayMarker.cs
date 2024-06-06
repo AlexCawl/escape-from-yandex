@@ -13,6 +13,11 @@ namespace GameMaster
         {
             _state = false;
         }
+        
+        public void Set(bool state)
+        {
+            _state = state;
+        }
 
         public bool State => _state;
     }
