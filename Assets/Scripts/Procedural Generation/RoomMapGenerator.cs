@@ -9,7 +9,7 @@ public class RoomMapGenerator : AbstractMapGenerator
 {
     private MapData _mapData;
     [SerializeField] private RoomDataExtractor roomDataExtractor;
-    [FormerlySerializedAs("propPlacementManager")] [SerializeField] private EnemyAndPropPlacementManager enemyAndPropPlacementManager;
+    [SerializeField] private EnemyAndPropPlacementManager enemyAndPropPlacementManager;
     [SerializeField] private int minRoomSize = 4;
     [SerializeField] private int maxRoomSize = 4;
     [SerializeField] private int mapWidth = 20, mapHeight = 20;
@@ -63,10 +63,11 @@ public class RoomMapGenerator : AbstractMapGenerator
         tilemapVisualizer.PaintFloorTiles(floor);
         WallGenerator.CreateWalls(expandedFloor, specialWallPositions, tilemapVisualizer);
         tilemapVisualizer.AddWallColliders();
+        tilemapVisualizer.DefineLayers();
         
         roomDataExtractor.ProcessRooms(_mapData, tilemapVisualizer);
         DefineSpecialRooms();
-        enemyAndPropPlacementManager.ProcessRooms(_mapData);
+        enemyAndPropPlacementManager.ProcessRooms(_mapData, furnitureContainer, enemyContainer);
         
     }
 

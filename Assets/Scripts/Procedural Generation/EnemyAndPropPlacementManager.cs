@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 // ReSharper disable All
@@ -10,8 +11,8 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
 {
     private MapData _mapData;
 
-    [SerializeField] private GameObject propContainer;
-    [SerializeField] private GameObject enemyContainer;
+    private GameObject _furnitureContainer;
+    private GameObject _enemyContainer;
 
     [SerializeField] private List<Prop> propsToPlace;
 
@@ -22,9 +23,11 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject trackerPrefab;
     
-    public void ProcessRooms(MapData mapData)
+    public void ProcessRooms(MapData mapData, GameObject furnitureContainer, GameObject enemyContainer)
     {
         _mapData = mapData;
+        _furnitureContainer = furnitureContainer;
+        _enemyContainer = enemyContainer;
         if (_mapData == null)
             return;
         
@@ -210,7 +213,8 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
         
         // Создаем объект-мебель
         GameObject prop = Instantiate(propPrefab);
-        prop.transform.SetParent(propContainer.transform);
+        prop.transform.SetParent(_furnitureContainer.transform);
+        prop.layer = LayerMask.NameToLayer("Obstacle");
 
         // НАПОМИНАНИЕ: СОТРИ ТЫ УЖЕ ЭТИ ЛОГИ ВСЕ У ТЕБЯ НОРМАЛЬНО РАБОТАЕТ ХОРОШ ССАТЬ
         // if (prop == null)
@@ -246,8 +250,9 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
         //Debug.Log($"Prop sprite local coordinates after adjustment: {propSpriteRenderer.transform.localPosition}");
         
         // Проверка слоев и порядка отрисовки
-        propSpriteRenderer.sortingLayerName = "Ground"; // Убедитесь, что слой существует
-        propSpriteRenderer.sortingOrder = 1;
+        propSpriteRenderer.sortingLayerName = "Ground objects"; // Убедитесь, что слой существует
+        propSpriteRenderer.sortingOrder = 0;
+        
         
 
         // Записываем позиции объекта в сет занятых тайлов
@@ -272,8 +277,12 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
         if (Random.Range(0f, 1f) < enemySpawnChance)
         {
             GameObject enemy = Instantiate(enemyPrefab);
-            enemy.transform.SetParent(enemyContainer.transform);
+            enemy.transform.SetParent(_enemyContainer.transform);
             enemy.transform.position = (Vector2)room.RoomCenterPos + new Vector2(0.5f, 0);
+            SpriteRenderer spriteRenderer = enemy.GetComponent<SpriteRenderer>();
+            spriteRenderer.sortingLayerName = "Enemy";
+            spriteRenderer.sortingOrder = 0;
+            enemy.layer = LayerMask.NameToLayer("Enemy");
         }
         
     }
@@ -287,14 +296,14 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
     private void PlaceTracker()
     {
         GameObject tracker = Instantiate(trackerPrefab);
-        tracker.transform.SetParent(propContainer.transform);
+        tracker.transform.SetParent(_furnitureContainer.transform);
     }
 
     private void PlaceDoor(Room room, Prop propToPlace)
     {
         // Создаем объект-мебель
         GameObject prop = Instantiate(propPrefab);
-        prop.transform.SetParent(propContainer.transform);
+        prop.transform.SetParent(_furnitureContainer.transform);
         
         // Настраиваем рендер спрайтов для отрисовки
         SpriteRenderer propSpriteRenderer = prop.GetComponentInChildren<SpriteRenderer>();
@@ -320,7 +329,7 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
         //Debug.Log($"Prop sprite local coordinates after adjustment: {propSpriteRenderer.transform.localPosition}");
         
         // Проверка слоев и порядка отрисовки
-        propSpriteRenderer.sortingLayerName = "Ground"; // Убедитесь, что слой существует
-        propSpriteRenderer.sortingOrder = 1;
+        propSpriteRenderer.sortingLayerName = "Ground objects"; // Убедитесь, что слой существует
+        propSpriteRenderer.sortingOrder = 0;
     }
 }
