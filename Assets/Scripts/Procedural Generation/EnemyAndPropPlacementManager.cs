@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 // ReSharper disable All
 
-public class PropPlacementManager : MonoBehaviour
+public class EnemyAndPropPlacementManager : MonoBehaviour
 {
     private MapData _mapData;
 
     [SerializeField] private GameObject propContainer;
+    [SerializeField] private GameObject enemyContainer;
 
     [SerializeField] private List<Prop> propsToPlace;
 
     [SerializeField, Range(0, 1)] private float cornerPropPlacementChance = 0.7f;
+    [SerializeField, Range(0, 1)] private float enemySpawnChance = 0.5f;
 
     [SerializeField] private GameObject propPrefab;
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject trackerPrefab;
     
     public void ProcessRooms(MapData mapData)
     {
@@ -70,7 +76,12 @@ public class PropPlacementManager : MonoBehaviour
                 .OrderByDescending(x => x.PropSize.x * x.PropSize.y)
                 .ToList();
             PlaceProps(room, innerProps, room.InnerTiles);
+            
+            PlaceEnemy(room);
         }
+        
+        PlacePlayer(_mapData.startRooom);
+        PlaceTracker();
 
         List<Prop> techoProp = propsToPlace.Where(x => x.TechnoRoom).ToList();
         PlaceProps(_mapData.techRoom, techoProp, _mapData.techRoom.NearWallTilesUp);
@@ -254,6 +265,29 @@ public class PropPlacementManager : MonoBehaviour
             }
         }
         room.PropObjectReferences.Add(prop);
+    }
+
+    private void PlaceEnemy(Room room)
+    {
+        if (Random.Range(0f, 1f) < enemySpawnChance)
+        {
+            GameObject enemy = Instantiate(enemyPrefab);
+            enemy.transform.SetParent(propContainer.transform);
+            enemy.transform.position = (Vector2)room.RoomCenterPos + new Vector2(0.5f, 0);
+        }
+        
+    }
+
+    private void PlacePlayer(Room room)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = (Vector2)room.RoomCenterPos + new Vector2(0.5f, 0);
+    }
+
+    private void PlaceTracker()
+    {
+        GameObject tracker = Instantiate(trackerPrefab);
+        tracker.transform.SetParent(propContainer.transform);
     }
 
     private void PlaceDoor(Room room, Prop propToPlace)
