@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -34,6 +32,7 @@ namespace GameMaster
 
         public void ButtonPressAction(Button button)
         {
+            Debug.Log(_counter);
             var buttonNumber = int.Parse(button.GetComponentInChildren<Text>().text);
             if (buttonNumber == _counter + 1)
             {
@@ -61,7 +60,7 @@ namespace GameMaster
                     button.interactable = false;
                 });
             }
-            SceneManager.UnloadSceneAsync(gameObject.scene);
+            ChallengeManager.Controller.RequestClose();
         }
     }
 }
