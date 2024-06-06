@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -12,7 +14,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - Bullet
   - 
   - 
   - 
@@ -44,7 +46,7 @@ TagManager:
   - name: Ground objects
     uniqueID: 3435067207
     locked: 0
-  - name: Ground Decor
+  - name: Enemy
     uniqueID: 1575394079
     locked: 0
   - name: Player

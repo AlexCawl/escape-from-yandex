@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 #if UNITY_EDITOR
 #endif
 
@@ -6,7 +7,8 @@ public abstract class AbstractMapGenerator : MonoBehaviour
 {
     [SerializeField] protected TilemapVisualizer tilemapVisualizer;
     [SerializeField] protected Vector2Int startPosition = Vector2Int.zero;
-    [SerializeField] protected GameObject propsContainer;
+    [SerializeField] protected GameObject furnitureContainer;
+    [SerializeField] protected GameObject enemyContainer;
 
     public void GenerateMap()
     {
@@ -16,10 +18,19 @@ public abstract class AbstractMapGenerator : MonoBehaviour
     
     public void DeleteAllProps()
     {
-        foreach (Transform child in propsContainer.transform)
+        foreach (Transform furniture in furnitureContainer.transform)
         {
             #if UNITY_EDITOR
-            DestroyImmediate(child.gameObject);
+            DestroyImmediate(furniture.gameObject);
+            #else
+            Destroy(child.gameObject);
+            #endif
+        }
+
+        foreach (Transform enemy in enemyContainer.transform)
+        {
+            #if UNITY_EDITOR
+            DestroyImmediate(enemy.gameObject);
             #else
             Destroy(child.gameObject);
             #endif

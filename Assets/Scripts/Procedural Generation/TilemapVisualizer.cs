@@ -112,5 +112,23 @@ public class TilemapVisualizer : MonoBehaviour
     {
         wallTileMap.gameObject.AddComponent<TilemapCollider2D>();
     }
+
+    public void DefineLayers()
+    {
+        TilemapRenderer floorRenderer = floorTilemap.GetComponent<TilemapRenderer>();
+        floorRenderer.sortingLayerName = "Ground";
+        floorRenderer.sortingOrder = 0;
+
+        TilemapRenderer wallsRenderer = wallTileMap.GetComponent<TilemapRenderer>();
+        wallsRenderer.sortingLayerName = "Ground";
+        wallsRenderer.sortingOrder = 0;
+
+        TilemapRenderer topWallRenderer = topWallTilemap.GetComponent<TilemapRenderer>();
+        topWallRenderer.sortingLayerName = "Ground";
+        topWallRenderer.sortingOrder = 0;
+
+        topWallTilemap.gameObject.layer = LayerMask.NameToLayer("Obstacle");
+    }
+    
     
 }

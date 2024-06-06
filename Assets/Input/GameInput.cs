@@ -44,6 +44,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire"",
+                    ""type"": ""Button"",
+                    ""id"": ""84e83975-a0e0-4346-afb4-a540dd894b02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -167,6 +176,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Flashlight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""985192e4-a97c-421c-861b-e41ded5f7930"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -177,6 +197,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Flashlight = m_Player.FindAction("Flashlight", throwIfNotFound: true);
+        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,12 +261,14 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Flashlight;
+    private readonly InputAction m_Player_Fire;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
         public PlayerActions(@GameInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Flashlight => m_Wrapper.m_Player_Flashlight;
+        public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -261,6 +284,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Flashlight.started += instance.OnFlashlight;
             @Flashlight.performed += instance.OnFlashlight;
             @Flashlight.canceled += instance.OnFlashlight;
+            @Fire.started += instance.OnFire;
+            @Fire.performed += instance.OnFire;
+            @Fire.canceled += instance.OnFire;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -271,6 +297,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Flashlight.started -= instance.OnFlashlight;
             @Flashlight.performed -= instance.OnFlashlight;
             @Flashlight.canceled -= instance.OnFlashlight;
+            @Fire.started -= instance.OnFire;
+            @Fire.performed -= instance.OnFire;
+            @Fire.canceled -= instance.OnFire;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -292,5 +321,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnFlashlight(InputAction.CallbackContext context);
+        void OnFire(InputAction.CallbackContext context);
     }
 }

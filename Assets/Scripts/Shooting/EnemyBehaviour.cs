@@ -7,9 +7,12 @@ public class EnemyBehaviour : MonoBehaviour
     
     private Rigidbody2D _rb;
     private Transform _target;
+    private int _health = 3;
+    private int _bulletLayer;
 
     public void Start()
     {
+        _bulletLayer = LayerMask.NameToLayer("Bullet");
         _rb = GetComponent<Rigidbody2D>();
         _target = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -27,5 +30,27 @@ public class EnemyBehaviour : MonoBehaviour
         {
             _rb.velocity = Vector2.zero;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == _bulletLayer)
+        {
+            TakeDamage(1);
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void TakeDamage(int damage)
+    {
+        _health -= damage;
+        if (_health <= 0)
+            Destroy(gameObject);
+    }
+
+    public void Die()
+    {
+        // Логика смерти врага
+        Debug.Log(gameObject.name + " died!");
     }
 }
