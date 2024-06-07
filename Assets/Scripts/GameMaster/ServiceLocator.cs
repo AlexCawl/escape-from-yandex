@@ -11,6 +11,8 @@ namespace GameMaster
         
         private ServiceLocator()
         {
+            var miniGamePassedState = new State();
+            _data.Add(new Tuple<Type, string>(typeof(State), "miniGamePassedState"), () => miniGamePassedState);
         }
 
         private readonly Dictionary<Tuple<Type, string>, Func<object>> _data = new()

@@ -11,10 +11,12 @@ namespace GameMaster
         public Transform player;
         public Transform challengeItem;
         public Transform exitItem;
+        
+        private State _miniGameState;
 
         private void Start()
         {
-            IsChallengePassedMarker.Controller.Set(false);
+            _miniGameState = ServiceLocator.Get.Locate<State>("miniGamePassedState");
             CharacterHealthHolder.GetInstance().Set(CharacterHealthHolder.GetMax);
             SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
             StartCoroutine(OpenScene(PauseManager.Controller, "Scenes/PauseMenu"));
@@ -47,12 +49,12 @@ namespace GameMaster
             ChallengeManager.Controller.Toggle();
         }
         
-        private static void HandleExitClick()
+        private void HandleExitClick()
         {
             var pressed = Input.GetKeyDown("e");
             if (!pressed) return;
             if (!ExitItemMarker.Controller.Get) return;
-            if (!IsChallengePassedMarker.Controller.Get) return;
+            if (!_miniGameState.Get) return;
             SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
         }
 
@@ -104,7 +106,7 @@ namespace GameMaster
                 }
                 else if (Vector3.Distance(player.position, exitItem.position) < 5)
                 {
-                    if (IsChallengePassedMarker.Controller.Get)
+                    if (_miniGameState.Get)
                     {
                         TooltipMarker.Controller.Activate();
                         ExitItemMarker.Controller.Activate();

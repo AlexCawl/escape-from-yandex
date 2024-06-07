@@ -11,15 +11,18 @@ namespace GameMaster
     {
         public List<Button> buttons;
         public Text label;
+        
         private List<Button> _shuffledButtons;
         private int _counter;
+        private State _miniGameState;
 
         private void Start()
         {
-            Restart();
+            _miniGameState = ServiceLocator.Get.Locate<State>("miniGamePassedState");
+            SetupGame();
         }
 
-        private void Restart()
+        private void SetupGame()
         {
             _counter = 0;
             _shuffledButtons = buttons.OrderBy(_ => Random.Range(1, 100)).ToList();
@@ -70,7 +73,7 @@ namespace GameMaster
             label.text = win ? "Success!" : "Wrong Order!";
             label.color = win ? Color.green : Color.red;
             yield return new WaitForSeconds(3f);
-            IsChallengePassedMarker.Controller.Set(win);
+            _miniGameState.Set(win);
             ChallengeManager.Controller.Toggle();
         }
     }
