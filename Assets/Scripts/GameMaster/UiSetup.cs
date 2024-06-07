@@ -10,15 +10,14 @@ namespace GameMaster
     {
         public Image healthBar;
         public GameObject tooltipBox;
+        
         private CharacterHealthHolder _playerHealth;
-
-        private void Awake()
-        {
-            _playerHealth = CharacterHealthHolder.GetInstance();
-        }
+        private State _tooltipVisibilityState;
 
         private void Start()
         {
+            _tooltipVisibilityState = ServiceLocator.Get.Locate<State>("tooltipVisibilityState");
+            _playerHealth = CharacterHealthHolder.GetInstance();
             StartCoroutine(CheckHealth());
             StartCoroutine(CheckTooltipBox());
         }
@@ -48,7 +47,7 @@ namespace GameMaster
         {
             while (true)
             {
-                tooltipBox.SetActive(TooltipMarker.Controller.Get);
+                tooltipBox.SetActive(_tooltipVisibilityState.Get);
                 yield return null;
             }
         }

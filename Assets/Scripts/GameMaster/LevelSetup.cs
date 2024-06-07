@@ -15,12 +15,14 @@ namespace GameMaster
         private State _miniGameState;
         private IntentState _miniGameOverlayState;
         private IntentState _pauseOverlayState;
+        private State _tooltipVisibilityState;
 
         private void Start()
         {
             _miniGameState = ServiceLocator.Get.Locate<State>("miniGamePassedState");
             _miniGameOverlayState = ServiceLocator.Get.Locate<IntentState>("miniGameOverlayState");
             _pauseOverlayState = ServiceLocator.Get.Locate<IntentState>("pauseOverlayState");
+            _tooltipVisibilityState = ServiceLocator.Get.Locate<State>("tooltipVisibilityState");
             CharacterHealthHolder.GetInstance().Set(CharacterHealthHolder.GetMax);
             SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
             StartCoroutine(OpenScene(_pauseOverlayState, "Scenes/PauseMenu"));
@@ -28,13 +30,12 @@ namespace GameMaster
             StartCoroutine(OpenScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
             StartCoroutine(CloseScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
             StartCoroutine(CheckHealthStatus());
-            StartCoroutine(CheckChallengeItemDistance());
+            StartCoroutine(CheckExitDistance());
         }
 
         private void Update()
         {
             HandlePauseMenuClick();
-            HandleChallengeMenuClick();
             HandleExitClick();
         }
 
@@ -43,14 +44,6 @@ namespace GameMaster
             var pressed = Input.GetKeyDown("p");
             if (!pressed) return;
             _pauseOverlayState.Toggle();
-        }
-        
-        private void HandleChallengeMenuClick()
-        {
-            var pressed = Input.GetKeyDown("e");
-            if (!pressed) return;
-            if (!ChallengeItemMarker.Controller.Get) return;
-            _miniGameOverlayState.Toggle();
         }
         
         private void HandleExitClick()
@@ -99,27 +92,21 @@ namespace GameMaster
         }
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
-        private IEnumerator CheckChallengeItemDistance()
+        private IEnumerator CheckExitDistance()
         {
             while (true)
             {
-                if (Vector3.Distance(player.position, challengeItem.position) < 5)
-                {
-                    TooltipMarker.Controller.Activate();
-                    ChallengeItemMarker.Controller.Activate();
-                }
-                else if (Vector3.Distance(player.position, exitItem.position) < 5)
+                if (Vector3.Distance(player.position, exitItem.position) < 5)
                 {
                     if (_miniGameState.Get)
                     {
-                        TooltipMarker.Controller.Activate();
+                        _tooltipVisibilityState.Activate();
                         ExitItemMarker.Controller.Activate();
                     }
                 }
                 else
                 {
-                    TooltipMarker.Controller.Deactivate();
-                    ChallengeItemMarker.Controller.Deactivate();
+                    _tooltipVisibilityState.Deactivate();
                     ExitItemMarker.Controller.Deactivate();
                 }
                 yield return null;
