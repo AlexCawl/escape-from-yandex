@@ -4,7 +4,7 @@ using GameCharacter;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace GameMaster
+namespace GameMaster.Setup
 {
     public class UiSetup : MonoBehaviour
     {

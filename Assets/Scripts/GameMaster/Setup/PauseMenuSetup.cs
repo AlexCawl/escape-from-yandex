@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace GameMaster
+namespace GameMaster.Setup
 {
     public class PauseMenuSetup : MonoBehaviour
     {

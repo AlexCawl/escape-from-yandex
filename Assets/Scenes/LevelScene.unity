@@ -51980,9 +51980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c4209e6d61e00f3bf7218163404268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 736493724}
-  challengeItem: {fileID: 89809011}
-  exitItem: {fileID: 1126848216}
 --- !u!4 &554850346
 Transform:
   m_ObjectHideFlags: 0

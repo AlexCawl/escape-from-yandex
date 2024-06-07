@@ -4,14 +4,10 @@ using GameCharacter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace GameMaster
+namespace GameMaster.Setup
 {
     public class LevelSetup : MonoBehaviour
     {
-        public Transform player;
-        public Transform challengeItem;
-        public Transform exitItem;
-        
         private State _exitOpenState;
         private IntentState _miniGameOverlayState;
         private IntentState _pauseOverlayState;

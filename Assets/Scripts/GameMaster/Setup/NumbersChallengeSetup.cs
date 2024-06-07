@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-namespace GameMaster
+namespace GameMaster.Setup
 {
     public class NumbersChallengeManager : MonoBehaviour
     {
