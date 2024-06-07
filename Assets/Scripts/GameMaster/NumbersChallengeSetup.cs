@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace GameMaster
     public class NumbersChallengeManager : MonoBehaviour
     {
         public List<Button> buttons;
+        public Text label;
         private List<Button> _shuffledButtons;
         private int _counter;
 
@@ -52,7 +54,6 @@ namespace GameMaster
 
         private void AssumeResult(bool win)
         {
-            IsChallengePassedMarker.Controller.Set(win);
             if (!win)
             {
                 buttons.ForEach(button =>
@@ -61,6 +62,15 @@ namespace GameMaster
                     button.interactable = false;
                 });
             }
+            StartCoroutine(HandleExit(win));
+        }
+
+        private IEnumerator HandleExit(bool win)
+        {
+            label.text = win ? "Success!" : "Wrong Order!";
+            label.color = win ? Color.green : Color.red;
+            yield return new WaitForSeconds(3f);
+            IsChallengePassedMarker.Controller.Set(win);
             ChallengeManager.Controller.Toggle();
         }
     }
