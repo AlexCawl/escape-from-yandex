@@ -14,15 +14,17 @@ namespace GameMaster
         
         private State _miniGameState;
         private IntentState _miniGameOverlayState;
+        private IntentState _pauseOverlayState;
 
         private void Start()
         {
             _miniGameState = ServiceLocator.Get.Locate<State>("miniGamePassedState");
             _miniGameOverlayState = ServiceLocator.Get.Locate<IntentState>("miniGameOverlayState");
+            _pauseOverlayState = ServiceLocator.Get.Locate<IntentState>("pauseOverlayState");
             CharacterHealthHolder.GetInstance().Set(CharacterHealthHolder.GetMax);
             SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
-            StartCoroutine(OpenScene(PauseManager.Controller, "Scenes/PauseMenu"));
-            StartCoroutine(CloseScene(PauseManager.Controller, "Scenes/PauseMenu"));
+            StartCoroutine(OpenScene(_pauseOverlayState, "Scenes/PauseMenu"));
+            StartCoroutine(CloseScene(_pauseOverlayState, "Scenes/PauseMenu"));
             StartCoroutine(OpenScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
             StartCoroutine(CloseScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
             StartCoroutine(CheckHealthStatus());
@@ -36,11 +38,11 @@ namespace GameMaster
             HandleExitClick();
         }
 
-        private static void HandlePauseMenuClick()
+        private void HandlePauseMenuClick()
         {
             var pressed = Input.GetKeyDown("p");
             if (!pressed) return;
-            PauseManager.Controller.Toggle();
+            _pauseOverlayState.Toggle();
         }
         
         private void HandleChallengeMenuClick()
