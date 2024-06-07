@@ -57338,6 +57338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1126848216}
   - component: {fileID: 1126848217}
+  - component: {fileID: 1126848218}
   m_Layer: 0
   m_Name: PropPrefab(Clone)
   m_TagString: Untagged
@@ -57412,6 +57413,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1126848218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126848215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df2bf9f28ec4ff45a42a39ffa561530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 2
+  player: {fileID: 736493724}
 --- !u!1 &1130052288
 GameObject:
   m_ObjectHideFlags: 0

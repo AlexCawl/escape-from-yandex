@@ -15,10 +15,12 @@ namespace GameMaster
             var miniGameOverlayState = new IntentState();
             var pauseOverlayState = new IntentState();
             var tooltipVisibilityState = new State();
+            var exitOpenState = new State();
             _data.Add(new Tuple<Type, string>(typeof(State), "miniGamePassedState"), () => miniGamePassedState);
             _data.Add(new Tuple<Type, string>(typeof(IntentState), "miniGameOverlayState"), () => miniGameOverlayState);
             _data.Add(new Tuple<Type, string>(typeof(IntentState), "pauseOverlayState"), () => pauseOverlayState);
             _data.Add(new Tuple<Type, string>(typeof(State), "tooltipVisibilityState"), () => tooltipVisibilityState);
+            _data.Add(new Tuple<Type, string>(typeof(State), "exitOpenState"), () => exitOpenState);
         }
 
         private readonly Dictionary<Tuple<Type, string>, Func<object>> _data = new()

@@ -48,6 +48,7 @@ namespace GameMaster
             while (true)
             {
                 tooltipBox.SetActive(_tooltipVisibilityState.Get);
+                _tooltipVisibilityState.Deactivate();
                 yield return null;
             }
         }
