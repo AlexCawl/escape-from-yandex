@@ -12,7 +12,9 @@ namespace GameMaster
         private ServiceLocator()
         {
             var miniGamePassedState = new State();
+            var miniGameOverlayState = new IntentState();
             _data.Add(new Tuple<Type, string>(typeof(State), "miniGamePassedState"), () => miniGamePassedState);
+            _data.Add(new Tuple<Type, string>(typeof(IntentState), "miniGameOverlayState"), () => miniGameOverlayState);
         }
 
         private readonly Dictionary<Tuple<Type, string>, Func<object>> _data = new()

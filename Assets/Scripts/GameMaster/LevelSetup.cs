@@ -13,16 +13,18 @@ namespace GameMaster
         public Transform exitItem;
         
         private State _miniGameState;
+        private IntentState _miniGameOverlayState;
 
         private void Start()
         {
             _miniGameState = ServiceLocator.Get.Locate<State>("miniGamePassedState");
+            _miniGameOverlayState = ServiceLocator.Get.Locate<IntentState>("miniGameOverlayState");
             CharacterHealthHolder.GetInstance().Set(CharacterHealthHolder.GetMax);
             SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
             StartCoroutine(OpenScene(PauseManager.Controller, "Scenes/PauseMenu"));
             StartCoroutine(CloseScene(PauseManager.Controller, "Scenes/PauseMenu"));
-            StartCoroutine(OpenScene(ChallengeManager.Controller, "Scenes/NumbersChallenge"));
-            StartCoroutine(CloseScene(ChallengeManager.Controller, "Scenes/NumbersChallenge"));
+            StartCoroutine(OpenScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
+            StartCoroutine(CloseScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
             StartCoroutine(CheckHealthStatus());
             StartCoroutine(CheckChallengeItemDistance());
         }
@@ -41,12 +43,12 @@ namespace GameMaster
             PauseManager.Controller.Toggle();
         }
         
-        private static void HandleChallengeMenuClick()
+        private void HandleChallengeMenuClick()
         {
             var pressed = Input.GetKeyDown("e");
             if (!pressed) return;
             if (!ChallengeItemMarker.Controller.Get) return;
-            ChallengeManager.Controller.Toggle();
+            _miniGameOverlayState.Toggle();
         }
         
         private void HandleExitClick()
