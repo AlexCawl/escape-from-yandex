@@ -1,6 +1,6 @@
 namespace GameMaster
 {
-    public class OverlayMarker
+    public class State
     {
         private bool _state;
 
@@ -19,6 +19,6 @@ namespace GameMaster
             _state = state;
         }
 
-        public bool State => _state;
+        public bool Get => _state;
     }
 }

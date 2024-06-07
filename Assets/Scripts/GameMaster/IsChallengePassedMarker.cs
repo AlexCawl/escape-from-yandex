@@ -2,6 +2,6 @@ namespace GameMaster
 {
     public static class IsChallengePassedMarker
     {
-        public static readonly OverlayMarker Controller = new();
+        public static readonly State Controller = new();
     }
 }

@@ -2,6 +2,6 @@ namespace GameMaster
 {
     public static class PauseManager
     {
-        public static readonly OverlayManager Controller = new();
+        public static readonly IntentState Controller = new();
     }
 }

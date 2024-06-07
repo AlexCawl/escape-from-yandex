@@ -1,6 +1,5 @@
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Diagnostics;
 
 namespace FieldOfView
 {

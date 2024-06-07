@@ -43,7 +43,7 @@ namespace GameMaster
         {
             var pressed = Input.GetKeyDown("e");
             if (!pressed) return;
-            if (!ChallengeItemMarker.Controller.State) return;
+            if (!ChallengeItemMarker.Controller.Get) return;
             ChallengeManager.Controller.Toggle();
         }
         
@@ -51,13 +51,13 @@ namespace GameMaster
         {
             var pressed = Input.GetKeyDown("e");
             if (!pressed) return;
-            if (!ExitItemMarker.Controller.State) return;
-            if (!IsChallengePassedMarker.Controller.State) return;
+            if (!ExitItemMarker.Controller.Get) return;
+            if (!IsChallengePassedMarker.Controller.Get) return;
             SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
         }
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
-        private static IEnumerator OpenScene(OverlayManager sceneStateController, string sceneName)
+        private static IEnumerator OpenScene(IntentState sceneStateController, string sceneName)
         {
             while (true)
             {
@@ -68,7 +68,7 @@ namespace GameMaster
         }
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
-        private static IEnumerator CloseScene(OverlayManager sceneStateController, string sceneName)
+        private static IEnumerator CloseScene(IntentState sceneStateController, string sceneName)
         {
             while (true)
             {
@@ -104,7 +104,7 @@ namespace GameMaster
                 }
                 else if (Vector3.Distance(player.position, exitItem.position) < 5)
                 {
-                    if (IsChallengePassedMarker.Controller.State)
+                    if (IsChallengePassedMarker.Controller.Get)
                     {
                         TooltipMarker.Controller.Activate();
                         ExitItemMarker.Controller.Activate();

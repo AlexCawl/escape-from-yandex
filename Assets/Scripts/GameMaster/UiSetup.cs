@@ -48,7 +48,7 @@ namespace GameMaster
         {
             while (true)
             {
-                tooltipBox.SetActive(TooltipMarker.Controller.State);
+                tooltipBox.SetActive(TooltipMarker.Controller.Get);
                 yield return null;
             }
         }
