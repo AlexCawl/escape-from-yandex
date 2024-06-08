@@ -1,8 +1,9 @@
+using FieldOfView;
 using UnityEngine;
 
 namespace GameMaster
 {
-    public class TechRoomBehaviour : MonoBehaviour
+    public class TechRoomBehaviour : VisibleOnlyInLightBehaviour
     {
         [Range(1f, 5f)] public float distance;
         public Transform player;
@@ -10,10 +11,12 @@ namespace GameMaster
         private State _tooltipVisibilityState;
         private IntentState _miniGameOverlayState;
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             _tooltipVisibilityState = ServiceLocator.Get.Locate<State>("tooltipVisibilityState");
             _miniGameOverlayState = ServiceLocator.Get.Locate<IntentState>("miniGameOverlayState");
+            StartCoroutine(CheckVisibility());
         }
 
         private void Update()

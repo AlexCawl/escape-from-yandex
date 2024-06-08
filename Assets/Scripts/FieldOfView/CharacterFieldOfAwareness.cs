@@ -1,5 +1,7 @@
+using System;
 using System.Linq;
 using GameMaster;
+using Shooting;
 using UnityEngine;
 
 namespace FieldOfView
@@ -40,7 +42,17 @@ namespace FieldOfView
                     data.IsInFieldOfView ? activeViewRadius : passiveViewRadius, obstacleMask, enemyMask))
                 .Where(someGameObject => someGameObject is not null)
                 .ToList()
-                .ForEach(someGameObject => someGameObject.GetComponent<EnemyBehaviour>().FlashEnemyWithLight());
+                .ForEach(someGameObject =>
+                {
+                    try
+                    {
+                        someGameObject.GetComponent<VisibleOnlyInLightBehaviour>().Highlight();
+                    }
+                    catch (Exception exception)
+                    {
+                        // ignored
+                    }
+                });
         }
     }
 }
