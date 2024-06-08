@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
+using Behaviour;
 using GameMaster;
-using Shooting;
 using UnityEngine;
 
 namespace FieldOfView

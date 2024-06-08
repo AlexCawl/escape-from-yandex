@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using GameMaster;
 using UnityEngine;
 
-namespace FieldOfView
+namespace Behaviour
 {
     public class VisibleOnlyInLightBehaviour : MonoBehaviour
     {

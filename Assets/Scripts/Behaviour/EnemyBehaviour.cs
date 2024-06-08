@@ -5,7 +5,7 @@ using GameCharacter;
 using GameMaster;
 using UnityEngine;
 
-namespace Shooting
+namespace Behaviour
 {
     public class EnemyBehaviour : VisibleOnlyInLightBehaviour
     {

@@ -1,7 +1,8 @@
 using FieldOfView;
+using GameMaster;
 using UnityEngine;
 
-namespace GameMaster
+namespace Behaviour
 {
     public class TechRoomBehaviour : VisibleOnlyInLightBehaviour
     {

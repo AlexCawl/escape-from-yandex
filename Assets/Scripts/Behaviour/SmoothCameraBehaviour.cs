@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace GameCamera
+namespace Behaviour
 {
-    public class SmoothCameraFollowing : MonoBehaviour
+    public class SmoothCameraBehaviour : MonoBehaviour
     {
         public Transform target;
         public Vector2 offset;

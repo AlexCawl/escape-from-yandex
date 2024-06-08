@@ -1,6 +1,7 @@
+using GameMaster;
 using UnityEngine;
 
-namespace GameMaster
+namespace Behaviour
 {
     public class ExitDoorBehaviour : MonoBehaviour
     {
