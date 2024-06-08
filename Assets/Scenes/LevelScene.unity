@@ -2296,7 +2296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
-  damageDistance: 1.5
+  damageDistance: 2.5
   stoppingDistance: 1
   damageCooldown: 1
   damage: 5
@@ -4530,7 +4530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
-  damageDistance: 1.5
+  damageDistance: 2.5
   stoppingDistance: 1
   damageCooldown: 1
   damage: 5
@@ -50687,7 +50687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
-  damageDistance: 1.5
+  damageDistance: 2.5
   stoppingDistance: 1
   damageCooldown: 1
   damage: 5
@@ -50863,7 +50863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
-  damageDistance: 1.5
+  damageDistance: 2.5
   stoppingDistance: 1
   damageCooldown: 1
   damage: 5
@@ -56224,7 +56224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
-  damageDistance: 1.5
+  damageDistance: 2.5
   stoppingDistance: 1
   damageCooldown: 1
   damage: 5
@@ -57654,7 +57654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
-  damageDistance: 1.5
+  damageDistance: 2.5
   stoppingDistance: 1
   damageCooldown: 1
   damage: 5
@@ -57971,7 +57971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
-  damageDistance: 1.5
+  damageDistance: 2.5
   stoppingDistance: 1
   damageCooldown: 1
   damage: 5
@@ -66036,7 +66036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
-  damageDistance: 1.5
+  damageDistance: 2.5
   stoppingDistance: 1
   damageCooldown: 1
   damage: 5
@@ -104297,7 +104297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
-  damageDistance: 1.5
+  damageDistance: 2.5
   stoppingDistance: 1
   damageCooldown: 1
   damage: 5
@@ -104930,7 +104930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 2.5
-  damageDistance: 1.5
+  damageDistance: 2.5
   stoppingDistance: 1
   damageCooldown: 1
   damage: 5
