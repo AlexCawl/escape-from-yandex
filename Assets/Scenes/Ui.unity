@@ -500,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1155694394}
+  reloadBar: {fileID: 210327552}
   tooltipBox: {fileID: 75223220}
 --- !u!1 &1155694392
 GameObject:

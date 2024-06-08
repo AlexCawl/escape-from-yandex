@@ -53600,8 +53600,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashPrefab: {fileID: 782639683923920171, guid: c5f25fd43214eed42a9950d1ca08a726, type: 3}
-  firingPoint: {fileID: 736493724}
-  fireRate: 1
+  reloadTime: 1
+  reloadIterations: 100
 --- !u!1 &741278104
 GameObject:
   m_ObjectHideFlags: 0
