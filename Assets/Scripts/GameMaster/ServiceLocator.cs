@@ -14,6 +14,12 @@ namespace GameMaster
             { new Tuple<Type, string>(typeof(string), "log"), () => "my message" }
         };
 
+        private ServiceLocator()
+        {
+            var flashLightState = new State();
+            _data.Add(new Tuple<Type, string>(typeof(State), "flashLightState"), () => flashLightState);
+        }
+
         public T Locate<T>(string name = null) => (T)_data[new Tuple<Type, string>(typeof(T), name)].Invoke();
 
         public T Create<T>(T someObject, string name = null)

@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace FieldOfView
 {
     public static class Utils
     {
+        private const int Circle = 360;
+            
         public static Vector2 CalculatePropTouchPoint(Vector2 from, float angle, float radius, LayerMask obstacleMask)
         {
             var dir = GetVectorFromAngle(angle);
@@ -88,6 +91,33 @@ namespace FieldOfView
                 yield return value;
             }
         }
+        
+        public static bool IsAngleInFov(float directionOfViewAngle, float viewAngle, float angle) =>
+            Math.Min(
+                360 - Math.Abs(directionOfViewAngle - angle),
+                Math.Abs(directionOfViewAngle - angle)
+            ) <= viewAngle / 2;
+        
+        public static List<AngleData> ProduceAngles(float directionOfViewAngle, float viewAngle, int density, bool isFovActive)
+        {
+            var steps = Mathf.RoundToInt(Circle * density);
+            var stepSize = Circle / steps;
+            return FloatRange(0f, 360f, stepSize)
+                .Select(stepAngle => new AngleData(stepAngle, IsAngleInFov(directionOfViewAngle, viewAngle, stepAngle) && isFovActive))
+                .ToList();
+        }
+    }
+    
+    public struct MeshData
+    {
+        public readonly Vector2[] Vertices;
+        public readonly int[] Triangles;
+
+        public MeshData(Vector2[] vertices, int[] triangles)
+        {
+            Vertices = vertices;
+            Triangles = triangles;
+        }
     }
     
     public struct AngleData
@@ -101,4 +131,6 @@ namespace FieldOfView
             IsInFieldOfView = isInFieldOfView;
         }
     }
+    
+    public delegate Vector2 FromGlobalToLocalSpace(Vector2 globalPosition);
 }

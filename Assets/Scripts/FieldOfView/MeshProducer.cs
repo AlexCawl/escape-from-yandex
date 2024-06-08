@@ -1,24 +1,31 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GameMaster;
 using UnityEngine;
 
 namespace FieldOfView
 {
-    internal class DarknessEffectMesh : IMeshProducer
+    public interface IMeshProducer
+    {
+        public MeshData Render(float directionOfViewAngle, float viewAngle, Vector2 position);
+    }
+
+    public class DarknessMeshProducer : IMeshProducer
     {
         private readonly float _darknessRadius;
         private readonly float _minimumRadius;
         private readonly float _maximumRadius;
-        private readonly float _density;
+        private readonly int _density;
         private readonly LayerMask _obstacleMask;
         private readonly FromGlobalToLocalSpace _transformer;
+        private readonly State _flashLightState;
 
         private const float Circle = 360f;
 
-        public DarknessEffectMesh(
-            float darknessRadius, float minimumRadius, float maximumRadius, float density,
-            LayerMask obstacleMask, FromGlobalToLocalSpace transformer)
+        public DarknessMeshProducer(
+            float darknessRadius, float minimumRadius, float maximumRadius, int density,
+            LayerMask obstacleMask, FromGlobalToLocalSpace transformer, State flashLightState)
         {
             _darknessRadius = darknessRadius;
             _minimumRadius = minimumRadius;
@@ -26,6 +33,7 @@ namespace FieldOfView
             _density = density;
             _obstacleMask = obstacleMask;
             _transformer = transformer;
+            _flashLightState = flashLightState;
         }
 
         public MeshData Render(float directionOfViewAngle, float viewAngle, Vector2 position)
@@ -38,26 +46,8 @@ namespace FieldOfView
             return new MeshData(vertices, triangles);
         }
 
-        private List<AngleData> ProduceAngles(float directionOfViewAngle, float viewAngle)
-        {
-            var steps = Mathf.RoundToInt(Circle * _density);
-            var stepSize = Circle / steps;
-            return Utils.FloatRange(0f, 360f, stepSize)
-                .Select(stepAngle => new AngleData(stepAngle, IsAngleInFov(directionOfViewAngle, viewAngle, stepAngle)))
-                .ToList();
-        }
-
-        private static bool IsAngleInFov(float directionOfViewAngle, float viewAngle, float angle)
-        {
-            return Math.Min(
-                360 - Math.Abs(directionOfViewAngle - angle),
-                Math.Abs(directionOfViewAngle - angle)
-            ) <= viewAngle / 2;
-        }
-
-        private List<Vector2> CalculateMeshPoints(float directionOfViewAngle, float viewAngle, Vector2 position)
-        {
-            return ProduceAngles(directionOfViewAngle, viewAngle).SelectMany(
+        private List<Vector2> CalculateMeshPoints(float directionOfViewAngle, float viewAngle, Vector2 position) =>
+            Utils.ProduceAngles(directionOfViewAngle, viewAngle, _density, _flashLightState.Get).SelectMany(
                 data =>
                 {
                     var points = new Vector2[2];
@@ -74,7 +64,6 @@ namespace FieldOfView
                     return points;
                 }
             ).ToList();
-        }
 
         private void CalculateMeshTriangles(List<Vector2> points, int vertexCount, Vector2[] vertices, int[] triangles)
         {

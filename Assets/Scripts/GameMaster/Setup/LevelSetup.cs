@@ -12,6 +12,7 @@ namespace GameMaster.Setup
         private IntentState _miniGameOverlayState;
         private IntentState _pauseOverlayState;
         private HealthHolder _playerHealth;
+        private State _flashLightState;
 
         private void Awake()
         {
@@ -19,6 +20,7 @@ namespace GameMaster.Setup
             _pauseOverlayState = ServiceLocator.Get.Create(new IntentState(), "pauseOverlayState");
             _exitOpenState = ServiceLocator.Get.Create(new State(), "exitOpenState");
             _playerHealth = ServiceLocator.Get.Create(new HealthHolder(), "playerHealth");
+            _flashLightState = ServiceLocator.Get.Locate<State>("flashLightState");
             ServiceLocator.Get.Create(new State(), "tooltipVisibilityState");
             ServiceLocator.Get.Create(new State(), "miniGamePassedState");
         }
@@ -34,13 +36,24 @@ namespace GameMaster.Setup
             SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
         }
 
-        private void Update() => HandlePauseMenuClick();
+        private void Update()
+        {
+            HandlePauseMenuClick();
+            HandleFlashLightToggleClick();
+        }
 
         private void HandlePauseMenuClick()
         {
             var pressed = Input.GetKeyDown("p");
             if (!pressed) return;
             _pauseOverlayState.Toggle();
+        }
+
+        private void HandleFlashLightToggleClick()
+        {
+            var pressed = Input.GetKeyDown("f");
+            if (!pressed) return;
+            _flashLightState.Set(!_flashLightState.Get);
         }
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]

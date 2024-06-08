@@ -1,4 +1,5 @@
 using System.Linq;
+using GameMaster;
 using UnityEngine;
 
 namespace FieldOfView
@@ -9,16 +10,16 @@ namespace FieldOfView
         [Range(1, 8)] public float activeViewRadius;
         [Range(10, 30)] public float darknessRadius;
         [Range(0, 360)] public float viewAngle;
-        public float meshResolution;
+        [Range(1, 4)] public int density;
         public LayerMask obstacleMask;
-
-        private Mesh _viewMesh;
         public MeshFilter viewMeshFilter;
-        private Camera _camera;
-        private float _angle;
-        private IMeshProducer _meshProducer;
 
-        private void Awake()
+        private float _angle;
+        private Mesh _viewMesh;
+        private Camera _camera;
+        private IMeshProducer _meshProducer;
+        
+        private void Start()
         {
             _viewMesh = new Mesh
             {
@@ -26,20 +27,18 @@ namespace FieldOfView
             };
             viewMeshFilter.mesh = _viewMesh;
             _camera = Camera.main;
-            _meshProducer = new DarknessEffectMesh(
+            _meshProducer = new DarknessMeshProducer(
                 darknessRadius: darknessRadius,
                 minimumRadius: passiveViewRadius,
                 maximumRadius: activeViewRadius,
-                density: meshResolution,
+                density: density,
                 obstacleMask: obstacleMask,
-                transformer: position => transform.InverseTransformPoint(position)
+                transformer: position => transform.InverseTransformPoint(position),
+                ServiceLocator.Get.Locate<State>("flashLightState")
             );
         }
 
-        private void Update()
-        {
-            DrawFieldOfView();
-        }
+        private void Update() => SetView();
 
         private void FixedUpdate()
         {
@@ -48,17 +47,15 @@ namespace FieldOfView
             _angle = Utils.GetAngleBetweenVectors(character, mouse);
         }
 
-        private void DrawFieldOfView()
+        private void SetView()
         {
             var position = Utils.ReduceDimension(transform.position);
             var meshData = _meshProducer.Render(_angle, viewAngle, position);
-            var vertices = meshData.Vertices
+            _viewMesh.Clear();
+            _viewMesh.vertices = meshData.Vertices
                 .Select(vector2 => Utils.IncreaseDimension(vector2, transform.position.z))
                 .ToArray();
-            var triangles = meshData.Triangles;
-            _viewMesh.Clear();
-            _viewMesh.vertices = vertices;
-            _viewMesh.triangles = triangles;
+            _viewMesh.triangles = meshData.Triangles;
             _viewMesh.RecalculateNormals();
         }
     }
