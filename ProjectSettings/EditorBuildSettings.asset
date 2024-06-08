@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Selector.unity
     guid: 545800523aa7bb973a3e22c0e8927486
   - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: 6f03df1d5a66bd65f8acd0ba47d8616b
+  - enabled: 1
+    path: Assets/Scenes/Defeat.unity
+    guid: e4c502b561085a6ffb0b685d81bf4497
+  - enabled: 1
     path: Assets/Scenes/LevelScene.unity
     guid: 3fd8f5db7551dbe4088e440dd21953f9
   - enabled: 1

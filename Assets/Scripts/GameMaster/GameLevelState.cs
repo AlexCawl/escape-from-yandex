@@ -4,9 +4,11 @@ namespace GameMaster
     {
         public GameLevel Level { get; private set; } = GameLevel.Top;
 
-        public void Next()
+        public bool Next()
         {
-            Level = (GameLevel)(((int)Level + 1) % 3);
+            var next = (int)Level + 1;
+            Level = (GameLevel)(next % 3);
+            return next != 3;
         }
 
         public void Reset()

@@ -66,7 +66,7 @@ namespace GameMaster.Setup
                 if (_playerHealth.IsDead)
                 {
                     _gameLevelState.Reset();
-                    SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
+                    SceneManager.LoadSceneAsync("Scenes/Defeat", LoadSceneMode.Single);
                 }
 
                 yield return null;
@@ -80,8 +80,7 @@ namespace GameMaster.Setup
             {
                 if (_exitOpenState.Get)
                 {
-                    _gameLevelState.Next();
-                    SceneManager.LoadSceneAsync("Scenes/Selector", LoadSceneMode.Single);
+                    SceneManager.LoadSceneAsync(_gameLevelState.Next() ? "Scenes/Selector" : "Scenes/Victory", LoadSceneMode.Single);
                     yield break;
                 }
 
