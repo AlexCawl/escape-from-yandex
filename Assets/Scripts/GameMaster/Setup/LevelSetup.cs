@@ -11,26 +11,30 @@ namespace GameMaster.Setup
         private State _exitOpenState;
         private IntentState _miniGameOverlayState;
         private IntentState _pauseOverlayState;
+        private HealthHolder _playerHealth;
+
+        private void Awake()
+        {
+            _miniGameOverlayState = ServiceLocator.Get.Create(new IntentState(), "miniGameOverlayState");
+            _pauseOverlayState = ServiceLocator.Get.Create(new IntentState(), "pauseOverlayState");
+            _exitOpenState = ServiceLocator.Get.Create(new State(), "exitOpenState");
+            _playerHealth = ServiceLocator.Get.Create(new HealthHolder(), "playerHealth");
+            ServiceLocator.Get.Create(new State(), "tooltipVisibilityState");
+            ServiceLocator.Get.Create(new State(), "miniGamePassedState");
+        }
 
         private void Start()
         {
-            _miniGameOverlayState = ServiceLocator.Get.Locate<IntentState>("miniGameOverlayState");
-            _pauseOverlayState = ServiceLocator.Get.Locate<IntentState>("pauseOverlayState");
-            _exitOpenState = ServiceLocator.Get.Locate<State>("exitOpenState");
-            CharacterHealthHolder.GetInstance().Set(CharacterHealthHolder.GetMax);
-            SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
-            StartCoroutine(OpenScene(_pauseOverlayState, "Scenes/PauseMenu"));
-            StartCoroutine(CloseScene(_pauseOverlayState, "Scenes/PauseMenu"));
-            StartCoroutine(OpenScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
-            StartCoroutine(CloseScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
-            StartCoroutine(CheckPlayerHealth());
+            StartCoroutine(SceneManagerUtils.OpenScene(_pauseOverlayState, "Scenes/PauseMenu"));
+            StartCoroutine(SceneManagerUtils.CloseScene(_pauseOverlayState, "Scenes/PauseMenu"));
+            StartCoroutine(SceneManagerUtils.OpenScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
+            StartCoroutine(SceneManagerUtils.CloseScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
+            StartCoroutine(CheckPlayerDeath());
             StartCoroutine(CheckLevelPassed());
+            SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
         }
 
-        private void Update()
-        {
-            HandlePauseMenuClick();
-        }
+        private void Update() => HandlePauseMenuClick();
 
         private void HandlePauseMenuClick()
         {
@@ -40,33 +44,11 @@ namespace GameMaster.Setup
         }
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
-        private static IEnumerator OpenScene(IntentState sceneStateController, string sceneName)
+        private IEnumerator CheckPlayerDeath()
         {
             while (true)
             {
-                yield return new WaitUntil(sceneStateController.ShouldBeOpened);
-                sceneStateController.SubmitOpen();
-                SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-            }
-        }
-
-        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
-        private static IEnumerator CloseScene(IntentState sceneStateController, string sceneName)
-        {
-            while (true)
-            {
-                yield return new WaitUntil(sceneStateController.ShouldBeClosed);
-                sceneStateController.SubmitClose();
-                SceneManager.UnloadSceneAsync(sceneName);
-            }
-        }
-
-        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
-        private static IEnumerator CheckPlayerHealth()
-        {
-            while (true)
-            {
-                if (CharacterHealthHolder.GetInstance().Get <= 0)
+                if (_playerHealth.IsDead)
                 {
                     SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
                 }
@@ -85,7 +67,33 @@ namespace GameMaster.Setup
                     SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
                     yield break;
                 }
+
                 yield return null;
+            }
+        }
+    }
+
+    internal static class SceneManagerUtils
+    {
+        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
+        public static IEnumerator OpenScene(IntentState sceneStateController, string sceneName)
+        {
+            while (true)
+            {
+                yield return new WaitUntil(sceneStateController.ShouldBeOpened);
+                sceneStateController.SubmitOpen();
+                SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            }
+        }
+
+        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
+        public static IEnumerator CloseScene(IntentState sceneStateController, string sceneName)
+        {
+            while (true)
+            {
+                yield return new WaitUntil(sceneStateController.ShouldBeClosed);
+                sceneStateController.SubmitClose();
+                SceneManager.UnloadSceneAsync(sceneName);
             }
         }
     }

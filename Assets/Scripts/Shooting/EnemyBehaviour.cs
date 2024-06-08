@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using GameCharacter;
+using GameMaster;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
@@ -18,15 +19,11 @@ public class EnemyBehaviour : MonoBehaviour
     private int _bulletLayer;
     private bool _isInChaseMode;
     private bool _isVisible;
-    private CharacterHealthHolder _playerHealth;
-    
-    private void Awake()
-    {
-        _playerHealth = CharacterHealthHolder.GetInstance();
-    }
+    private HealthHolder _playerHealth;
 
     public void Start()
     {
+        _playerHealth = ServiceLocator.Get.Locate<HealthHolder>("playerHealth");
         _bulletLayer = LayerMask.NameToLayer("Bullet");
         _enemyBody = GetComponent<Rigidbody2D>();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -39,6 +36,13 @@ public class EnemyBehaviour : MonoBehaviour
     private void FixedUpdate()
     {
         _isVisible = false;
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer != _bulletLayer) return;
+        TakeDamage(1);
+        Destroy(other.gameObject);
     }
     
     public void FlashEnemyWithLight()
@@ -92,25 +96,10 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == _bulletLayer)
-        {
-            TakeDamage(1);
-            Destroy(other.gameObject);
-        }
-    }
-
     private void TakeDamage(int damage)
     {
         _health -= damage;
         if (_health <= 0)
             Destroy(gameObject);
-    }
-
-    public void Die()
-    {
-        // Логика смерти врага
-        Debug.Log(gameObject.name + " died!");
     }
 }
