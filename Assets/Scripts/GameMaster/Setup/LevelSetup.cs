@@ -13,6 +13,7 @@ namespace GameMaster.Setup
         private IntentState _pauseOverlayState;
         private HealthHolder _playerHealth;
         private State _flashLightState;
+        private GameLevelState _gameLevelState;
 
         private void Awake()
         {
@@ -21,19 +22,20 @@ namespace GameMaster.Setup
             _exitOpenState = ServiceLocator.Get.Create(new State(), "exitOpenState");
             _playerHealth = ServiceLocator.Get.Create(new HealthHolder(), "playerHealth");
             _flashLightState = ServiceLocator.Get.Locate<State>("flashLightState");
+            _gameLevelState = ServiceLocator.Get.Locate<GameLevelState>();
             ServiceLocator.Get.Create(new State(), "tooltipVisibilityState");
             ServiceLocator.Get.Create(new State(), "miniGamePassedState");
         }
 
         private void Start()
         {
+            SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
             StartCoroutine(SceneManagerUtils.OpenScene(_pauseOverlayState, "Scenes/PauseMenu"));
             StartCoroutine(SceneManagerUtils.CloseScene(_pauseOverlayState, "Scenes/PauseMenu"));
             StartCoroutine(SceneManagerUtils.OpenScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
             StartCoroutine(SceneManagerUtils.CloseScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
             StartCoroutine(CheckPlayerDeath());
             StartCoroutine(CheckLevelPassed());
-            SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
         }
 
         private void Update()
@@ -63,6 +65,7 @@ namespace GameMaster.Setup
             {
                 if (_playerHealth.IsDead)
                 {
+                    _gameLevelState.Reset();
                     SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
                 }
 
@@ -77,7 +80,8 @@ namespace GameMaster.Setup
             {
                 if (_exitOpenState.Get)
                 {
-                    SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
+                    _gameLevelState.Next();
+                    SceneManager.LoadSceneAsync("Scenes/Selector", LoadSceneMode.Single);
                     yield break;
                 }
 

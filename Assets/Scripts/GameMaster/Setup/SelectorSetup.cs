@@ -43,12 +43,8 @@ namespace GameMaster.Setup
             }
         }
 
-        private void NavigateToLevel()
-        {
-            SceneManager.LoadSceneAsync("Scenes/LevelScene", LoadSceneMode.Single);
-            _gameLevelState.Next();
-        }
-        
+        private static void NavigateToLevel() => SceneManager.LoadSceneAsync("Scenes/LevelScene", LoadSceneMode.Single);
+
         private static void NavigateToSplash() => SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
     }
 }

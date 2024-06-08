@@ -8,6 +8,11 @@ namespace GameMaster
         {
             Level = (GameLevel)(((int)Level + 1) % 3);
         }
+
+        public void Reset()
+        {
+            Level = GameLevel.Top;
+        }
     }
 
     public enum GameLevel
