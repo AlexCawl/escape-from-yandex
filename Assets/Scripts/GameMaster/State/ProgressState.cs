@@ -9,15 +9,20 @@ namespace GameMaster.State
         private const float MaxValue = 1.0f;
         private readonly float _stepSize;
 
+        public readonly int StepCount;
+
         public ProgressState(int stepCount, float initialValue = MaxValue)
         {
             Value = initialValue;
-            _stepSize = MaxValue / stepCount;
+            StepCount = stepCount;
+            _stepSize = MaxValue / StepCount;
         }
         
         public override void Set(float newValue) => Interlocked.Exchange(ref Value, Coerce(newValue));
 
         public void Load() => Set(Value + _stepSize);
+        
+        public void Reset() => Set(MinValue);
 
         public float Percent => (Value - MinValue) / (MaxValue - MinValue);
         

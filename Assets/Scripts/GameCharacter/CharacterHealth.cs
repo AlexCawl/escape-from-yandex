@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using GameMaster;
 using GameMaster.State;
@@ -7,20 +6,20 @@ using UnityEngine.InputSystem;
 
 namespace GameCharacter
 {
-    public class CharacterHealing : MonoBehaviour
+    public class CharacterHealth : MonoBehaviour
     {
         [Range(100f, 300f)] public float reloadTime;
         [Range(10, 100)] public int reloadIterations;
         [Range(10, 50)] public int healthNumber;
 
         private GameInput _gameInput;
-        private ReloadHolder _reloadHealingState;
         private NumberState _playerHealth;
+        private ProgressState _healingCooldownState;
         
         private void Awake()
         {
-            _reloadHealingState = ServiceLocator.Get.Create(new ReloadHolder(reloadIterations), "reloadHealingState");
             _gameInput = new GameInput();
+            _healingCooldownState = ServiceLocator.Get.Create(new ProgressState(reloadIterations), "healingCooldownState");
         }
 
         private void Start()
@@ -42,18 +41,18 @@ namespace GameCharacter
 
         private void Heal(InputAction.CallbackContext value)
         {
-            if (!_reloadHealingState.CanShoot) return;
-            _reloadHealingState.Shoot();
+            if (!_healingCooldownState.IsReady()) return;
+            _healingCooldownState.Reset();
             StartCoroutine(ScheduleReload());
             _playerHealth.Increase(healthNumber);
         }
 
         private IEnumerator ScheduleReload()
         {
-            while (!_reloadHealingState.CanShoot)
+            while (!_healingCooldownState.IsReady())
             {
-                _reloadHealingState.Reload();
-                yield return new WaitForSeconds(reloadTime / _reloadHealingState.Steps);
+                _healingCooldownState.Load();
+                yield return new WaitForSeconds(reloadTime / _healingCooldownState.StepCount);
             }
         }
     }

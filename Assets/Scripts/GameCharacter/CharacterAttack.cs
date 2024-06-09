@@ -1,26 +1,27 @@
 using System.Collections;
 using FieldOfView;
 using GameMaster;
+using GameMaster.State;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace GameCharacter
 {
-    public class CharacterShooting : MonoBehaviour
+    public class CharacterAttack : MonoBehaviour
     {
         public GameObject flashPrefab;
         [Range(1f, 3f)] public float reloadTime;
         [Range(10, 100)] public int reloadIterations;
 
         private GameInput _gameInput;
-        private ReloadHolder _reloadState;
         private Camera _camera;
+        private ProgressState _attackCooldownState;
 
         private void Awake()
         {
-            _reloadState = ServiceLocator.Get.Create(new ReloadHolder(reloadIterations), "reloadState");
             _gameInput = new GameInput();
             _camera = Camera.main;
+            _attackCooldownState = ServiceLocator.Get.Create(new ProgressState(reloadIterations), "attackCooldownState");
         }
 
         private void OnEnable()
@@ -37,8 +38,8 @@ namespace GameCharacter
 
         private void Shoot(InputAction.CallbackContext value)
         {
-            if (!_reloadState.CanShoot) return;
-            _reloadState.Shoot();
+            if (!_attackCooldownState.IsReady()) return;
+            _attackCooldownState.Reset();
             StartCoroutine(ScheduleReload());
             var mouse = Utils.ReduceDimension(_camera.ScreenToWorldPoint(Input.mousePosition));
             var character = Utils.ReduceDimension(transform.position);
@@ -49,10 +50,10 @@ namespace GameCharacter
 
         private IEnumerator ScheduleReload()
         {
-            while (!_reloadState.CanShoot)
+            while (!_attackCooldownState.IsReady())
             {
-                _reloadState.Reload();
-                yield return new WaitForSeconds(reloadTime / _reloadState.Steps);
+                _attackCooldownState.Load();
+                yield return new WaitForSeconds(reloadTime / _attackCooldownState.StepCount);
             }
         }
     }
