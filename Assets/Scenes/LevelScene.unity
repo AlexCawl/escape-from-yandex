@@ -53335,6 +53335,7 @@ GameObject:
   - component: {fileID: 736493726}
   - component: {fileID: 736493727}
   - component: {fileID: 736493728}
+  - component: {fileID: 736493729}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -53602,6 +53603,21 @@ MonoBehaviour:
   flashPrefab: {fileID: 782639683923920171, guid: c5f25fd43214eed42a9950d1ca08a726, type: 3}
   reloadTime: 1
   reloadIterations: 100
+--- !u!114 &736493729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736493718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a68d0cf073a30e14869da52e714ea34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reloadTime: 100
+  reloadIterations: 100
+  healthNumber: 30
 --- !u!1 &741278104
 GameObject:
   m_ObjectHideFlags: 0
