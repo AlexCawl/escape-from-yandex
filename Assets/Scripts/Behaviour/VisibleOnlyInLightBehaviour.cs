@@ -7,13 +7,13 @@ namespace Behaviour
 {
     public class VisibleOnlyInLightBehaviour : MonoBehaviour
     {
-        protected State VisibilityState;
+        protected BooleanState VisibilityState;
         private Renderer _renderer;
 
         protected virtual void Start()
         {
             _renderer = GetComponent<Renderer>();
-            VisibilityState = ServiceLocator.Get.Locate<State>("visibilityState");
+            VisibilityState = ServiceLocator.Get.Locate<BooleanState>("visibilityState");
         }
 
         public void Highlight() => VisibilityState.Activate();

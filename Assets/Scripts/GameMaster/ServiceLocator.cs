@@ -11,8 +11,7 @@ namespace GameMaster
 
         private readonly Dictionary<Tuple<Type, string>, Func<object>> _data = new()
         {
-            { new Tuple<Type, string>(typeof(string), "log"), () => "my message" },
-            { new Tuple<Type, string>(typeof(State), "visibilityState"), () => new State() }
+            { new Tuple<Type, string>(typeof(BooleanState), "visibilityState"), () => new BooleanState() }
         };
 
         private ServiceLocator()
