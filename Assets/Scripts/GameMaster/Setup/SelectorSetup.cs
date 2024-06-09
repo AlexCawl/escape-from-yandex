@@ -23,8 +23,8 @@ namespace GameMaster.Setup
         public void Start()
         {
             backButton.onClick.AddListener(NavigateToSplash);
-            progressLabel.text += $"{(int)_gameLevelState.Level} / 3";
-            switch (_gameLevelState.Level)
+            progressLabel.text += $"{(int)_gameLevelState.Get} / 3";
+            switch (_gameLevelState.Get)
             {
                 case GameLevel.Top:
                     topLevelButton.interactable = true;

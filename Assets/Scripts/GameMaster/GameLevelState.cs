@@ -1,19 +1,22 @@
 namespace GameMaster
 {
-    public class GameLevelState
+    public class GameLevelState : BaseState<GameLevel>
     {
-        public GameLevel Level { get; private set; } = GameLevel.Top;
+        public GameLevelState()
+        {
+            Value = GameLevel.Top;
+        }
 
         public bool Next()
         {
-            var next = (int)Level + 1;
-            Level = (GameLevel)(next % 3);
+            var next = (int)Value + 1;
+            Value = (GameLevel)(next % 3);
             return next != 3;
         }
 
         public void Reset()
         {
-            Level = GameLevel.Top;
+            Value = GameLevel.Top;
         }
     }
 

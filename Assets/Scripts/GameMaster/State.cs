@@ -1,3 +1,5 @@
+using System;
+
 namespace GameMaster
 {
     public class State
@@ -8,12 +10,12 @@ namespace GameMaster
         {
             _state = true;
         }
-        
+
         public void Deactivate()
         {
             _state = false;
         }
-        
+
         public void Set(bool state)
         {
             _state = state;
