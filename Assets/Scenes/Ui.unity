@@ -566,7 +566,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
+  m_SizeDelta: {x: -32, y: -32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &694756072
 MonoBehaviour:
@@ -653,6 +653,8 @@ MonoBehaviour:
   healthBar: {fileID: 1155694394}
   reloadBar: {fileID: 210327552}
   tooltipBox: {fileID: 75223220}
+  miniGameBar: {fileID: 2050327070}
+  healingBar: {fileID: 629620000}
 --- !u!1 &1155694392
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,7 +922,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
+  m_SizeDelta: {x: -32, y: -32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1882455259
 MonoBehaviour:

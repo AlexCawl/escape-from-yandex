@@ -11,16 +11,20 @@ namespace GameMaster.Setup
         public Image healthBar;
         public Image reloadBar;
         public GameObject tooltipBox;
+        public Image miniGameBar;
+        public Image healingBar;
 
         private HealthHolder _playerHealth;
         private State _tooltipVisibilityState;
         private ReloadHolder _reloadState;
-
+        private State _miniGamePassedState;
+        
         private void Awake()
         {
             _tooltipVisibilityState = ServiceLocator.Get.Locate<State>("tooltipVisibilityState");
             _playerHealth = ServiceLocator.Get.Locate<HealthHolder>("playerHealth");
             _reloadState = ServiceLocator.Get.Locate<ReloadHolder>("reloadState");
+            _miniGamePassedState = ServiceLocator.Get.Locate<State>("miniGamePassedState");
         }
 
         private void Start()
@@ -28,6 +32,7 @@ namespace GameMaster.Setup
             StartCoroutine(CheckHealth());
             StartCoroutine(CheckTooltipBox());
             StartCoroutine(CheckReloading());
+            StartCoroutine(CheckMiniGameState());
         }
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
@@ -57,6 +62,19 @@ namespace GameMaster.Setup
             while (true)
             {
                 reloadBar.fillAmount = _reloadState.Percent;
+                yield return null;
+            }
+        }
+        
+        private static readonly Color Passed = new(0.663f, 0.762f, 0.984f, 1.000f);
+        private static readonly Color NotPassed = new(0f, 0f, 0f, 0.5f);
+
+        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
+        private IEnumerator CheckMiniGameState()
+        {
+            while (true)
+            {
+                miniGameBar.color = _miniGamePassedState.Get ? Passed : NotPassed;
                 yield return null;
             }
         }
