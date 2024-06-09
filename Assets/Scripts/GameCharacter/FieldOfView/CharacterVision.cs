@@ -1,11 +1,10 @@
-using System;
 using System.Linq;
 using GameMaster;
 using GameMaster.State;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace FieldOfView
+namespace GameCharacter.FieldOfView
 {
     public class CharacterVision : MonoBehaviour
     {

@@ -1,11 +1,12 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Behaviour;
 using GameMaster;
 using GameMaster.State;
 using UnityEngine;
 
-namespace FieldOfView
+namespace GameCharacter.FieldOfView
 {
     public class CharacterSight : MonoBehaviour
     {
@@ -30,6 +31,7 @@ namespace FieldOfView
             _flashLightState = ServiceLocator.Get.Locate<BooleanState>("flashLightState");
         }
 
+        [SuppressMessage("ReSharper", "EmptyGeneralCatchClause")]
         private void Update()
         {
             var position = Utils.ReduceDimension(transform.position);
@@ -44,9 +46,8 @@ namespace FieldOfView
                     {
                         someGameObject.GetComponent<VisibleOnlyInLightBehaviour>().Highlight();
                     }
-                    catch (Exception exception)
+                    catch (Exception)
                     {
-                        // ignored
                     }
                 });
         }

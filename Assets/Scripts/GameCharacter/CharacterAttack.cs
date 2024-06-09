@@ -1,5 +1,5 @@
 using System.Collections;
-using FieldOfView;
+using GameCharacter.FieldOfView;
 using GameMaster;
 using GameMaster.State;
 using UnityEngine;
