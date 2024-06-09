@@ -5,17 +5,17 @@ namespace GameMaster.Setup
 {
     public class PauseMenuSetup : MonoBehaviour
     {
-        private IntentState _pauseOverlayState;
+        private SceneLoadState _pauseState;
         
         private void Start()
         {
+            _pauseState = ServiceLocator.Get.Locate<SceneLoadState>("pauseState");
             Time.timeScale = 0f;
-            _pauseOverlayState = ServiceLocator.Get.Locate<IntentState>("pauseOverlayState");
         }
 
         private void OnDestroy() => Time.timeScale = 1f;
 
-        public void Resume() => _pauseOverlayState.Toggle();
+        public void Resume() => _pauseState.Toggle();
 
         public void BackToMainMenu()
         {

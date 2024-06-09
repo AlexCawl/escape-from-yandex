@@ -14,13 +14,13 @@ namespace GameMaster.Setup
         
         private List<Button> _shuffledButtons;
         private int _counter;
-        private State _miniGameState;
-        private IntentState _miniGameOverlayState;
+        private State _miniGamePassedState;
+        private SceneLoadState _miniGameState;
 
         private void Start()
         {
-            _miniGameState = ServiceLocator.Get.Locate<State>("miniGamePassedState");
-            _miniGameOverlayState = ServiceLocator.Get.Locate<IntentState>("miniGameOverlayState");
+            _miniGamePassedState = ServiceLocator.Get.Locate<State>("miniGamePassedState");
+            _miniGameState = ServiceLocator.Get.Locate<SceneLoadState>("miniGameState");
             SetupGame();
         }
 
@@ -73,9 +73,9 @@ namespace GameMaster.Setup
         {
             label.text = win ? "Success!" : "Wrong Order!";
             label.color = win ? Color.green : Color.red;
-            _miniGameState.Set(win);
+            _miniGamePassedState.Set(win);
             yield return new WaitForSeconds(1f);
-            _miniGameOverlayState.Toggle();
+            _miniGameState.Toggle();
         }
     }
 }

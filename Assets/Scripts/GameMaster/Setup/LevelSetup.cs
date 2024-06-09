@@ -10,22 +10,23 @@ namespace GameMaster.Setup
     public class LevelSetup : MonoBehaviour
     {
         private State _exitOpenState;
-        private IntentState _miniGameOverlayState;
-        private IntentState _pauseOverlayState;
         private HealthHolder _playerHealth;
         private State _flashLightState;
         private GameLevelState _gameLevelState;
         private GameInput _gameInput;
 
+        private SceneLoadState _pauseState;
+        private SceneLoadState _miniGameState;
+
         private void Awake()
         {
             _gameInput = new GameInput();
-            _miniGameOverlayState = ServiceLocator.Get.Create(new IntentState(), "miniGameOverlayState");
-            _pauseOverlayState = ServiceLocator.Get.Create(new IntentState(), "pauseOverlayState");
             _exitOpenState = ServiceLocator.Get.Create(new State(), "exitOpenState");
             _playerHealth = ServiceLocator.Get.Create(new HealthHolder(), "playerHealth");
             _flashLightState = ServiceLocator.Get.Locate<State>("flashLightState");
             _gameLevelState = ServiceLocator.Get.Locate<GameLevelState>();
+            _pauseState = ServiceLocator.Get.Create(new SceneLoadState(), "pauseState");
+            _miniGameState = ServiceLocator.Get.Create(new SceneLoadState(), "miniGameState");
             ServiceLocator.Get.Create(new State(), "tooltipVisibilityState");
             ServiceLocator.Get.Create(new State(), "miniGamePassedState");
         }
@@ -33,10 +34,8 @@ namespace GameMaster.Setup
         private void Start()
         {
             SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
-            StartCoroutine(SceneManagerUtils.OpenScene(_pauseOverlayState, "Scenes/PauseMenu"));
-            StartCoroutine(SceneManagerUtils.CloseScene(_pauseOverlayState, "Scenes/PauseMenu"));
-            StartCoroutine(SceneManagerUtils.OpenScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
-            StartCoroutine(SceneManagerUtils.CloseScene(_miniGameOverlayState, "Scenes/NumbersChallenge"));
+            new SceneLoadObserver(_pauseState, "Scenes/PauseMenu").Observe(this);
+            new SceneLoadObserver(_miniGameState, "Scenes/NumbersChallenge").Observe(this);
             StartCoroutine(CheckPlayerDeath());
             StartCoroutine(CheckLevelPassed());
         }
@@ -55,7 +54,7 @@ namespace GameMaster.Setup
             _gameInput.Player.Flashlight.performed -= HandleFlashLightToggleClick;
         }
 
-        private void HandlePauseMenuClick(InputAction.CallbackContext value) => _pauseOverlayState.Toggle();
+        private void HandlePauseMenuClick(InputAction.CallbackContext value) => _pauseState.Toggle();
 
         private void HandleFlashLightToggleClick(InputAction.CallbackContext value) => _flashLightState.Set(!_flashLightState.Get);
 
@@ -86,31 +85,6 @@ namespace GameMaster.Setup
                 }
 
                 yield return null;
-            }
-        }
-    }
-
-    internal static class SceneManagerUtils
-    {
-        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
-        public static IEnumerator OpenScene(IntentState sceneStateController, string sceneName)
-        {
-            while (true)
-            {
-                yield return new WaitUntil(sceneStateController.ShouldBeOpened);
-                sceneStateController.SubmitOpen();
-                SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-            }
-        }
-
-        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
-        public static IEnumerator CloseScene(IntentState sceneStateController, string sceneName)
-        {
-            while (true)
-            {
-                yield return new WaitUntil(sceneStateController.ShouldBeClosed);
-                sceneStateController.SubmitClose();
-                SceneManager.UnloadSceneAsync(sceneName);
             }
         }
     }

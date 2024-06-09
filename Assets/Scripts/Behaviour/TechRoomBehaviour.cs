@@ -1,6 +1,7 @@
-using FieldOfView;
+using System;
 using GameMaster;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Behaviour
 {
@@ -10,13 +11,19 @@ namespace Behaviour
         public Transform player;
 
         private State _tooltipVisibilityState;
-        private IntentState _miniGameOverlayState;
+        private GameInput _gameInput;
+        private SceneLoadState _miniGameState;
+
+        private void Awake()
+        {
+            _gameInput = new GameInput();
+        }
 
         protected override void Start()
         {
             base.Start();
             _tooltipVisibilityState = ServiceLocator.Get.Locate<State>("tooltipVisibilityState");
-            _miniGameOverlayState = ServiceLocator.Get.Locate<IntentState>("miniGameOverlayState");
+            _miniGameState = ServiceLocator.Get.Locate<SceneLoadState>("miniGameState");
             StartCoroutine(CheckVisibility());
         }
 
@@ -24,11 +31,24 @@ namespace Behaviour
         {
             if (!(Vector3.Distance(player.position, transform.position) < distance)) return;
             _tooltipVisibilityState.Activate();
-            var pressed = Input.GetKeyDown("e");
-            if (pressed)
-            {
-                _miniGameOverlayState.Toggle();
-            }
+        }
+        
+        private void OnEnable()
+        {
+            _gameInput.Enable();
+            _gameInput.Player.Interaction.performed += HandleMiniGameActivation;
+        }
+
+        private void OnDisable()
+        {
+            _gameInput.Disable();
+            _gameInput.Player.Interaction.performed -= HandleMiniGameActivation;
+        }
+
+        private void HandleMiniGameActivation(InputAction.CallbackContext value)
+        {
+            if (!(Vector3.Distance(player.position, transform.position) < distance)) return;
+            _miniGameState.Toggle();
         }
     }
 }
