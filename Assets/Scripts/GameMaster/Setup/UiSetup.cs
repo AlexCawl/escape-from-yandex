@@ -17,7 +17,7 @@ namespace GameMaster.Setup
         private NumberState _playerHealth;
         private State _tooltipVisibilityState;
         private ReloadHolder _reloadState;
-        private State _miniGamePassedState;
+        private BooleanState _miniGameCompleteState;
         private ReloadHolder _healingReloadState;
 
         private void Awake()
@@ -26,7 +26,7 @@ namespace GameMaster.Setup
             _playerHealth = ServiceLocator.Get.Locate<NumberState>("playerHealth");
             _reloadState = ServiceLocator.Get.Locate<ReloadHolder>("reloadState");
             _healingReloadState = ServiceLocator.Get.Locate<ReloadHolder>("reloadHealingState");
-            _miniGamePassedState = ServiceLocator.Get.Locate<State>("miniGamePassedState");
+            _miniGameCompleteState = ServiceLocator.Get.Locate<BooleanState>("miniGameCompleteState");
         }
 
         private void Start()
@@ -77,7 +77,7 @@ namespace GameMaster.Setup
         {
             while (true)
             {
-                miniGameBar.color = _miniGamePassedState.Get ? Passed : NotPassed;
+                miniGameBar.color = _miniGameCompleteState.Get ? Passed : NotPassed;
                 yield return null;
             }
         }

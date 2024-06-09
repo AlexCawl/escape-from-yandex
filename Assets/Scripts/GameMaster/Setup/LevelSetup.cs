@@ -8,7 +8,6 @@ namespace GameMaster.Setup
 {
     public class LevelSetup : MonoBehaviour
     {
-        private State _exitOpenState;
         private GameInput _gameInput;
 
         private NumberState _playerHealth;
@@ -19,11 +18,10 @@ namespace GameMaster.Setup
         private void Awake()
         {
             _gameInput = new GameInput();
-            _exitOpenState = ServiceLocator.Get.Create(new State(), "exitOpenState");
             _pauseState = ServiceLocator.Get.Create(new SceneLoadState(), "pauseState");
             _miniGameState = ServiceLocator.Get.Create(new SceneLoadState(), "miniGameState");
+            ServiceLocator.Get.Create(new BooleanState(), "miniGameCompleteState");
             ServiceLocator.Get.Create(new State(), "tooltipVisibilityState");
-            ServiceLocator.Get.Create(new State(), "miniGamePassedState");
         }
 
         private void Start()
@@ -34,7 +32,6 @@ namespace GameMaster.Setup
             new SceneLoadObserver(_pauseState, "Scenes/PauseMenu").Observe(this);
             new SceneLoadObserver(_miniGameState, "Scenes/NumbersChallenge").Observe(this);
             StartCoroutine(CheckPlayerDeath());
-            StartCoroutine(CheckLevelPassed());
         }
 
         private void OnEnable()
@@ -60,21 +57,6 @@ namespace GameMaster.Setup
                 {
                     _gameLevelState.Reset();
                     SceneManager.LoadSceneAsync("Scenes/Defeat", LoadSceneMode.Single);
-                }
-
-                yield return null;
-            }
-        }
-
-        [SuppressMessage("ReSharper", "IteratorNeverReturns")]
-        private IEnumerator CheckLevelPassed()
-        {
-            while (true)
-            {
-                if (_exitOpenState.Get)
-                {
-                    SceneManager.LoadSceneAsync(_gameLevelState.Next() ? "Scenes/Selector" : "Scenes/Victory", LoadSceneMode.Single);
-                    yield break;
                 }
 
                 yield return null;
