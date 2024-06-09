@@ -29,22 +29,22 @@ namespace GameMaster.Setup
             {
                 case GameLevel.Top:
                     topLevelButton.interactable = true;
-                    topLevelButton.onClick.AddListener(NavigateToLevel);
+                    topLevelButton.onClick.AddListener(() => NavigateToLevel(_gameLevelState.Name()));
                     break;
                 case GameLevel.Mid:
                     midLevelButton.interactable = true;
-                    midLevelButton.onClick.AddListener(NavigateToLevel);
+                    midLevelButton.onClick.AddListener(() => NavigateToLevel(_gameLevelState.Name()));
                     break;
                 case GameLevel.Low:
                     lowLevelButton.interactable = true;
-                    lowLevelButton.onClick.AddListener(NavigateToLevel);
+                    lowLevelButton.onClick.AddListener(() => NavigateToLevel(_gameLevelState.Name()));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
-        private static void NavigateToLevel() => SceneManager.LoadSceneAsync("Scenes/LevelScene", LoadSceneMode.Single);
+        private static void NavigateToLevel(string name) => SceneManager.LoadSceneAsync(name, LoadSceneMode.Single);
 
         private static void NavigateToSplash() => SceneManager.LoadSceneAsync("Scenes/Splash", LoadSceneMode.Single);
     }

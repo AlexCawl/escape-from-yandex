@@ -1,4 +1,5 @@
 using System.Collections;
+using GameMaster.State;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ namespace GameMaster.Setup
 
         private IEnumerator Start()
         {
+            ServiceLocator.Get.Locate<GameLevelState>().Next();
             yield return new WaitForSeconds(5f);
             title.text = "Congratulations";
             yield return new WaitForSeconds(3f);

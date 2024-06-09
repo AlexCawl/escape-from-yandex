@@ -52,7 +52,8 @@ namespace Behaviour
         {
             if (!(Vector3.Distance(player.position, transform.position) < distance)) return;
             if (!_miniGameCompleteState.Get) return;
-            SceneManager.LoadSceneAsync(_gameLevelState.Next() ? "Scenes/Selector" : "Scenes/Victory", LoadSceneMode.Single);
+            var nextLevel = _gameLevelState.IsLast() ? "Scenes/Victory" : _gameLevelState.Next();
+            SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Single);
         }
     }
 }
