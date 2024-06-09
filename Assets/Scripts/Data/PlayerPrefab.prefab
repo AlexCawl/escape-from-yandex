@@ -353,10 +353,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passiveViewRadius: 1
-  activeViewRadius: 7
+  activeViewRadius: 8
   darknessRadius: 30
   viewAngle: 60
-  density: 2
+  density: 3
   obstacleMask:
     serializedVersion: 2
     m_Bits: 8
@@ -374,9 +374,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passiveViewRadius: 1
-  activeViewRadius: 7
-  viewAngle: 30
-  density: 2
+  activeViewRadius: 8
+  viewAngle: 60
+  density: 3
   obstacleMask:
     serializedVersion: 2
     m_Bits: 8

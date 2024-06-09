@@ -7,7 +7,7 @@ namespace GameCharacter.FieldOfView
 {
     public static class Utils
     {
-        private const int Circle = 360;
+        private const float Circle = 360f;
             
         public static Vector2 CalculatePropTouchPoint(Vector2 from, float angle, float radius, LayerMask obstacleMask)
         {

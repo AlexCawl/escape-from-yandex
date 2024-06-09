@@ -289,6 +289,7 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
     private void PlacePlayer(Room room)
     {
         GameObject player = Instantiate(playerPrefab);
+        player.name = "Player";
         player.transform.position = (Vector2)room.RoomCenterPos + new Vector2(0.5f, 0);
     }
 
@@ -304,8 +305,9 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
         GameObject prop = Instantiate(techRoomPrefab);
         prop.transform.SetParent(_furnitureContainer.transform);
         
-        int xPosition = Convert.ToInt32(room.InnerTiles.ToList()[0].x);
-        int yPosition = Convert.ToInt32(room.InnerTiles.ToList()[0].y);
+        var index = UnityEngine.Random.Range(0, room.InnerTiles.Count);
+        int xPosition = Convert.ToInt32(room.InnerTiles.ToList()[index].x);
+        int yPosition = Convert.ToInt32(room.InnerTiles.ToList()[index].y);
         Vector2 position = new Vector2(xPosition, yPosition + 2);
 
         // Устанавливаем позицию объекта в глобальных координатах
