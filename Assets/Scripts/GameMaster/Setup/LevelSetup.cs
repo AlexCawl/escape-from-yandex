@@ -2,6 +2,7 @@ using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using GameCharacter;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace GameMaster.Setup
@@ -14,9 +15,11 @@ namespace GameMaster.Setup
         private HealthHolder _playerHealth;
         private State _flashLightState;
         private GameLevelState _gameLevelState;
+        private GameInput _gameInput;
 
         private void Awake()
         {
+            _gameInput = new GameInput();
             _miniGameOverlayState = ServiceLocator.Get.Create(new IntentState(), "miniGameOverlayState");
             _pauseOverlayState = ServiceLocator.Get.Create(new IntentState(), "pauseOverlayState");
             _exitOpenState = ServiceLocator.Get.Create(new State(), "exitOpenState");
@@ -38,25 +41,23 @@ namespace GameMaster.Setup
             StartCoroutine(CheckLevelPassed());
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            HandlePauseMenuClick();
-            HandleFlashLightToggleClick();
+            _gameInput.Enable();
+            _gameInput.Player.Pause.performed += HandlePauseMenuClick;
+            _gameInput.Player.Flashlight.performed += HandleFlashLightToggleClick;
         }
 
-        private void HandlePauseMenuClick()
+        private void OnDisable()
         {
-            var pressed = Input.GetKeyDown("p");
-            if (!pressed) return;
-            _pauseOverlayState.Toggle();
+            _gameInput.Disable();
+            _gameInput.Player.Pause.performed -= HandlePauseMenuClick;
+            _gameInput.Player.Flashlight.performed -= HandleFlashLightToggleClick;
         }
 
-        private void HandleFlashLightToggleClick()
-        {
-            var pressed = Input.GetKeyDown("f");
-            if (!pressed) return;
-            _flashLightState.Set(!_flashLightState.Get);
-        }
+        private void HandlePauseMenuClick(InputAction.CallbackContext value) => _pauseOverlayState.Toggle();
+
+        private void HandleFlashLightToggleClick(InputAction.CallbackContext value) => _flashLightState.Set(!_flashLightState.Get);
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
         private IEnumerator CheckPlayerDeath()
