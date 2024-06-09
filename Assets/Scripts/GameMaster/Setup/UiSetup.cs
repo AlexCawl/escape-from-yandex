@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using GameCharacter;
+using GameMaster.State;
 using UnityEngine;
 using UnityEngine.UI;
 

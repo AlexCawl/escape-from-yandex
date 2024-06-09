@@ -1,4 +1,4 @@
-namespace GameMaster
+namespace GameMaster.State
 {
     public class GameLevelState : BaseState<GameLevel>
     {

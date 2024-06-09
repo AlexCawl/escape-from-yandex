@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GameMaster;
+using GameMaster.State;
 using UnityEngine;
 
 namespace FieldOfView

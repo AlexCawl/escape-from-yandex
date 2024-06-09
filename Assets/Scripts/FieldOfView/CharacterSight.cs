@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Behaviour;
 using GameMaster;
+using GameMaster.State;
 using UnityEngine;
 
 namespace FieldOfView

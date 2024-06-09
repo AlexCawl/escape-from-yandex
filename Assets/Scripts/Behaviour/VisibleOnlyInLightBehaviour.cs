@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using GameMaster;
+using GameMaster.State;
 using UnityEngine;
 
 namespace Behaviour

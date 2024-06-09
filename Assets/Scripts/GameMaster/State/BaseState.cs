@@ -1,4 +1,4 @@
-namespace GameMaster
+namespace GameMaster.State
 {
     public abstract class BaseState<T>
     {

@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace GameMaster
+namespace GameMaster.State
 {
     public class NumberState : BaseState<int>
     {

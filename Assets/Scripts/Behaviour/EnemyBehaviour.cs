@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using GameCharacter;
 using GameMaster;
+using GameMaster.State;
 using UnityEngine;
 
 namespace Behaviour
