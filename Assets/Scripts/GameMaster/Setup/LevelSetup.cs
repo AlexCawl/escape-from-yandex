@@ -21,7 +21,7 @@ namespace GameMaster.Setup
             _pauseState = ServiceLocator.Get.Create(new SceneLoadState(), "pauseState");
             _miniGameState = ServiceLocator.Get.Create(new SceneLoadState(), "miniGameState");
             ServiceLocator.Get.Create(new BooleanState(), "miniGameCompleteState");
-            ServiceLocator.Get.Create(new State(), "tooltipVisibilityState");
+            ServiceLocator.Get.Create(new BooleanState(), "tooltipVisibilityState");
         }
 
         private void Start()

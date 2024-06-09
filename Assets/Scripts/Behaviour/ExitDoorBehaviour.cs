@@ -12,7 +12,7 @@ namespace Behaviour
 
         private GameInput _gameInput;
         private GameLevelState _gameLevelState;
-        private State _tooltipVisibilityState;
+        private BooleanState _tooltipState;
         private BooleanState _miniGameCompleteState;
 
         private void Awake()
@@ -22,7 +22,7 @@ namespace Behaviour
 
         private void Start()
         {
-            _tooltipVisibilityState = ServiceLocator.Get.Locate<State>("tooltipVisibilityState");
+            _tooltipState = ServiceLocator.Get.Locate<BooleanState>("tooltipVisibilityState");
             _miniGameCompleteState = ServiceLocator.Get.Locate<BooleanState>("miniGameCompleteState");
             _gameLevelState = ServiceLocator.Get.Locate<GameLevelState>();
         }
@@ -31,7 +31,7 @@ namespace Behaviour
         {
             if (!(Vector3.Distance(player.position, transform.position) < distance)) return;
             if (!_miniGameCompleteState.Get) return;
-            _tooltipVisibilityState.Activate();
+            _tooltipState.Activate();
         }
         
         private void OnEnable()

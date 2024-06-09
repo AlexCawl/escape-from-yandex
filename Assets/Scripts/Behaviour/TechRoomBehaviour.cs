@@ -10,7 +10,7 @@ namespace Behaviour
         [Range(1f, 5f)] public float distance;
         public Transform player;
 
-        private State _tooltipVisibilityState;
+        private BooleanState _tooltipState;
         private GameInput _gameInput;
         private SceneLoadState _miniGameState;
 
@@ -22,7 +22,7 @@ namespace Behaviour
         protected override void Start()
         {
             base.Start();
-            _tooltipVisibilityState = ServiceLocator.Get.Locate<State>("tooltipVisibilityState");
+            _tooltipState = ServiceLocator.Get.Locate<BooleanState>("tooltipVisibilityState");
             _miniGameState = ServiceLocator.Get.Locate<SceneLoadState>("miniGameState");
             StartCoroutine(CheckVisibility());
         }
@@ -30,7 +30,7 @@ namespace Behaviour
         private void Update()
         {
             if (!(Vector3.Distance(player.position, transform.position) < distance)) return;
-            _tooltipVisibilityState.Activate();
+            _tooltipState.Activate();
         }
         
         private void OnEnable()

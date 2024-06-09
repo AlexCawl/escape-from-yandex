@@ -15,14 +15,14 @@ namespace GameMaster.Setup
         public Image healingBar;
 
         private NumberState _playerHealth;
-        private State _tooltipVisibilityState;
+        private BooleanState _tooltipState;
         private ReloadHolder _reloadState;
         private BooleanState _miniGameCompleteState;
         private ReloadHolder _healingReloadState;
 
         private void Awake()
         {
-            _tooltipVisibilityState = ServiceLocator.Get.Locate<State>("tooltipVisibilityState");
+            _tooltipState = ServiceLocator.Get.Locate<BooleanState>("tooltipVisibilityState");
             _playerHealth = ServiceLocator.Get.Locate<NumberState>("playerHealth");
             _reloadState = ServiceLocator.Get.Locate<ReloadHolder>("reloadState");
             _healingReloadState = ServiceLocator.Get.Locate<ReloadHolder>("reloadHealingState");
@@ -53,8 +53,8 @@ namespace GameMaster.Setup
         {
             while (true)
             {
-                tooltipBox.SetActive(_tooltipVisibilityState.Get);
-                _tooltipVisibilityState.Deactivate();
+                tooltipBox.SetActive(_tooltipState.Get);
+                _tooltipState.Deactivate();
                 yield return null;
             }
         }
