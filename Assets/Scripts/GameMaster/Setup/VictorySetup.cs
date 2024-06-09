@@ -12,7 +12,8 @@ namespace GameMaster.Setup
 
         private IEnumerator Start()
         {
-            ServiceLocator.Get.Locate<GameLevelState>().Next();
+            ServiceLocator.Get.Locate<GameLevelState>().Reset();
+            ServiceLocator.Get.Locate<NumberState>("playerHealth").Reset();
             yield return new WaitForSeconds(5f);
             title.text = "Congratulations";
             yield return new WaitForSeconds(3f);

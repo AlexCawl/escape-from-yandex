@@ -56,7 +56,6 @@ namespace GameMaster.Setup
             {
                 if (_playerHealth.Get == 0)
                 {
-                    _gameLevelState.Reset();
                     SceneManager.LoadSceneAsync("Scenes/Defeat", LoadSceneMode.Single);
                 }
 
