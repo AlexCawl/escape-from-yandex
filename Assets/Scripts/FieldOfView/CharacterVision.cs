@@ -1,10 +1,12 @@
+using System;
 using System.Linq;
 using GameMaster;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace FieldOfView
 {
-    public class CharacterFieldOfView : MonoBehaviour
+    public class CharacterVision : MonoBehaviour
     {
         [Range(0.5f, 1.5f)] public float passiveViewRadius;
         [Range(1, 8)] public float activeViewRadius;
@@ -18,15 +20,23 @@ namespace FieldOfView
         private Mesh _viewMesh;
         private Camera _camera;
         private IMeshProducer _meshProducer;
-        
-        private void Start()
+        private BooleanState _flashLightState;
+        private GameInput _gameInput;
+
+        private void Awake()
         {
+            _gameInput = new GameInput();
+            _camera = Camera.main;
             _viewMesh = new Mesh
             {
                 name = "View Mesh"
             };
             viewMeshFilter.mesh = _viewMesh;
-            _camera = Camera.main;
+        }
+
+        private void Start()
+        {
+            _flashLightState = ServiceLocator.Get.Locate<BooleanState>("flashLightState");
             _meshProducer = new DarknessMeshProducer(
                 darknessRadius: darknessRadius,
                 minimumRadius: passiveViewRadius,
@@ -34,20 +44,11 @@ namespace FieldOfView
                 density: density,
                 obstacleMask: obstacleMask,
                 transformer: position => transform.InverseTransformPoint(position),
-                ServiceLocator.Get.Locate<State>("flashLightState")
+                flashLightState: _flashLightState
             );
         }
 
-        private void Update() => SetView();
-
-        private void FixedUpdate()
-        {
-            var mouse = Utils.ReduceDimension(_camera.ScreenToWorldPoint(Input.mousePosition));
-            var character = Utils.ReduceDimension(transform.position);
-            _angle = Utils.GetAngleBetweenVectors(character, mouse);
-        }
-
-        private void SetView()
+        private void Update()
         {
             var position = Utils.ReduceDimension(transform.position);
             var meshData = _meshProducer.Render(_angle, viewAngle, position);
@@ -58,5 +59,26 @@ namespace FieldOfView
             _viewMesh.triangles = meshData.Triangles;
             _viewMesh.RecalculateNormals();
         }
+
+        private void FixedUpdate()
+        {
+            var mouse = Utils.ReduceDimension(_camera.ScreenToWorldPoint(Input.mousePosition));
+            var character = Utils.ReduceDimension(transform.position);
+            _angle = Utils.GetAngleBetweenVectors(character, mouse);
+        }
+        
+        private void OnEnable()
+        {
+            _gameInput.Enable();
+            _gameInput.Player.Flashlight.performed += HandleFlashLightClick;
+        }
+
+        private void OnDisable()
+        {
+            _gameInput.Disable();
+            _gameInput.Player.Flashlight.performed -= HandleFlashLightClick;
+        }
+
+        private void HandleFlashLightClick(InputAction.CallbackContext value) => _flashLightState.Toggle();
     }
 }

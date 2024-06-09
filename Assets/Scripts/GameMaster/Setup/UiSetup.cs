@@ -14,7 +14,7 @@ namespace GameMaster.Setup
         public Image miniGameBar;
         public Image healingBar;
 
-        private HealthHolder _playerHealth;
+        private NumberState _playerHealth;
         private State _tooltipVisibilityState;
         private ReloadHolder _reloadState;
         private State _miniGamePassedState;
@@ -23,7 +23,7 @@ namespace GameMaster.Setup
         private void Awake()
         {
             _tooltipVisibilityState = ServiceLocator.Get.Locate<State>("tooltipVisibilityState");
-            _playerHealth = ServiceLocator.Get.Locate<HealthHolder>("playerHealth");
+            _playerHealth = ServiceLocator.Get.Locate<NumberState>("playerHealth");
             _reloadState = ServiceLocator.Get.Locate<ReloadHolder>("reloadState");
             _healingReloadState = ServiceLocator.Get.Locate<ReloadHolder>("reloadHealingState");
             _miniGamePassedState = ServiceLocator.Get.Locate<State>("miniGamePassedState");

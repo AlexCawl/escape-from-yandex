@@ -19,12 +19,12 @@ namespace Behaviour
         private int _health = 3;
         private int _bulletLayer;
         private bool _isInChaseMode;
-        private HealthHolder _playerHealth;
+        private NumberState _playerHealth;
 
         protected override void Start()
         {
             base.Start();
-            _playerHealth = ServiceLocator.Get.Locate<HealthHolder>("playerHealth");
+            _playerHealth = ServiceLocator.Get.Locate<NumberState>("playerHealth");
             _bulletLayer = LayerMask.NameToLayer("Bullet");
             _enemyBody = GetComponent<Rigidbody2D>();
             _player = GameObject.FindGameObjectWithTag("Player").transform;

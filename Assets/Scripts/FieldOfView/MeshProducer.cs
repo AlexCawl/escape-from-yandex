@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using GameMaster;
@@ -19,13 +18,11 @@ namespace FieldOfView
         private readonly int _density;
         private readonly LayerMask _obstacleMask;
         private readonly FromGlobalToLocalSpace _transformer;
-        private readonly State _flashLightState;
-
-        private const float Circle = 360f;
+        private readonly BooleanState _flashLightState;
 
         public DarknessMeshProducer(
             float darknessRadius, float minimumRadius, float maximumRadius, int density,
-            LayerMask obstacleMask, FromGlobalToLocalSpace transformer, State flashLightState)
+            LayerMask obstacleMask, FromGlobalToLocalSpace transformer, BooleanState flashLightState)
         {
             _darknessRadius = darknessRadius;
             _minimumRadius = minimumRadius;

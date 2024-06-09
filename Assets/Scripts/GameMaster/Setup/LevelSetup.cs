@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
-using GameCharacter;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -10,11 +9,10 @@ namespace GameMaster.Setup
     public class LevelSetup : MonoBehaviour
     {
         private State _exitOpenState;
-        private HealthHolder _playerHealth;
-        private State _flashLightState;
-        private GameLevelState _gameLevelState;
         private GameInput _gameInput;
 
+        private NumberState _playerHealth;
+        private GameLevelState _gameLevelState;
         private SceneLoadState _pauseState;
         private SceneLoadState _miniGameState;
 
@@ -22,9 +20,6 @@ namespace GameMaster.Setup
         {
             _gameInput = new GameInput();
             _exitOpenState = ServiceLocator.Get.Create(new State(), "exitOpenState");
-            _playerHealth = ServiceLocator.Get.Create(new HealthHolder(), "playerHealth");
-            _flashLightState = ServiceLocator.Get.Locate<State>("flashLightState");
-            _gameLevelState = ServiceLocator.Get.Locate<GameLevelState>();
             _pauseState = ServiceLocator.Get.Create(new SceneLoadState(), "pauseState");
             _miniGameState = ServiceLocator.Get.Create(new SceneLoadState(), "miniGameState");
             ServiceLocator.Get.Create(new State(), "tooltipVisibilityState");
@@ -34,6 +29,8 @@ namespace GameMaster.Setup
         private void Start()
         {
             SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
+            _gameLevelState = ServiceLocator.Get.Locate<GameLevelState>();
+            _playerHealth = ServiceLocator.Get.Locate<NumberState>("playerHealth");
             new SceneLoadObserver(_pauseState, "Scenes/PauseMenu").Observe(this);
             new SceneLoadObserver(_miniGameState, "Scenes/NumbersChallenge").Observe(this);
             StartCoroutine(CheckPlayerDeath());
@@ -44,26 +41,22 @@ namespace GameMaster.Setup
         {
             _gameInput.Enable();
             _gameInput.Player.Pause.performed += HandlePauseMenuClick;
-            _gameInput.Player.Flashlight.performed += HandleFlashLightToggleClick;
         }
 
         private void OnDisable()
         {
             _gameInput.Disable();
             _gameInput.Player.Pause.performed -= HandlePauseMenuClick;
-            _gameInput.Player.Flashlight.performed -= HandleFlashLightToggleClick;
         }
 
         private void HandlePauseMenuClick(InputAction.CallbackContext value) => _pauseState.Toggle();
-
-        private void HandleFlashLightToggleClick(InputAction.CallbackContext value) => _flashLightState.Set(!_flashLightState.Get);
 
         [SuppressMessage("ReSharper", "IteratorNeverReturns")]
         private IEnumerator CheckPlayerDeath()
         {
             while (true)
             {
-                if (_playerHealth.IsDead)
+                if (_playerHealth.Get == 0)
                 {
                     _gameLevelState.Reset();
                     SceneManager.LoadSceneAsync("Scenes/Defeat", LoadSceneMode.Single);

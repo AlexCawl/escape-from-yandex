@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace FieldOfView
 {
-    public class CharacterFieldOfAwareness : MonoBehaviour
+    public class CharacterSight : MonoBehaviour
     {
         [Range(0.5f, 1.5f)] public float passiveViewRadius;
         [Range(1, 8)] public float activeViewRadius;
@@ -15,26 +15,21 @@ namespace FieldOfView
         public LayerMask obstacleMask;
         public LayerMask enemyMask;
 
-        private Camera _camera;
         private float _angle;
-        private State _flashLightState;
-        
-        private void Start()
+        private Camera _camera;
+        private BooleanState _flashLightState;
+
+        private void Awake()
         {
             _camera = Camera.main;
-            _flashLightState = ServiceLocator.Get.Locate<State>("flashLightState");
         }
 
-        private void Update() => SetAware();
-
-        private void FixedUpdate()
+        private void Start()
         {
-            var mouse = Utils.ReduceDimension(_camera.ScreenToWorldPoint(Input.mousePosition));
-            var character = Utils.ReduceDimension(transform.position);
-            _angle = Utils.GetAngleBetweenVectors(character, mouse);
+            _flashLightState = ServiceLocator.Get.Locate<BooleanState>("flashLightState");
         }
 
-        private void SetAware()
+        private void Update()
         {
             var position = Utils.ReduceDimension(transform.position);
             Utils.ProduceAngles(_angle, viewAngle, density, _flashLightState.Get)
@@ -53,6 +48,13 @@ namespace FieldOfView
                         // ignored
                     }
                 });
+        }
+
+        private void FixedUpdate()
+        {
+            var mouse = Utils.ReduceDimension(_camera.ScreenToWorldPoint(Input.mousePosition));
+            var character = Utils.ReduceDimension(transform.position);
+            _angle = Utils.GetAngleBetweenVectors(character, mouse);
         }
     }
 }

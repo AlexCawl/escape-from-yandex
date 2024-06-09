@@ -14,7 +14,7 @@ namespace GameCharacter
 
         private GameInput _gameInput;
         private ReloadHolder _reloadHealingState;
-        private HealthHolder _health;
+        private NumberState _playerHealth;
         
         private void Awake()
         {
@@ -24,7 +24,7 @@ namespace GameCharacter
 
         private void Start()
         {
-            _health = ServiceLocator.Get.Locate<HealthHolder>("playerHealth");
+            _playerHealth = ServiceLocator.Get.Locate<NumberState>("playerHealth");
         }
 
         private void OnEnable()
@@ -44,7 +44,7 @@ namespace GameCharacter
             if (!_reloadHealingState.CanShoot) return;
             _reloadHealingState.Shoot();
             StartCoroutine(ScheduleReload());
-            _health.Increase(healthNumber);
+            _playerHealth.Increase(healthNumber);
         }
 
         private IEnumerator ScheduleReload()
