@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class AbstractMapGenerator : MonoBehaviour
@@ -10,6 +11,7 @@ public abstract class AbstractMapGenerator : MonoBehaviour
     public void GenerateMap()
     {
         tilemapVisualizer.Clear();
+        DeleteAllProps();
         RunProceduralGeneration();
     }
     
@@ -23,6 +25,16 @@ public abstract class AbstractMapGenerator : MonoBehaviour
         foreach (Transform enemy in enemyContainer.transform)
         {
             DestroyImmediate(enemy.gameObject);
+        }
+
+        try
+        {
+            var player = GameObject.FindWithTag("Player");
+            DestroyImmediate(player);
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception);
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Behaviour
@@ -10,7 +11,12 @@ namespace Behaviour
 
         private static Vector3 _velocity = Vector3.zero;
 
-        public void FixedUpdate()
+        private void Awake()
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+
+        private void FixedUpdate()
         {
             var moveDirection = new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z);
             transform.position = Vector3.SmoothDamp(transform.position, moveDirection, ref _velocity, damping);

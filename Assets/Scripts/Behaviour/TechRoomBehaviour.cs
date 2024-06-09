@@ -1,4 +1,3 @@
-using System;
 using GameMaster;
 using GameMaster.State;
 using UnityEngine;
@@ -18,6 +17,7 @@ namespace Behaviour
         private void Awake()
         {
             _gameInput = new GameInput();
+            player = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
         protected override void Start()

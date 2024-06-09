@@ -22,6 +22,9 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
     [SerializeField] private GameObject propPrefab;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject trackerPrefab;
+    [SerializeField] private GameObject techRoomPrefab;
+    [SerializeField] private GameObject exitDoorPrefab;
+    [SerializeField] private GameObject playerPrefab;
     
     public void ProcessRooms(MapData mapData, GameObject furnitureContainer, GameObject enemyContainer)
     {
@@ -86,12 +89,8 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
         PlacePlayer(_mapData.startRooom);
         PlaceTracker();
 
-        List<Prop> techoProp = propsToPlace.Where(x => x.TechnoRoom).ToList();
-        PlaceProps(_mapData.techRoom, techoProp, _mapData.techRoom.NearWallTilesUp);
-
-        List<Prop> endRoomProps = propsToPlace.Where(x => x.EndRoom).ToList();
-        Prop doorProp = endRoomProps[0];
-        PlaceDoor(_mapData.endRoom, doorProp);
+        PlaceTechTable(_mapData.techRoom);
+        PlaceDoor(_mapData.endRoom);
     }
     
     // Функция размещения мебели
@@ -289,7 +288,7 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
 
     private void PlacePlayer(Room room)
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = Instantiate(playerPrefab);
         player.transform.position = (Vector2)room.RoomCenterPos + new Vector2(0.5f, 0);
     }
 
@@ -298,38 +297,32 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
         GameObject tracker = Instantiate(trackerPrefab);
         tracker.transform.SetParent(_furnitureContainer.transform);
     }
-
-    private void PlaceDoor(Room room, Prop propToPlace)
+    
+    private void PlaceTechTable(Room room)
     {
         // Создаем объект-мебель
-        GameObject prop = Instantiate(propPrefab);
+        GameObject prop = Instantiate(techRoomPrefab);
         prop.transform.SetParent(_furnitureContainer.transform);
         
-        // Настраиваем рендер спрайтов для отрисовки
-        SpriteRenderer propSpriteRenderer = prop.GetComponentInChildren<SpriteRenderer>();
-        
+        int xPosition = Convert.ToInt32(room.InnerTiles.ToList()[0].x);
+        int yPosition = Convert.ToInt32(room.InnerTiles.ToList()[0].y);
+        Vector2 position = new Vector2(xPosition, yPosition + 2);
 
-        // Устанавливаем спрайт
-        propSpriteRenderer.sprite = propToPlace.PropSprite;
+        // Устанавливаем позицию объекта в глобальных координатах
+        prop.transform.position = position;
+    }
 
+    private void PlaceDoor(Room room)
+    {
+        // Создаем объект-мебель
+        GameObject prop = Instantiate(exitDoorPrefab);
+        prop.transform.SetParent(_furnitureContainer.transform);
         
         int xPosition = Convert.ToInt32(room.RoomCenterPos.x);
         int yPosition = Convert.ToInt32(room.NearWallTilesUp.ToList()[0].y);
         Vector2 position = new Vector2(xPosition, yPosition + 2);
-        
 
         // Устанавливаем позицию объекта в глобальных координатах
         prop.transform.position = position;
-        
-        // НАПОМИНАНИЕ: СТЕРЕТЬ ЛОГИ
-        //Debug.Log($"Prop global coordinates after setting position: {prop.transform.position}");
-        propSpriteRenderer.transform.localPosition = position;
-        
-        // НАПОМИНАНИЕ: СТЕРЕТЬ ЛОГИ
-        //Debug.Log($"Prop sprite local coordinates after adjustment: {propSpriteRenderer.transform.localPosition}");
-        
-        // Проверка слоев и порядка отрисовки
-        propSpriteRenderer.sortingLayerName = "Ground objects"; // Убедитесь, что слой существует
-        propSpriteRenderer.sortingOrder = 0;
     }
 }

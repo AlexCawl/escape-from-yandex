@@ -19,6 +19,7 @@ namespace Behaviour
         private void Awake()
         {
             _gameInput = new GameInput();
+            player = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
         private void Start()
