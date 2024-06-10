@@ -15,6 +15,7 @@ namespace Behaviour
         private GameLevelState _gameLevelState;
         private BooleanState _tooltipState;
         private BooleanState _miniGameCompleteState;
+        private MusicPlayObserver _clickSoundEffect;
 
         private void Awake()
         {
@@ -27,6 +28,7 @@ namespace Behaviour
             _tooltipState = ServiceLocator.Get.Locate<BooleanState>("tooltipVisibilityState");
             _miniGameCompleteState = ServiceLocator.Get.Locate<BooleanState>("miniGameCompleteState");
             _gameLevelState = ServiceLocator.Get.Locate<GameLevelState>();
+            _clickSoundEffect = ServiceLocator.Get.Locate<MusicPlayObserver>("clickSound");
         }
     
         private void Update()
@@ -51,6 +53,7 @@ namespace Behaviour
         private void HandleExitActivation(InputAction.CallbackContext value)
         {
             if (!(Vector3.Distance(player.position, transform.position) < distance)) return;
+            _clickSoundEffect.Observe(this);
             if (!_miniGameCompleteState.Get) return;
             var nextLevel = _gameLevelState.IsLast() ? "Scenes/Victory" : _gameLevelState.Next();
             SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Single);

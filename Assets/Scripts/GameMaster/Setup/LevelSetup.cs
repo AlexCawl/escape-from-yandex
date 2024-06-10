@@ -12,7 +12,6 @@ namespace GameMaster.Setup
         private GameInput _gameInput;
 
         private NumberState _playerHealth;
-        private GameLevelState _gameLevelState;
         private SceneLoadState _pauseState;
         private SceneLoadState _miniGameState;
 
@@ -28,7 +27,6 @@ namespace GameMaster.Setup
         private void Start()
         {
             SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
-            _gameLevelState = ServiceLocator.Get.Locate<GameLevelState>();
             _playerHealth = ServiceLocator.Get.Locate<NumberState>("playerHealth");
             new SceneLoadObserver(_pauseState, "Scenes/PauseMenu").Observe(this);
             new SceneLoadObserver(_miniGameState, "Scenes/NumbersChallenge").Observe(this);

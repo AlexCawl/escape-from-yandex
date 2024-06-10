@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 // ReSharper disable All
@@ -25,6 +24,7 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
     [SerializeField] private GameObject techRoomPrefab;
     [SerializeField] private GameObject exitDoorPrefab;
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject soundMasterPrefab;
     
     public void ProcessRooms(MapData mapData, GameObject furnitureContainer, GameObject enemyContainer)
     {
@@ -88,7 +88,7 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
         
         PlacePlayer(_mapData.startRooom);
         PlaceTracker();
-
+        PlaceSoundMaster();
         PlaceTechTable(_mapData.techRoom);
         PlaceDoor(_mapData.endRoom);
     }
@@ -297,6 +297,12 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
     {
         GameObject tracker = Instantiate(trackerPrefab);
         tracker.transform.SetParent(_furnitureContainer.transform);
+    }
+    
+    private void PlaceSoundMaster()
+    {
+        GameObject soundMaster = Instantiate(soundMasterPrefab);
+        soundMaster.transform.SetParent(_furnitureContainer.transform);
     }
     
     private void PlaceTechTable(Room room)

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
-using GameCharacter;
 using GameMaster;
 using GameMaster.State;
 using UnityEngine;
@@ -21,11 +20,13 @@ namespace Behaviour
         private int _bulletLayer;
         private bool _isInChaseMode;
         private NumberState _playerHealth;
+        private MusicPlayObserver _damageSoundEffect;
 
         protected override void Start()
         {
             base.Start();
             _playerHealth = ServiceLocator.Get.Locate<NumberState>("playerHealth");
+            _damageSoundEffect = ServiceLocator.Get.Locate<MusicPlayObserver>("hurtSound");
             _bulletLayer = LayerMask.NameToLayer("Bullet");
             _enemyBody = GetComponent<Rigidbody2D>();
             _player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -85,6 +86,7 @@ namespace Behaviour
                 if (Vector3.Distance(transform.position, _player.position) <= damageDistance)
                 {
                     _playerHealth.Decrease(damage);
+                    _damageSoundEffect.Observe(this);
                 }
                 yield return new WaitForSeconds(damageCooldown);
             }

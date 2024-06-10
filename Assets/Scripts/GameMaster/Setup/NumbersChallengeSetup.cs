@@ -17,11 +17,17 @@ namespace GameMaster.Setup
         private int _counter;
         private BooleanState _miniGameCompleteState;
         private SceneLoadState _miniGameState;
+        private MusicPlayObserver _clickSoundEffect;
+        private MusicPlayObserver _winSoundEffect;
+        private MusicPlayObserver _failureSoundEffect;
 
         private void Start()
         {
             _miniGameCompleteState = ServiceLocator.Get.Locate<BooleanState>("miniGameCompleteState");
             _miniGameState = ServiceLocator.Get.Locate<SceneLoadState>("miniGameState");
+            _clickSoundEffect = ServiceLocator.Get.Locate<MusicPlayObserver>("clickSound");
+            _winSoundEffect = ServiceLocator.Get.Locate<MusicPlayObserver>("gameDoneSound");
+            _failureSoundEffect = ServiceLocator.Get.Locate<MusicPlayObserver>("gameFailedSound");
             SetupGame();
         }
 
@@ -40,6 +46,7 @@ namespace GameMaster.Setup
 
         public void ButtonPressAction(Button button)
         {
+            _clickSoundEffect.Observe(this);
             var buttonNumber = int.Parse(button.GetComponentInChildren<Text>().text);
             if (buttonNumber == _counter + 1)
             {
@@ -72,6 +79,8 @@ namespace GameMaster.Setup
 
         private IEnumerator HandleExit(bool win)
         {
+            var effect = win ? _winSoundEffect : _failureSoundEffect;
+            effect.Observe(this);
             label.text = win ? "Success!" : "Wrong Order!";
             label.color = win ? Color.green : Color.red;
             _miniGameCompleteState.Set(win);
