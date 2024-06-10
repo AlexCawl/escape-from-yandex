@@ -28,6 +28,10 @@ namespace GameMaster.Setup
             ServiceLocator.Get.Create(new MusicPlayObserver(gameFailed, soundEffects), "gameFailedSound");
         }
 
-        private void Start() => _backgroundOstObserver.Observe(this, true);
+        private void Start()
+        {
+            backgroundMusic.volume = 0.05f;
+            _backgroundOstObserver.Observe(this, true);
+        }
     }
 }
