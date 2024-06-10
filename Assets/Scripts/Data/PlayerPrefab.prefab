@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashPrefab: {fileID: 782639683923920171, guid: c5f25fd43214eed42a9950d1ca08a726, type: 3}
-  reloadTime: 3
+  reloadTime: 1.5
   reloadIterations: 100
 --- !u!114 &6603469030152683162
 MonoBehaviour:
