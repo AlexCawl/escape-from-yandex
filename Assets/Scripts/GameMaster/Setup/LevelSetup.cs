@@ -20,6 +20,7 @@ namespace GameMaster.Setup
             _gameInput = new GameInput();
             _pauseState = ServiceLocator.Get.Create(new SceneLoadState(), "pauseState");
             _miniGameState = ServiceLocator.Get.Create(new SceneLoadState(), "miniGameState");
+            _playerHealth = ServiceLocator.Get.Create(new NumberState(100, 0, 100), "playerHealth");
             ServiceLocator.Get.Create(new BooleanState(), "miniGameCompleteState");
             ServiceLocator.Get.Create(new BooleanState(), "tooltipVisibilityState");
         }
@@ -27,7 +28,6 @@ namespace GameMaster.Setup
         private void Start()
         {
             SceneManager.LoadSceneAsync("Scenes/Ui", LoadSceneMode.Additive);
-            _playerHealth = ServiceLocator.Get.Locate<NumberState>("playerHealth");
             new SceneLoadObserver(_pauseState, "Scenes/PauseMenu").Observe(this);
             new SceneLoadObserver(_miniGameState, "Scenes/NumbersChallenge").Observe(this);
             StartCoroutine(CheckPlayerDeath());

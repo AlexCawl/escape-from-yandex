@@ -18,10 +18,8 @@ namespace GameMaster
         private ServiceLocator()
         {
             var gameState = new GameLevelState();
-            var healthState = new NumberState(100, 0, 100);
             var flashLightState = new BooleanState();
             _data.Add(new Tuple<Type, string>(typeof(GameLevelState), null), () => gameState);
-            _data.Add(new Tuple<Type, string>(typeof(NumberState), "playerHealth"), () => healthState);
             _data.Add(new Tuple<Type, string>(typeof(BooleanState), "flashLightState"), () => flashLightState);
         }
 
