@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-
-// ReSharper disable All
 
 public class RoomMapGenerator : AbstractMapGenerator
 {
@@ -41,8 +38,6 @@ public class RoomMapGenerator : AbstractMapGenerator
                 new BoundsInt((Vector3Int)startPosition, new Vector3Int(mapWidth, mapHeight, 0)), 
                 minRoomSize, maxRoomSize, roomSpacing); // Передаем зазор в метод
         }
-        
-        
 
         HashSet<Vector2Int> floor = CreateSimpleRooms(roomsList);
 

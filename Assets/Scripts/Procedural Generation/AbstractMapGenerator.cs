@@ -1,7 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Serialization;
-#if UNITY_EDITOR
-#endif
 
 public abstract class AbstractMapGenerator : MonoBehaviour
 {
@@ -13,6 +11,7 @@ public abstract class AbstractMapGenerator : MonoBehaviour
     public void GenerateMap()
     {
         tilemapVisualizer.Clear();
+        DeleteAllProps();
         RunProceduralGeneration();
     }
     
@@ -20,20 +19,22 @@ public abstract class AbstractMapGenerator : MonoBehaviour
     {
         foreach (Transform furniture in furnitureContainer.transform)
         {
-            #if UNITY_EDITOR
             DestroyImmediate(furniture.gameObject);
-            #else
-            Destroy(child.gameObject);
-            #endif
         }
 
         foreach (Transform enemy in enemyContainer.transform)
         {
-            #if UNITY_EDITOR
             DestroyImmediate(enemy.gameObject);
-            #else
-            Destroy(child.gameObject);
-            #endif
+        }
+
+        try
+        {
+            var player = GameObject.FindWithTag("Player");
+            DestroyImmediate(player);
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(exception);
         }
     }
 

@@ -9,11 +9,26 @@ EditorBuildSettings:
     path: Assets/Scenes/Splash.unity
     guid: 9d4162a1d473daedb9fd4887a91442f2
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Selector.unity
+    guid: 545800523aa7bb973a3e22c0e8927486
   - enabled: 1
-    path: Assets/Scenes/NumbersChallenge.unity
-    guid: a61c6ca1830eca136a6ecababcd2c463
+    path: Assets/Scenes/Victory.unity
+    guid: 6f03df1d5a66bd65f8acd0ba47d8616b
+  - enabled: 1
+    path: Assets/Scenes/Defeat.unity
+    guid: e4c502b561085a6ffb0b685d81bf4497
+  - enabled: 1
+    path: Assets/Scenes/LevelTop.unity
+    guid: 9e74bb7f4bd22bf7c97021357b831fa7
+  - enabled: 1
+    path: Assets/Scenes/LevelMid.unity
+    guid: 97b39e917feffec61bfd1916748bd0cc
+  - enabled: 1
+    path: Assets/Scenes/LevelLow.unity
+    guid: 259963d8f1ef6eced9a1f825d3255b53
+  - enabled: 1
+    path: Assets/Scenes/LevelTutorial.unity
+    guid: 3f38146556e113d8788bae28bcafd930
   - enabled: 1
     path: Assets/Scenes/Ui.unity
     guid: ba954913d33e976f8877db3396f8d419
@@ -21,7 +36,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PauseMenu.unity
     guid: 5a15ea537217084f582c4b4982ee34f9
   - enabled: 1
-    path: Assets/Scenes/LevelScene.unity
-    guid: 3fd8f5db7551dbe4088e440dd21953f9
+    path: Assets/Scenes/NumbersChallenge.unity
+    guid: a61c6ca1830eca136a6ecababcd2c463
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d03ffbb35d40b5df59aeb109feb3506d, type: 2}

@@ -3,9 +3,9 @@ name: Desktop - Build and publish to release
 # Auto-build and release on pushes to master
 on:
   workflow_dispatch:
-   push:
-     branches:
-       - master
+    push:
+      branches:
+        - master
 
 # Project name
 env:
@@ -20,6 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         targetPlatform:
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
           - StandaloneLinux64 # Build a Linux 64-bit standalone.
     steps:

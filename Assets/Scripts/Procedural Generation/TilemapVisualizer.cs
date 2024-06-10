@@ -111,6 +111,7 @@ public class TilemapVisualizer : MonoBehaviour
     public void AddWallColliders()
     {
         wallTileMap.gameObject.AddComponent<TilemapCollider2D>();
+        wallTileMap.gameObject.layer = LayerMask.NameToLayer("Obstacle");
     }
 
     public void DefineLayers()
