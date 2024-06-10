@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class MapData
 {
-    public Room startRooom;
+    public Room StartRoom;
 
-    public Room endRoom;
+    public Room EndRoom;
     
-    public Room techRoom;
+    public Room TechRoom;
     public List<Room> Rooms { get; set; } = new List<Room>();
     public HashSet<Vector2Int> Path { get; set; } = new HashSet<Vector2Int>();
-
-    public GameObject PlayerReference { get; set; }
     
 }
 
@@ -20,7 +18,7 @@ public class MapData
 public class Room
 {
     public Vector2 RoomCenterPos { get; set; }
-    public HashSet<Vector2Int> FloorTiles { get; private set; } = new HashSet<Vector2Int>();
+    public HashSet<Vector2Int> FloorTiles { get; private set; }
 
     public HashSet<Vector2Int> NearWallTilesUp { get; set; } = new HashSet<Vector2Int>();
     public HashSet<Vector2Int> NearWallTilesDown { get; set; } = new HashSet<Vector2Int>();
@@ -31,11 +29,6 @@ public class Room
     public HashSet<Vector2Int> InnerTiles { get; set; } = new HashSet<Vector2Int>();
 
     public HashSet<Vector2Int> PropPositions { get; set; } = new HashSet<Vector2Int>();
-    public List<GameObject> PropObjectReferences { get; set; } = new List<GameObject>();
-
-    public List<Vector2Int> PositionsAccessibleFromPath { get; set; } = new List<Vector2Int>();
-
-    public List<GameObject> EnemiesInTheRoom { get; set; } = new List<GameObject>();
 
     public Room(Vector2 roomCenterPos, HashSet<Vector2Int> floorTiles)
     {

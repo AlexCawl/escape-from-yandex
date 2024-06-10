@@ -191,18 +191,18 @@ public class RoomMapGenerator : AbstractMapGenerator
     private void DefineSpecialRooms()
     {
         int startRoomIndex = 0;
-        _mapData.startRooom = _mapData.Rooms[startRoomIndex];
+        _mapData.StartRoom = _mapData.Rooms[startRoomIndex];
         _mapData.Rooms.RemoveAt(startRoomIndex);
         
         int endRoomIndex = _mapData.Rooms.Count - 1;
-        _mapData.endRoom = _mapData.Rooms[endRoomIndex];
+        _mapData.EndRoom = _mapData.Rooms[endRoomIndex];
         _mapData.Rooms.RemoveAt(endRoomIndex);
 
         
         int techRoomStartIndex = Convert.ToInt32(_mapData.Rooms.Count / 2);
         int techRoomEndIndex = _mapData.Rooms.Count - 2;
         int techRoomIndex = UnityEngine.Random.Range(techRoomStartIndex, techRoomEndIndex);
-        _mapData.techRoom = _mapData.Rooms[techRoomIndex];
+        _mapData.TechRoom = _mapData.Rooms[techRoomIndex];
         _mapData.Rooms.RemoveAt(techRoomIndex);
     }
 

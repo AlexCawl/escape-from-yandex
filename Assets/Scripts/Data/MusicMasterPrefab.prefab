@@ -304,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 2500601662801325242}
   soundEffects: {fileID: 434995773679191514}
-  ost: {fileID: 8300000, guid: 133d785d9cffc79ca8471d810cd02930, type: 3}
+  ost: {fileID: 8300000, guid: c83ca9cdcfffcd84f93f4329a64e5403, type: 3}
   hurt: {fileID: 8300000, guid: cd66fd859991b24428efe86a2b2bdc67, type: 3}
   shoot: {fileID: 8300000, guid: 8d84768eaa06bc6cd9f2b255574d446c, type: 3}
   heal: {fileID: 8300000, guid: 07bcc799bddeb5bb09752587e1ec52ff, type: 3}

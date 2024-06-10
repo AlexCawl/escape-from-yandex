@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu]
 public class Prop : ScriptableObject
 {
     [Header("Prop data:")]
-    public Sprite PropSprite;
+    public Sprite propSprite;
     /// <summary>
     /// Affects the collider size of the prop
     /// </summary>
@@ -19,10 +20,9 @@ public class Prop : ScriptableObject
     public bool NearWallRight = true;
     public bool NearWallLeft = true;
     public bool Inner = true;
-    public bool TechnoRoom = false;
-    public bool EndRoom = false;
+    
     [Min(0)]
     public int PlacementQuantityMin = 1;
-    [Min(1)]
+    [Min(0)]
     public int PlacementQuantityMax = 1;
 }

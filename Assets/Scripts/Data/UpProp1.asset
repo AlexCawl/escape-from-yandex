@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418c845e709341a980b68fd67e0cdde2, type: 3}
   m_Name: UpProp1
   m_EditorClassIdentifier: 
-  PropSprite: {fileID: 325603708, guid: 1b77ccbdbc5ef584aae567e9b0c8e15b, type: 3}
+  propSprite: {fileID: 325603708, guid: 1b77ccbdbc5ef584aae567e9b0c8e15b, type: 3}
   PropSize: {x: 2, y: 0}
   Corner: 0
   NearWallUP: 1
@@ -20,6 +20,5 @@ MonoBehaviour:
   NearWallRight: 0
   NearWallLeft: 0
   Inner: 0
-  TechnoRoom: 0
   PlacementQuantityMin: 0
   PlacementQuantityMax: 1

@@ -83,14 +83,16 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
                 .ToList();
             PlaceProps(room, innerProps, room.InnerTiles);
             
-            PlaceEnemy(room);
+            if (UnityEngine.Random.Range(0f, 1f) <= enemySpawnChance)
+                PlaceEnemy(room, 1, 2);
         }
         
-        PlacePlayer(_mapData.startRooom);
+        PlacePlayer(_mapData.StartRoom);
         PlaceTracker();
         PlaceSoundMaster();
-        PlaceTechTable(_mapData.techRoom);
-        PlaceDoor(_mapData.endRoom);
+        PlaceTechTable(_mapData.TechRoom);
+        PlaceEnemy(_mapData.TechRoom, 2, 3);
+        PlaceDoor(_mapData.EndRoom);
     }
     
     // Функция размещения мебели
@@ -232,7 +234,7 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
         // }
 
         // Устанавливаем спрайт
-        propSpriteRenderer.sprite = propToPlace.PropSprite;
+        propSpriteRenderer.sprite = propToPlace.propSprite;
 
         // Добавляем коллайдер
         PolygonCollider2D collider = propSpriteRenderer.gameObject.AddComponent<PolygonCollider2D>();
@@ -268,24 +270,73 @@ public class EnemyAndPropPlacementManager : MonoBehaviour
                 room.PropPositions.Add(position);
             }
         }
-        room.PropObjectReferences.Add(prop);
     }
 
-    private void PlaceEnemy(Room room)
+    private void PlaceEnemy(Room room, int minAmount, int maxAmount)
     {
-        if (Random.Range(0f, 1f) < enemySpawnChance)
+        HashSet<Vector2Int> tempPositons = new HashSet<Vector2Int>(room.InnerTiles);
+        tempPositons.ExceptWith(_mapData.Path);
+        int amount = UnityEngine.Random.Range(minAmount, maxAmount + 1);
+        for (int i = 0; i < amount; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab);
-            enemy.transform.SetParent(_enemyContainer.transform);
-            enemy.transform.position = (Vector2)room.RoomCenterPos + new Vector2(0.5f, 0);
-            SpriteRenderer spriteRenderer = enemy.GetComponent<SpriteRenderer>();
-            spriteRenderer.sortingLayerName = "Enemy";
-            spriteRenderer.sortingOrder = 0;
-            enemy.layer = LayerMask.NameToLayer("Enemy");
+            // убираем уже занятые позиции
+            tempPositons.ExceptWith(room.PropPositions);
+            // перемешиваем позиции для рандома
+            List<Vector2Int> availablePositions = tempPositons.OrderBy(x => Guid.NewGuid()).ToList();
+            // Пытаемся разместить элемент на карте
+            
+            if (TryPlacingEnemyBruteForce(room, availablePositions) == false)
+                break;
         }
-        
     }
+    
+    private bool TryPlacingEnemyBruteForce(
+        Room room, List<Vector2Int> availablePositions)
+    {
+        // Перебираем позиции для размещения 
+        for (int i = 0; i < availablePositions.Count; i++)
+        {
+            // Проверяем свободна ли позиция 
+            Vector2Int position = availablePositions[i];
+            if (room.PropPositions.Contains(position))
+                continue;
 
+            if (!room.PropPositions.Contains(position))
+            {
+                SetEnemy(room, position);
+                return true;
+            }
+                
+        }
+
+        return false;
+    }
+    
+    private void SetEnemy(Room room, Vector2Int position)
+    {
+        GameObject enemy = Instantiate(enemyPrefab);
+        enemy.transform.SetParent(_enemyContainer.transform);
+        enemy.transform.position = position + new Vector2(0.5f, 0);
+        SpriteRenderer spriteRenderer = enemy.GetComponent<SpriteRenderer>();
+        spriteRenderer.sortingLayerName = "Enemy";
+        spriteRenderer.sortingOrder = 0;
+        enemy.layer = LayerMask.NameToLayer("Enemy");
+        
+        int leftBorderValue = position.x - 1;
+        int rightBorderValue = position.x + 1;
+        int downBorderValue = position.y - 1;
+        int upBorderValue = position.y + 1;
+        room.PropPositions.Add(position);
+        for (int x = leftBorderValue -1; x <= rightBorderValue + 1; x++)
+        {
+            for (int y = downBorderValue - 1; y <= upBorderValue + 1; y++)
+            {
+                Vector2Int reservedPosition = new Vector2Int(x, y);
+                room.PropPositions.Add(reservedPosition);
+            }
+        }
+    }
+    
     private void PlacePlayer(Room room)
     {
         GameObject player = Instantiate(playerPrefab);

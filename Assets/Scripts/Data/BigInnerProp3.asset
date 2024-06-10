@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418c845e709341a980b68fd67e0cdde2, type: 3}
   m_Name: BigInnerProp3
   m_EditorClassIdentifier: 
-  PropSprite: {fileID: 2005096701, guid: 5ca25c36c5d5a424fabbc07fc27216d8, type: 3}
+  propSprite: {fileID: 2005096701, guid: 5ca25c36c5d5a424fabbc07fc27216d8, type: 3}
   PropSize: {x: 3, y: 3}
   Corner: 0
   NearWallUP: 0
@@ -20,6 +20,5 @@ MonoBehaviour:
   NearWallRight: 0
   NearWallLeft: 0
   Inner: 1
-  TechnoRoom: 0
   PlacementQuantityMin: 1
   PlacementQuantityMax: 2
